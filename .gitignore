@@ -5,3 +5,4 @@ doc/app
 clear_log.sh
 screenrc
 tmp/
+specs/.~*
