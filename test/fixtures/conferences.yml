@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  begin_date: 2011-11-06
+  end_date: 2011-11-06
+  deadline: 2011-11-06
+  acceptance: 2011-11-06
+  due: 2011-11-06
+  submission_type: MyString
+  url: MyString
+  location: MyString
+  proceedings: MyString
+
+two:
+  name: MyString
+  begin_date: 2011-11-06
+  end_date: 2011-11-06
+  deadline: 2011-11-06
+  acceptance: 2011-11-06
+  due: 2011-11-06
+  submission_type: MyString
+  url: MyString
+  location: MyString
+  proceedings: MyString

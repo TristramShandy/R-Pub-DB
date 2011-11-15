@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Conference:</b>
+  <%= @publication.conference %>
+</p>
+
+<p>
+  <b>Journal:</b>
+  <%= @publication.journal %>
+</p>
+
+<p>
+  <b>Book:</b>
+  <%= @publication.book %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @publication.status %>
+</p>
+
+<p>
+  <b>History:</b>
+  <%= @publication.history %>
+</p>
+
+<p>
+  <b>Pdf:</b>
+  <%= @publication.pdf %>
+</p>
+
+<p>
+  <b>Abstract:</b>
+  <%= @publication.abstract %>
+</p>
+
+<p>
+  <b>Doi:</b>
+  <%= @publication.doi %>
+</p>
+
+<p>
+  <b>Pages:</b>
+  <%= @publication.pages %>
+</p>
+
+<p>
+  <b>Volume:</b>
+  <%= @publication.volume %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @publication.number %>
+</p>
+
+<p>
+  <b>Titel:</b>
+  <%= @publication.titel %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @publication.year %>
+</p>
+
+
+<%= link_to 'Edit', edit_publication_path(@publication) %> |
+<%= link_to 'Back', publications_path %>

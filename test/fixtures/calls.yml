@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  conference: 
+  journal: 
+  book: 
+  deadline: 2011-11-06
+  url: MyString
+  guest_editor: MyString
+
+two:
+  conference: 
+  journal: 
+  book: 
+  deadline: 2011-11-06
+  url: MyString
+  guest_editor: MyString

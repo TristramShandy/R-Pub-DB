@@ -1,4 +1,16 @@
 Rpubdb::Application.routes.draw do
+  resources :publications
+
+  resources :calls
+
+  resources :authors
+
+  resources :books
+
+  resources :conferences
+
+  resources :journals
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

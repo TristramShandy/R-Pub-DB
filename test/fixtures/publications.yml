@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  conference: 
+  journal: 
+  book: 
+  status: 1
+  history: MyString
+  pdf: MyString
+  abstract: MyText
+  doi: MyString
+  pages: 1
+  volume: 1
+  number: 1
+  titel: MyString
+  year: 1
+
+two:
+  conference: 
+  journal: 
+  book: 
+  status: 1
+  history: MyString
+  pdf: MyString
+  abstract: MyText
+  doi: MyString
+  pages: 1
+  volume: 1
+  number: 1
+  titel: MyString
+  year: 1

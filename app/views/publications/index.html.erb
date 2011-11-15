@@ -1,0 +1,47 @@
+<h1>Listing publications</h1>
+
+<table>
+  <tr>
+    <th>Conference</th>
+    <th>Journal</th>
+    <th>Book</th>
+    <th>Status</th>
+    <th>History</th>
+    <th>Pdf</th>
+    <th>Abstract</th>
+    <th>Doi</th>
+    <th>Pages</th>
+    <th>Volume</th>
+    <th>Number</th>
+    <th>Titel</th>
+    <th>Year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @publications.each do |publication| %>
+  <tr>
+    <td><%= publication.conference %></td>
+    <td><%= publication.journal %></td>
+    <td><%= publication.book %></td>
+    <td><%= publication.status %></td>
+    <td><%= publication.history %></td>
+    <td><%= publication.pdf %></td>
+    <td><%= publication.abstract %></td>
+    <td><%= publication.doi %></td>
+    <td><%= publication.pages %></td>
+    <td><%= publication.volume %></td>
+    <td><%= publication.number %></td>
+    <td><%= publication.titel %></td>
+    <td><%= publication.year %></td>
+    <td><%= link_to 'Show', publication %></td>
+    <td><%= link_to 'Edit', edit_publication_path(publication) %></td>
+    <td><%= link_to 'Destroy', publication, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Publication', new_publication_path %>
