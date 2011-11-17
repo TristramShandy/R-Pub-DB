@@ -1,5 +1,20 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   hello: "Hello world"
+  # RpubDB
+  rpubdb: "R-Pub-DB"
+  enter_name: Please enter a name
+  enter_password: Please enter a password
+  invalid_password: Incorrect user name and password
+  logged_out: You have successfully logged out
+  please_log_in: Please log in
+  name: name
+  password: password
+  login: Log in
+  logout: Log out
+  not_alowed_to_see: "No permission to see %{name}"
+  illegal_model: Unknown model
+  no_publications: "No pending publications"
+  author: Author
+  conference: Conference
+  journal: Journal
+  book: Book

@@ -1,0 +1,2 @@
+module RpubdbHelper
+end

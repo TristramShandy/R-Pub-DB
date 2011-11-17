@@ -1,0 +1,26 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+superuser:
+  id: 1
+  name: Superuser
+  rolemask: 7
+
+worker:
+  id: 2
+  name: Worker
+  rolemask: 0
+
+coordinator:
+  id: 3
+  name: Coordinator
+  rolemask: 1
+
+office:
+  id: 4
+  name: Office
+  rolemask: 2
+
+manager:
+  id: 5
+  name: Manager
+  rolemask: 4

@@ -1,0 +1,10 @@
+<h1><%= t(:home) %></h1>
+<% if @pending_publications.empty? %>
+  <%= t :no_publications %>
+<% else %>
+  <ul>
+    <% @pending_publications.each do |a_pub| %>
+      <li><%= link_to a_pub.title, a_pub %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,20 @@
+de:
+  hello: "Hello world"
+  # RpubDB
+  rpubdb: "R-Pub-DB"
+  enter_name: Sie müssen einen Namen angeben
+  enter_password: Sie müssen ein Passwort angeben
+  invalid_password: Benutzername und Passwort unbekannt
+  logged_out: Sie sind jetzt abgemeldet
+  please_log_in: Bitte melden Sie sich an
+  name: Name
+  password: Passwort
+  login: Anmelden
+  logout: Abmelden
+  not_alowed_to_see: "%{name} nicht erlaubt"
+  illegal_model: Unbekanntes Modell
+  no_publications: "Keine ausständigen Publikationen"
+  author: Autor
+  conference: Konferenz
+  journal: Zeitschrift
+  book: Buch
