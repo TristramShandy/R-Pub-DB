@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
   def may_see_model?(model_id)
     # user lists may only be seen by special roles
-    return((rolemask & (RoleCoordinator | RoleManager | RoleOffice)) > 0) if model_id == 5
+    return((rolemask & (RoleCoordinator | RoleManager | RoleOffice)) > 0) if model_id == 6
 
     true
   end

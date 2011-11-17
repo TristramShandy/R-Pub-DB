@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale
+  before_filter :authorize, :except => [:login, :logout]
 
   AcceptedLocaleInfo = [['en', 'English'], ['de', 'Deutsch']]
   AcceptedLocales = AcceptedLocaleInfo.transpose[0]
@@ -8,11 +9,12 @@ class ApplicationController < ActionController::Base
   ModelInfo = Struct.new(:name, :model_id, :klass, :symbol)
 
   DisplayModels = [
-    ModelInfo.new(:author,      1, Author,      :authors),
-    ModelInfo.new(:conference,  2, Conference,  :conferences),
-    ModelInfo.new(:journal,     3, Journal,     :journals),
-    ModelInfo.new(:book,        4, Book,        :books),
-    ModelInfo.new(:user,        5, User,        :users)]
+    ModelInfo.new(:publication, 1, Publication, :publications),
+    ModelInfo.new(:author,      2, Author,      :authors),
+    ModelInfo.new(:conference,  3, Conference,  :conferences),
+    ModelInfo.new(:journal,     4, Journal,     :journals),
+    ModelInfo.new(:book,        5, Book,        :books),
+    ModelInfo.new(:user,        6, User,        :users)]
 
   def set_locale
     current_locale = params[:locale]
@@ -28,5 +30,13 @@ class ApplicationController < ActionController::Base
   def model_by_id(model_id)
     DisplayModels.each {|a_model| return a_model if model_id == a_model.model_id}
     nil
+  end
+
+  def authorize
+    @user = User.find_by_id(session[:user_id])
+    unless @user
+      flash[:notice] = :please_log_in
+      redirect_to(:controller => 'rpubdb', :action => "login")
+    end
   end
 end

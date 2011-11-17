@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <% @list.headers.each do |header_item| %>
+      <th><%= sortable_header header_item %></th> 
+    <% end %>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @list.items.each do |item| %>
+    <tr>
+      <% @list.headers.each do |header_item| %>
+        <td><%= item.show(header_item) %></td>
+      <% end %>
+    </tr>
+    <td><%= link_to 'Show', @item.element %></td>
+    <td><%= link_to 'Edit', edit_path(@item) %></td>
+    <td><%= link_to 'Destroy', @item.element, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

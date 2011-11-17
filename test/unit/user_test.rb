@@ -66,17 +66,17 @@ class UserTest < ActiveSupport::TestCase
     u << users(:manager)
 
     # everyone may see the normal models
-    [1, 2, 3, 4].each do |role_id|
+    [1, 2, 3, 4, 5].each do |role_id|
       u.each do |a_user|
         assert(a_user.may_see_model?(role_id))
       end
     end
 
-    assert(u[0].may_see_model?(5))
-    assert(! u[1].may_see_model?(5))
-    assert(u[2].may_see_model?(5))
-    assert(u[3].may_see_model?(5))
-    assert(u[4].may_see_model?(5))
+    assert(u[0].may_see_model?(6))
+    assert(! u[1].may_see_model?(6))
+    assert(u[2].may_see_model?(6))
+    assert(u[3].may_see_model?(6))
+    assert(u[4].may_see_model?(6))
   end
 
   test "function all_coordinators" do

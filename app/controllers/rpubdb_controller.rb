@@ -1,8 +1,6 @@
 class RpubdbController < ApplicationController
   # The rpubdb controller is designed as the encompassing controller of this application.
 
-  before_filter :authorize, :except => [:login, :logout]
-
   def login
     reset_session
 
@@ -15,7 +13,7 @@ class RpubdbController < ApplicationController
         user = User.authenticate(params[:name], params[:password])
         if user
           session[:user_id] = user.id
-          redirect_to(:action => "home")
+          redirect_to :publications
         else
           flash[:notice] = :invalid_password
         end
@@ -41,11 +39,11 @@ class RpubdbController < ApplicationController
         @items = @model.klass.find(:all)
       else
         flash[:notice] = [:not_allowed_to_see, {:name => @model[:name]}]
-        redirect_to :action => :home
+        redirect_to :publications
       end
     else
       flash[:notice] = :illegal_model
-      redirect_to :action => :home
+      redirect_to :publications
     end
   end
 

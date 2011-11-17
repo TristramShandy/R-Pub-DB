@@ -2,7 +2,13 @@ class PublicationsController < ApplicationController
   # GET /publications
   # GET /publications.xml
   def index
-    @publications = Publication.all
+    if params[:id].to_i > 0
+      # display all publications
+      @publications = Publication.all
+    else
+      # default: display only own publications
+      @publications = @user.publications
+    end
 
     respond_to do |format|
       format.html # index.html.erb
