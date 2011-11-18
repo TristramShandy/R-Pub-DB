@@ -21,6 +21,10 @@ module Sortable
         item[attribute].to_s
       end
     end
+
+    def is_sortable?
+      sortable == C_Yes || sortable == C_Default
+    end
   end
 
   # SortableItem holds information on the item to display
@@ -39,7 +43,7 @@ module Sortable
       @table_name = klass.table_name
       @headers = klass.const_get(:DisplayInfo)
 
-      @direction = ([:asc, :desc].include?(params[:direction]) ? params[:direction] : :asc)
+      @direction = (['asc', 'desc'].include?(params[:direction]) ? params[:direction].to_sym : :asc)
 
       @sort = params[:sort].to_s.to_sym
       found = false
@@ -48,7 +52,7 @@ module Sortable
       @headers.each do |a_header|
         @default_sort = a_header if a_header.sortable == C_Default
         @default_filter = a_header if a_header.filterable == C_Default
-        found ||= (@sort == a_header.attribute && (a_header.sortable == C_Yes || a_header.sortable == C_Default))
+        found ||= (@sort == a_header.attribute && a_header.is_sortable?)
       end
       @sort = @default_sort.attribute unless found
 

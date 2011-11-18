@@ -2,7 +2,8 @@ class JournalsController < ApplicationController
   # GET /journals
   # GET /journals.xml
   def index
-    @journals = Journal.all
+    # @journals = Journal.all
+    @list = Sortable::List.new(Journal, params)
 
     respond_to do |format|
       format.html # index.html.erb

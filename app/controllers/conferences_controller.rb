@@ -2,7 +2,8 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.xml
   def index
-    @conferences = Conference.all
+    # @conferences = Conference.all
+    @list = Sortable::List.new(Conference, params)
 
     respond_to do |format|
       format.html # index.html.erb

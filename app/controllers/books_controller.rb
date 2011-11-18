@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.xml
   def index
-    @books = Book.all
+    # @books = Book.all
+    @list = Sortable::List.new(Book, params)
 
     respond_to do |format|
       format.html # index.html.erb
