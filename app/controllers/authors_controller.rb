@@ -2,7 +2,8 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.xml
   def index
-    @authors = Author.all
+    @list = Sortable::List.new(Author, params)
+    # @authors = Author.all
 
     respond_to do |format|
       format.html # index.html.erb

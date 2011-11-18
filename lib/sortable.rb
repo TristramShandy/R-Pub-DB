@@ -12,25 +12,53 @@ module Sortable
   C_Yes = 1
   C_Default = 2
 
+  class HeaderInfo
+    # What to display in the table
+    def show(item)
+      if attribute == :scope
+        "XXX" # TODO: implement
+      else
+        item[attribute].to_s
+      end
+    end
+  end
+
   # SortableItem holds information on the item to display
   class Item
     def initialize(item)
       @item = item
     end
 
-    # What to display in the table
-    def show
-      @item.to_s
-    end
   end
 
   # main class: a collection of items with information on sortability
   class List
-    attr_reader :headers, :items
+    attr_reader :headers, :items, :sort, :direction, :table_name
 
-    def initialize(raw_items, header_info)
-      @items = raw_items.map {|item| Item.new(item)}
-      @headers = header_info
+    def initialize(klass, params)
+      @table_name = klass.table_name
+      @headers = klass.const_get(:DisplayInfo)
+
+      @direction = ([:asc, :desc].include?(params[:direction]) ? params[:direction] : :asc)
+
+      @sort = params[:sort].to_s.to_sym
+      found = false
+
+      # Iterate through headers to check if @sort is an allowable column and find default values
+      @headers.each do |a_header|
+        @default_sort = a_header if a_header.sortable == C_Default
+        @default_filter = a_header if a_header.filterable == C_Default
+        found ||= (@sort == a_header.attribute && (a_header.sortable == C_Yes || a_header.sortable == C_Default))
+      end
+      @sort = @default_sort.attribute unless found
+
+      if @sort == :scope
+        # special treatment for scope necessary, as it is a combination of different attributes
+        # TODO: implement sorting
+        @items = klass.find(:all)
+      else
+        @items = klass.order("#{@sort} #{@direction}")
+      end
     end
   end
 end
