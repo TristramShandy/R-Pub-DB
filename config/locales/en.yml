@@ -18,3 +18,7 @@ en:
   conference: Conference
   journal: Journal
   book: Book
+  filter_clear: Clear
+  filter_start: "%{char}"
+  filter_regexp: Regular expression
+  filter_ignorecase: Ignore case

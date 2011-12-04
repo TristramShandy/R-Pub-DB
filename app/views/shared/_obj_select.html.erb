@@ -1,0 +1,6 @@
+<%= form_tag do %>
+  <%= select_tag('selection', options_for_select(obj_select[:items].map {|item| [item.display_name, item.id]}), {:size => '5', :id => obj_select[:id]}) %>
+<% end %>
+
+<%= render :partial => 'shared/item_filter', :object => obj_select[:id] %>
+

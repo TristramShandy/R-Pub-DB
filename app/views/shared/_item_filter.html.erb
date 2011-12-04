@@ -1,0 +1,22 @@
+<% filter_name = "filter_#{item_filter}" %>
+<script type='text/javascript'>
+  <!--
+  var <%= filter_name %> = new filterlist('<%= item_filter %>');
+  //-->
+</script>
+
+<p>
+<%= link_to_function(t(:filter_clear), "#{filter_name}.reset()") %>
+<% ('a'..'z').each do |c| %>
+  <%= link_to_function(t(:filter_start, :char => c.upcase), "#{filter_name}.set('^#{c}')") %>
+<% end %>
+</p>
+<p>
+<%= form_tag do %>
+  <%= t :filter_regexp %>
+  <%= text_field_tag('regexp', '', {'onKeyUp' => "#{filter_name}.set(this.value)"}) %>
+  <br />
+  <%= t :filter_ignorecase %>
+  <%= check_box_tag('ignorecase', '1', false, {'onClick' => "#{filter_name}.set_ignore_case(!this.checked)"}) %>
+<% end %>
+</p>

@@ -18,3 +18,7 @@ de:
   conference: Konferenz
   journal: Zeitschrift
   book: Buch
+  filter_clear: Löschen
+  filter_start: "%{char}"
+  filter_regexp: Filter
+  filter_ignorecase: Groß/Kleinschreibung ignorieren
