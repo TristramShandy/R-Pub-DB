@@ -10,4 +10,9 @@ module ApplicationHelper
       title
     end
   end 
+
+  # options string for scope selection
+  def scope_select_options
+    [[t(:conference), 0], [t(:journal), 1], [t(:book), 2]]
+  end
 end
