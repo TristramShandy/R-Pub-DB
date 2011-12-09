@@ -35,8 +35,25 @@ en:
   title: Title
   scope: Scope
   new_author: New author
+  listing_authors: Listing author
+  editing_author: Editing author
+  new_book: New book
+  listing_books: Listing book
+  editing_book: Editing book
+  new_user: New user
+  listing_user: Listing user
+  editing_users: Editing user
+  new_journal: New journal
+  listing_journals: Listing journal
+  editing_journal: Editing journal
+  new_conference: New conference
+  listing_conferences: Listing conference
+  editing_conference: Editing conference
   new_publication: New publication
-  listing_publications: Listing Publications
+  listing_publications: Listing publications
+  editing_publication: Editing publication
+  show: Show
+  edit: Edit
   back: Back
   selected: Selected
   all: All
@@ -51,7 +68,9 @@ en:
   volume: Volume
   enter_path: Enter path to PDF
   upload_pdf: Upload PDF
+  update_pdf: Update PDF
   download: Download
+  set_status: Set Status to
   activerecord:
     attributes:
       publication:

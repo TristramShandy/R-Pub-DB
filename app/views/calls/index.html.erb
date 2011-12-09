@@ -21,8 +21,8 @@
     <td><%= call.deadline %></td>
     <td><%= call.url %></td>
     <td><%= call.guest_editor %></td>
-    <td><%= link_to 'Show', call %></td>
-    <td><%= link_to 'Edit', edit_call_path(call) %></td>
+    <td><%= link_to t(:show), call %></td>
+    <td><%= link_to t(:edit), edit_call_path(call) %></td>
     <td><%= link_to 'Destroy', call, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

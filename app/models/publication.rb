@@ -72,6 +72,21 @@ class Publication < ActiveRecord::Base
     def self.remove_withdrawn(val)
       val >= Withdrawn ? val - Withdrawn : val
     end
+
+    # checks if new status is reachable from old status and return new status or nil
+    def self.check_new_status(old_status, new_status)
+      if new_status == Withdrawn
+        if old_status >= Withdrawn
+          old_status
+        else
+          old_status + Withdrawn
+        end
+      elsif new_status > 0 && new_status < Withdrawn
+        (old_status - new_status).abs < 2 ?  new_status : nil
+      else
+        nil
+      end
+    end
   end
 
   # Check if the given attribute is editable by the given user
@@ -130,22 +145,22 @@ class Publication < ActiveRecord::Base
         result << StatusValues.select_pair(StatusValues::Withdrawn) unless status.nil?
       when StatusValues::IdeaAccepted
         result << StatusValues.select_pair(StatusValues::Idea) if is_manager
-        result << StatusValues.select_pair(StatusValues::Written) if is_owner
+        result << StatusValues.select_pair(StatusValues::Written) if is_owner && !pdf.blank?
         result << StatusValues.select_pair(StatusValues::Withdrawn)
       when StatusValues::Written
-        result << StatusValues.select_pair(StatusValues::PendingSubmission)
+        result << StatusValues.select_pair(StatusValues::PendingSubmission) if is_manager
         result << StatusValues.select_pair(StatusValues::IdeaAccepted)
         result << StatusValues.select_pair(StatusValues::Withdrawn)
       when StatusValues::PendingSubmission
-        result << StatusValues.select_pair(StatusValues::Submitted)
+        result << StatusValues.select_pair(StatusValues::Submitted) if is_owner
         result << StatusValues.select_pair(StatusValues::Written)
         result << StatusValues.select_pair(StatusValues::Withdrawn)
       when StatusValues::Submitted
-        result << StatusValues.select_pair(StatusValues::Accepted)
+        result << StatusValues.select_pair(StatusValues::Accepted) if is_owner
         result << StatusValues.select_pair(StatusValues::PendingSubmission)
         result << StatusValues.select_pair(StatusValues::Withdrawn)
       when StatusValues::Accepted
-        result << StatusValues.select_pair(StatusValues::Published)
+        result << StatusValues.select_pair(StatusValues::Published) if is_owner
         result << StatusValues.select_pair(StatusValues::Submitted)
         result << StatusValues.select_pair(StatusValues::Withdrawn)
       when StatusValues::Withdrawn
@@ -162,6 +177,17 @@ class Publication < ActiveRecord::Base
 
   def pdf_name
     "pdf/publication_#{coded_id}.pdf"
+  end
+
+  # savely change to new status
+  def check_new_status(new_status)
+    real_status =  StatusValues.check_new_status(status, new_status)
+    if real_status
+      self[:status] = real_status
+      true
+    else
+      false
+    end
   end
 
   private

@@ -34,8 +34,25 @@ de:
   status_withdrawn: "Zurückgezogen"
   title: Titel
   new_author: Neuer Author
+  listing_authors: Liste Authoren
+  editing_author: "Author ändern"
+  new_user: Neuer User
+  listing_users: Liste User
+  editing_user: "User ändern"
+  new_journal: Neue Zeitschrift
+  listing_journals: Liste Zeitschriften
+  editing_journal: "Zeitschrift ändern"`
+  new_conference: Neue Konferenz
+  listing_conference: Liste Konferenz
+  editing_conferences: "Konferenz ändern"
+  new_book: Neuer Buch
+  listing_books: "Liste Bücher"
+  editing_book: "Buch ändern"
   new_publication: Neue Publikation
   listing_publications: Liste Publikationen
+  editing_publication: "Publikation ändern"
+  show: Anzeigen
+  edit: "Ändern"
   back: "Zurück"
   all: Alle
   scope: Ziel
@@ -50,7 +67,9 @@ de:
   volume: Band
   enter_path: "Geben Sie den Pfad zu dem PDF ein"
   upload_pdf: PDF laden
+  update_pdf: PDF updaten
   download: Download
+  set_status: "Status ändern zu"
   helpers:
     submit:
       create: "%{model} erzeugen"

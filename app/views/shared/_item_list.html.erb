@@ -12,8 +12,8 @@
       <% @list.headers.each do |header_item| %>
         <td><%= header_item.show(item) %></td>
       <% end %>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', item, :method => :edit %></td>
+    <td><%= link_to t(:show), item %></td>
+    <td><%= link_to t(:edit), :id => item, :action => :edit %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

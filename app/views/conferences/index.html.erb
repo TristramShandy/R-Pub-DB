@@ -1,4 +1,4 @@
-<h1>Listing conferences</h1>
+<h1><%= t :listing_conferences %></h1>
 
 <table>
   <tr>
@@ -29,8 +29,8 @@
     <td><%= conference.url %></td>
     <td><%= conference.location %></td>
     <td><%= conference.proceedings %></td>
-    <td><%= link_to 'Show', conference %></td>
-    <td><%= link_to 'Edit', edit_conference_path(conference) %></td>
+    <td><%= link_to t(:show), conference %></td>
+    <td><%= link_to t(:edit), edit_conference_path(conference) %></td>
     <td><%= link_to 'Destroy', conference, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

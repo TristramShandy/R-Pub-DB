@@ -1,4 +1,4 @@
-<h1>Listing books</h1>
+<h1><%= t :listing_books %></h1>
 
 <table>
   <tr>
@@ -19,8 +19,8 @@
     <td><%= book.editor %></td>
     <td><%= book.year %></td>
     <td><%= book.isbn %></td>
-    <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+    <td><%= link_to t(:show), book %></td>
+    <td><%= link_to t(:edit), edit_book_path(book) %></td>
     <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

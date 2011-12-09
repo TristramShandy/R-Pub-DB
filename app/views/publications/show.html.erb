@@ -60,5 +60,5 @@
     <%= link_to t(:download), {:action => 'download_pdf', :id => @publication.id} %>
   <% end %>
 </p>
-<%= link_to 'Edit', edit_publication_path(@publication) %> |
-<%= link_to 'Back', publications_path %>
+<%= link_to t(:edit), edit_publication_path(@publication) %> |
+<%= link_to t(:back), publications_path %>

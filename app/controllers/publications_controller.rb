@@ -50,6 +50,7 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       @publication.authors = params[:select_author].map {|str| Author.find_by_id(str.to_i)}
+      @publication.status = Publication::StatusValues::Idea
       if @publication.save
         format.html { redirect_to(@publication, :notice => 'Publication was successfully created.') }
         format.xml  { render :xml => @publication, :status => :created, :location => @publication }
@@ -68,6 +69,33 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       unless params[:select_author].blank?
         @publication.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}.uniq
+      end
+
+      case params[:scope]
+      when '0'
+        # Conference
+        scope = Conference.find_by_id(params[:select_conf].to_i)
+        if scope
+          @publication[:conference_id] = scope.id
+          @publication[:journal_id] = nil
+          @publication[:book_id] = nil
+        end
+      when '1'
+        # Journal
+        scope = Journal.find_by_id(params[:select_jour].to_i)
+        if scope
+          @publication[:conference_id] = nil
+          @publication[:journal_id] = scope.id
+          @publication[:book_id] = nil
+        end
+      when '2'
+        # Book
+        scope = Book.find_by_id(params[:select_book].to_i)
+        if scope
+          @publication[:conference_id] = nil
+          @publication[:journal_id] = nil
+          @publication[:book_id] = scope.id
+        end
       end
 
       if @publication.update_attributes(params[:publication])
@@ -92,6 +120,14 @@ class PublicationsController < ApplicationController
     end
   end
 
+  def change_status
+    publication = Publication.find_by_id(params[:id].to_i)
+    if publication && publication.check_new_status(params[:target].to_i)
+      publication.save
+    end
+    redirect_to(:back)
+  end
+
   # Upload PDF
   def upload_pdf
     publication = Publication.find_by_id(params[:id])
@@ -106,6 +142,7 @@ class PublicationsController < ApplicationController
     end
   end
 
+  # Download PDF
   def download_pdf
     publication = Publication.find_by_id(params[:id])
     if publication

@@ -29,7 +29,7 @@
             <% end %>
           </ul>
         <% end %>
-        <%= link_to(t(:logout), :action => 'logout') %>
+        <%= link_to(t(:logout), :controller => 'rpubdb', :action => 'logout') %>
       </div>
       <div id="sidebar_lang">
         <% ApplicationController::AcceptedLocaleInfo.each do |(a_locale, a_locale_name)| %>
