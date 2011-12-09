@@ -4,10 +4,10 @@ class PublicationsController < ApplicationController
   def index
     if params[:id].to_i > 0
       # display all publications
-      @publications = Publication.all
+      @list = Sortable::List.new(Publication, params)
     else
       # default: display only own publications
-      @publications = @user.publications
+      @list = Sortable::List.new(Publication, params, @user.valid_publications)
     end
 
     respond_to do |format|
@@ -49,6 +49,7 @@ class PublicationsController < ApplicationController
     @publication = Publication.new(params[:publication])
 
     respond_to do |format|
+      @publication.authors = params[:select_author].map {|str| Author.find_by_id(str.to_i)}
       if @publication.save
         format.html { redirect_to(@publication, :notice => 'Publication was successfully created.') }
         format.xml  { render :xml => @publication, :status => :created, :location => @publication }
@@ -65,6 +66,10 @@ class PublicationsController < ApplicationController
     @publication = Publication.find(params[:id])
 
     respond_to do |format|
+      unless params[:select_author].blank?
+        @publication.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}.uniq
+      end
+
       if @publication.update_attributes(params[:publication])
         format.html { redirect_to(@publication, :notice => 'Publication was successfully updated.') }
         format.xml  { head :ok }
@@ -84,6 +89,29 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(publications_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  # Upload PDF
+  def upload_pdf
+    publication = Publication.find_by_id(params[:id])
+    if publication
+      File.open(publication.pdf_name, 'wb') {|f| f.write(params[:publication_pdf].read) }
+      publication.pdf = publication.pdf_name
+      publication.save
+
+      redirect_to(publication)
+    else
+      redirect_to(:back)
+    end
+  end
+
+  def download_pdf
+    publication = Publication.find_by_id(params[:id])
+    if publication
+      send_file publication.pdf_name, :type => 'application/pdf'
+    else
+      redirect_to(:back)
     end
   end
 end

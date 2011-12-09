@@ -1,5 +1,6 @@
 class Author < ActiveRecord::Base
   has_and_belongs_to_many :publications
+  has_one :user
 
   include Sortable
 
@@ -9,6 +10,6 @@ class Author < ActiveRecord::Base
     Sortable::HeaderInfo.new(:affiliation,      :affiliation,     Sortable::C_Yes,     Sortable::C_Yes    )]
 
   def display_name
-    "#{first_name} #{last_name}"
+    "#{last_name} #{first_name}"
   end
 end

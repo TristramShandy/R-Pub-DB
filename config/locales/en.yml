@@ -15,6 +15,7 @@ en:
   illegal_model: Unknown model
   no_publications: "No pending publications"
   author: Author
+  authors: Authors
   conference: Conference
   journal: Journal
   book: Book
@@ -33,6 +34,24 @@ en:
   status_withdrawn: Withdrawn
   title: Title
   scope: Scope
+  new_author: New author
+  new_publication: New publication
+  listing_publications: Listing Publications
+  back: Back
+  selected: Selected
+  all: All
+  ans_yes: Yes
+  ans_no: No
+  source: In
+  pages: Pages
+  doi: DOI
+  pdf_link: PDF
+  year: Year
+  number: Number
+  volume: Volume
+  enter_path: Enter path to PDF
+  upload_pdf: Upload PDF
+  download: Download
   activerecord:
     attributes:
       publication:

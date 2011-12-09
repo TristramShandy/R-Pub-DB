@@ -21,6 +21,13 @@ div.selector {
   width: 360px;
 }
 
+div.interselector {
+  float: left;
+  width: 60px;
+  padding-top: 30px;
+  text-align: center;
+}
+
 div.clearer {
   clear: both;
 }
@@ -66,4 +73,8 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+div.selector select {
+  width: 240px;
 }

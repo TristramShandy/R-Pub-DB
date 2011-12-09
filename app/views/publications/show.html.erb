@@ -1,70 +1,64 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Conference:</b>
-  <%= @publication.conference %>
+  <b><%= t :authors %>:</b>
+  <%= h(@publication.authors.map {|author| author.display_name}.join(', ')) %>
 </p>
-
 <p>
-  <b>Journal:</b>
-  <%= @publication.journal %>
+  <b><%= t :title %>:</b>
+  <%= h(@publication.title) %>
 </p>
-
 <p>
-  <b>Book:</b>
-  <%= @publication.book %>
+  <b><%= t :status %>:</b>
+  <%= t @publication.status_name %>
 </p>
-
+<% if @publication.conference %>
+  <p>
+    <b><%= t :conference %>:</b>
+    <%= h(@publication.conference.display_name) %>
+  </p>
+<% end %>
+<% if @publication.journal %>
+  <p>
+    <b><%= t :journal %>:</b>
+    <%= h(@publication.journal.display_name) %>
+  </p>
+<% end %>
+<% if @publication.book %>
+  <p>
+    <b><%= t :book %>:</b>
+    <%= @publication.book.display_name %>
+  </p>
+<% end %>
 <p>
-  <b>Status:</b>
-  <%= @publication.status %>
-</p>
-
-<p>
-  <b>History:</b>
-  <%= @publication.history %>
-</p>
-
-<p>
-  <b>Pdf:</b>
-  <%= @publication.pdf %>
-</p>
-
-<p>
-  <b>Abstract:</b>
-  <%= @publication.abstract %>
-</p>
-
-<p>
-  <b>Doi:</b>
-  <%= @publication.doi %>
-</p>
-
-<p>
-  <b>Pages:</b>
-  <%= @publication.pages %>
-</p>
-
-<p>
-  <b>Volume:</b>
+  <b><%= t :volume %>:</b>
   <%= @publication.volume %>
 </p>
-
 <p>
-  <b>Number:</b>
+  <b><%= t :number %>:</b>
   <%= @publication.number %>
 </p>
-
 <p>
-  <b>Titel:</b>
-  <%= @publication.titel %>
-</p>
-
-<p>
-  <b>Year:</b>
+  <b><%= t :year %>:</b>
   <%= @publication.year %>
 </p>
-
-
+<p>
+  <b><%= t :pages %>:</b>
+  <%= @publication.pages %>
+</p>
+<p>
+  <b><%= t :doi %>:</b>
+  <%= @publication.doi %>
+</p>
+<p>
+  <b><%= t :abstract %>:</b>
+  <%= @publication.abstract %>
+</p>
+<p>
+  <b><%= t :pdf_link %>:</b>
+  <% unless @publication.pdf.blank? %>
+    <%= link_to t(:download), {:action => 'download_pdf', :id => @publication.id} %>
+  <% end %>
+</p>
 <%= link_to 'Edit', edit_publication_path(@publication) %> |
 <%= link_to 'Back', publications_path %>

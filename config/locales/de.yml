@@ -15,6 +15,7 @@ de:
   illegal_model: Unbekanntes Modell
   no_publications: "Keine ausständigen Publikationen"
   author: Autor
+  authors: Autoren
   conference: Konferenz
   journal: Zeitschrift
   book: Buch
@@ -32,7 +33,28 @@ de:
   status_published: Publiziert
   status_withdrawn: "Zurückgezogen"
   title: Titel
+  new_author: Neuer Author
+  new_publication: Neue Publikation
+  listing_publications: Liste Publikationen
+  back: "Zurück"
+  all: Alle
   scope: Ziel
+  ans_yes: Ja
+  ans_no: Nein
+  source: In
+  pages: Seiten
+  doi: DOI
+  pdf_link: PDF
+  year: Jahr
+  number: Nummer
+  volume: Band
+  enter_path: "Geben Sie den Pfad zu dem PDF ein"
+  upload_pdf: PDF laden
+  download: Download
+  helpers:
+    submit:
+      create: "%{model} erzeugen"
+      update: "%{model} ändern"
   activerecord:
     attributes:
       publication:

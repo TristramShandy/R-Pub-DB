@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :publications
+  belongs_to :author
 
   validates_uniqueness_of :name
 
@@ -25,6 +26,15 @@ class User < ActiveRecord::Base
     return((rolemask & (RoleCoordinator | RoleManager | RoleOffice)) > 0) if model_id == 6
 
     true
+  end
+
+  def valid_publications
+    if is_office? || is_manager? || is_coordinator?
+      Publication.all
+    else
+      the_author = author
+      the_author ? the_author.publications : []
+    end
   end
 
   # Authentication procedure. Proper password protection not implemented yet

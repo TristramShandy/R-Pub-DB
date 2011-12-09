@@ -13,13 +13,35 @@ module Sortable
   C_Default = 2
 
   class HeaderInfo
+    MaxStringLength = 20
+
     # What to display in the table
     def show(item)
-      if attribute == :scope
-        "XXX" # TODO: implement
+      str = ""
+      case attribute
+      when :source
+        if item[:jounral_id]
+          str = "[J] #{item.journal.display_name}"
+        elsif item[:conference_id]
+          str = "[C] #{item.conference.display_name}"
+        elsif item[:book__id]
+          str = "[B] #{item.book.display_name}"
+        end
+      when :authors
+        str = item.authors.map {|author| author.display_name}.join(", ")
+      when :status
+        str = I18n.t(item.status_name)
+      when :pdf
+        str = (item.pdf.blank? ? I18n.t(:ans_no) : I18n.t(:ans_yes))
       else
-        item[attribute].to_s
+        str = item[attribute].to_s
       end
+
+      if str.size > MaxStringLength
+        str = str[0, MaxStringLength - 3] + "..."
+      end
+
+      str
     end
 
     def is_sortable?
@@ -39,7 +61,7 @@ module Sortable
   class List
     attr_reader :headers, :items, :sort, :direction, :table_name
 
-    def initialize(klass, params)
+    def initialize(klass, params, items = nil)
       @table_name = klass.table_name
       @headers = klass.const_get(:DisplayInfo)
 
@@ -59,9 +81,14 @@ module Sortable
       if @sort == :scope
         # special treatment for scope necessary, as it is a combination of different attributes
         # TODO: implement sorting
-        @items = klass.find(:all)
+        @items = items ? items : klass.find(:all)
       else
-        @items = klass.order("#{@sort} #{@direction}")
+        if items
+          @items = items.sort_by {|item| item[@sort]}
+          @items.reverse! if @direction == :desc
+        else
+          @items = klass.order("#{@sort} #{@direction}")
+        end
       end
     end
   end

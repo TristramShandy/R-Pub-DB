@@ -5,6 +5,13 @@
     <%= button_to t(change[0]), :action => 'change_status', :id => change[1].to_s %>
   <% end %>
 </div>
+<div>
+  <% form_tag({:action => "upload_pdf", :id => @publication.id.to_s}, {:multipart => true}) do %>
+    <%= t :enter_path %>
+    <%= file_field_tag "publication_pdf", :accept => "application/pdf" %>
+    <%= submit_tag t(:upload_pdf), :class => "submit" %>
+  <% end %>
+</div>
 <%= form_for(@publication) do |f| %>
   <% if @publication.errors.any? %>
     <div id="error_explanation">
@@ -18,6 +25,10 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= t(:author, :count => 2) %><br />
+    <%= render :partial => "two_select", :object => {:items => Author.all, :selected => @publication.authors, :id=>"select_author"} %>
+  </div>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title, check_writable(:title) %>
@@ -44,14 +55,6 @@
     <%= f.text_field :pdf %>
   </div>
   <div class="field">
-    <%= f.label :doi %><br />
-    <%= f.text_field :doi %>
-  </div>
-  <div class="field">
-    <%= f.label :pages %><br />
-    <%= f.text_field :pages %>
-  </div>
-  <div class="field">
     <%= f.label :volume %><br />
     <%= f.text_field :volume %>
   </div>
@@ -63,7 +66,15 @@
     <%= f.label :year %><br />
     <%= f.text_field :year %>
   </div>
+  <div class="field">
+    <%= f.label :pages %><br />
+    <%= f.text_field :pages %>
+  </div>
+  <div class="field">
+    <%= f.label :doi %><br />
+    <%= f.text_field :doi %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :onclick => "mu_select_all('select_author'); return true;" %>
   </div>
 <% end %>

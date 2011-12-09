@@ -1,0 +1,11 @@
+<% my_id, sub_id = two_select[:id], "sub_#{two_select[:id]}" %>
+<div class="selector">
+  <%= label_tag my_id, t(:selected) %> <br />
+  <%= select_tag(my_id, options_for_select(two_select[:selected].map {|item| [item.display_name, item.id]}), {:size => '5', :id => my_id, :multiple => true}) %>
+</div>
+<div class="interselector">
+  <%= link_to_function("<<", "mu_two_select_add('#{my_id}', '#{sub_id}')") %><br />
+  <%= link_to_function("X", "mu_two_select_remove('#{my_id}', '#{sub_id}')") %>
+</div>
+<%= render :partial => "obj_select", :object => {:items => two_select[:items], :id => sub_id, :label => :all} %>
+<div class='clearer'>&nbsp;</div>

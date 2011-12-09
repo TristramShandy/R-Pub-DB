@@ -26,3 +26,47 @@ function set_scope(obj) {
     }
   }
 }
+
+// add item to selection list
+function mu_two_select_add(id_select, id_list)
+{
+  var select_obj = document.getElementById(id_select);
+  var list_obj = document.getElementById(id_list);
+  if (select_obj && list_obj) {
+    for (var i = 0; i < list_obj.length; ++i) {
+      if (list_obj.options[i].selected) {
+        var new_option = document.createElement('option');
+        new_option.text = list_obj.options[i].text;
+        new_option.value = list_obj.options[i].value;
+        try {
+          select_obj.add(new_option, null); // standards compliant
+        } catch(ex) {
+          select_obj.add(new_option); // Fucking IE only
+        }
+      }
+    }
+  }
+
+}
+
+// remove item from selection list
+function mu_two_select_remove(id_select, id_list) {
+  var select_obj = document.getElementById(id_select);
+  if (select_obj) {
+    for (var i = select_obj.length - 1; i >= 0; --i) {
+      if (select_obj.options[i].selected) {
+        select_obj.remove(i);
+      }
+    }
+  }
+}
+
+// select all choices of a multiselection
+function mu_select_all(id_select) {
+  var select_obj = document.getElementById(id_select);
+  if (select_obj) {
+    for (var i = 0; i < select_obj.length; ++i) {
+      select_obj.options[i].selected = true;
+    }
+  }
+}

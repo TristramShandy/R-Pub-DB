@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111116171432) do
+ActiveRecord::Schema.define(:version => 20111209133341) do
 
   create_table "authors", :force => true do |t|
     t.string   "last_name"
@@ -114,6 +114,9 @@ ActiveRecord::Schema.define(:version => 20111116171432) do
     t.integer  "rolemask"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "author_id"
   end
+
+  add_index "users", ["author_id"], :name => "fk_users_authors"
 
 end
