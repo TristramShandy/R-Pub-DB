@@ -10,4 +10,8 @@ class Book < ActiveRecord::Base
     Sortable::HeaderInfo.new(:publisher,        :publisher,       Sortable::C_Yes,     Sortable::C_Yes    ),
     Sortable::HeaderInfo.new(:year,             :year,            Sortable::C_Yes,     Sortable::C_Yes    ),
     Sortable::HeaderInfo.new(:isbn,             :isbn,            Sortable::C_No,      Sortable::C_No,    )]
+
+  def display_name
+    title
+  end
 end

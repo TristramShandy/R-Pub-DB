@@ -1,3 +1,10 @@
+<% current_scope = default_scope(@publication) %>
+<div>
+  <h3><%= t(:status) %>: <%= t(@publication.status_name) %></h3>
+  <% @publication.status_changes(@user).each do |change| %>
+    <%= button_to t(change[0]), :action => 'change_status', :id => change[1].to_s %>
+  <% end %>
+</div>
 <%= form_for(@publication) do |f| %>
   <% if @publication.errors.any? %>
     <div id="error_explanation">
@@ -13,31 +20,24 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, check_writable(:title) %>
   </div>
   <div class="field">
     <%= label_tag 'scope', t(:scope) %><br />
-    <%= select_tag('scope', options_for_select(scope_select_options), {:onchange => 'set_scope(this)'}) %>
+    <%= select_tag('scope', options_for_select(scope_select_options, current_scope), {:onchange => 'set_scope(this);'}) %>
   </div>
-  <div class="field visible" id="scope_conf">
-    <%= f.label :conference %><br />
-    <%= f.text_field :conference %>
+  <div class="field <%= scope_visible(current_scope, 0) %>" id="scope_conf">
+    <%= render :partial => "obj_select", :object => {:items => Conference.all, :id => "select_conf", :label => :conference} %>
   </div>
-  <div class="field hidden" id="scope_jour">
-    <%= f.label :journal %><br />
-    <%= f.text_field :journal %>
+  <div class="field <%= scope_visible(current_scope, 1) %>" id="scope_jour">
+    <%= render :partial => "obj_select", :object => {:items => Journal.all, :id => "select_jour", :label => :journal} %>
   </div>
-  <div class="field hidden" id="scope_book">
-    <%= f.label :book %><br />
-    <%= f.text_field :book %>
+  <div class="field <%= scope_visible(current_scope, 2) %>" id="scope_book">
+    <%= render :partial => "obj_select", :object => {:items => Book.all, :id => "select_book", :label => :book} %>
   </div>
   <div class="field">
     <%= f.label :abstract %><br />
     <%= f.text_area :abstract %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
   </div>
   <div class="field">
     <%= f.label :pdf %><br />

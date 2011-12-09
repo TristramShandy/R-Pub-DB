@@ -12,6 +12,19 @@ pre {
   font-size: 11px;
 }
 
+*.hidden {
+  display: none;
+}
+
+div.selector {
+  float: left;
+  width: 360px;
+}
+
+div.clearer {
+  clear: both;
+}
+
 a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
@@ -53,8 +66,4 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
-}
-
-*.hidden {
-  display: none;
 }

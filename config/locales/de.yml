@@ -18,7 +18,28 @@ de:
   conference: Konferenz
   journal: Zeitschrift
   book: Buch
+  filter: Filter
   filter_clear: Löschen
   filter_start: "%{char}"
   filter_regexp: Filter
   filter_ignorecase: Groß/Kleinschreibung ignorieren
+  status_idea: Idee
+  status_idea_accepted: Idee genehmigt
+  status_written: Geschrieben
+  status_pending_submission: Warte auf Einreichung
+  status_submitted: Eingereicht
+  status_accepted: Akzeptiert
+  status_published: Publiziert
+  status_withdrawn: "Zurückgezogen"
+  title: Titel
+  scope: Ziel
+  activerecord:
+    attributes:
+      publication:
+        title: Titel
+        pages: Seiten
+        doi: DOI
+        pdf: PDF
+        year: Jahr
+        number: Nummer
+        volume: Band

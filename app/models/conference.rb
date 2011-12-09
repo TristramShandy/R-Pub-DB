@@ -17,4 +17,7 @@ class Conference < ActiveRecord::Base
     Sortable::HeaderInfo.new(:title_proceed,    :proceedings,     Sortable::C_Yes,     Sortable::C_Yes    )]
 
 
+  def display_name
+    name
+  end
 end

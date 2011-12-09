@@ -18,7 +18,28 @@ en:
   conference: Conference
   journal: Journal
   book: Book
+  filter: Filter
   filter_clear: Clear
   filter_start: "%{char}"
   filter_regexp: Regular expression
   filter_ignorecase: Ignore case
+  status_idea: Idea
+  status_idea_accepted: Idea Accepted
+  status_written: Written
+  status_pending_submission: Pending Submission
+  status_submitted: Submitted
+  status_accepted: Accepted
+  status_published: Published
+  status_withdrawn: Withdrawn
+  title: Title
+  scope: Scope
+  activerecord:
+    attributes:
+      publication:
+        title: Title
+        pages: Pages
+        doi: DOI
+        pdf: PDF
+        year: Year
+        number: Number
+        volume: Volume

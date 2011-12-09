@@ -27,7 +27,7 @@ class RpubdbController < ApplicationController
   end
 
   def home
-    @pending_publications = @user.publications.find(:all, :conditions => "status != #{Publication::StatusFinished}")
+    @pending_publications = @user.publications.find(:all)
   end
 
   def list
