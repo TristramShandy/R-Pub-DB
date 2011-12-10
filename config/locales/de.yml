@@ -19,6 +19,7 @@ de:
   conference: Konferenz
   journal: Zeitschrift
   book: Buch
+  publication: Publikation
   filter: Filter
   filter_clear: Löschen
   filter_start: "%{char}"
@@ -33,19 +34,19 @@ de:
   status_published: Publiziert
   status_withdrawn: "Zurückgezogen"
   title: Titel
-  new_author: Neuer Author
-  listing_authors: Liste Authoren
-  editing_author: "Author ändern"
+  new_author: Neuer Autor
+  listing_authors: Liste Autoren
+  editing_author: "Autor ändern"
   new_user: Neuer User
   listing_users: Liste User
   editing_user: "User ändern"
   new_journal: Neue Zeitschrift
   listing_journals: Liste Zeitschriften
-  editing_journal: "Zeitschrift ändern"`
+  editing_journal: "Zeitschrift ändern"
   new_conference: Neue Konferenz
-  listing_conference: Liste Konferenz
-  editing_conferences: "Konferenz ändern"
-  new_book: Neuer Buch
+  listing_conferences: Liste Konferenzen
+  editing_conference: "Konferenz ändern"
+  new_book: Neues Buch
   listing_books: "Liste Bücher"
   editing_book: "Buch ändern"
   new_publication: Neue Publikation
@@ -54,6 +55,7 @@ de:
   show: Anzeigen
   edit: "Ändern"
   back: "Zurück"
+  destroy: "Löschen"
   all: Alle
   scope: Ziel
   ans_yes: Ja
@@ -65,6 +67,23 @@ de:
   year: Jahr
   number: Nummer
   volume: Band
+  begin_date: Datum Begin
+  end_date: Datum Ende
+  deadline: Deadline Einreichung
+  acceptance: Datum Benachrichtigung
+  due: Datum Endversion
+  submission_type: Typ Einreichung
+  webpage: Homepage
+  url: URL
+  title_proceed: Titel Tagungsband
+  location: Ort
+  first_name: Vorname
+  last_name: Nachname
+  affiliation: Organisation
+  publisher: Verlag
+  editor: Editor
+  isbn: ISBN
+  issn: ISSN
   enter_path: "Geben Sie den Pfad zu dem PDF ein"
   upload_pdf: PDF laden
   update_pdf: PDF updaten
@@ -76,6 +95,31 @@ de:
       update: "%{model} ändern"
   activerecord:
     attributes:
+      author:
+        first_name: Vorname
+        last_name: Nachname
+        affiliation: Organisation
+      book:
+        title: Titel
+        publisher: Verlag
+        editor: Editor
+        year: Jahr
+        isbn: ISBN
+      conference:
+        begin_date: Datum Begin
+        end_date: Datum Ende
+        deadline: Deadline Einreichung
+        acceptance: Datum Benachrichtigung
+        due: Datum Endversion
+        submission_type: Typ Einreichung
+        url: URL
+        proceedings: Titel Tagungsband
+        location: Ort
+      journal:
+        name: Name
+        publisher: Verlag
+        issn: ISSN
+        url: URL
       publication:
         title: Titel
         pages: Seiten
@@ -84,3 +128,15 @@ de:
         year: Jahr
         number: Nummer
         volume: Band
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "b %d"
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+    month_names: [~, "Jannuar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
+    abbr_month_names: [~, "Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
+    order:
+      - :year
+      - :month
+      - :day

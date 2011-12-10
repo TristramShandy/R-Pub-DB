@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209133341) do
+ActiveRecord::Schema.define(:version => 20111210100843) do
 
   create_table "authors", :force => true do |t|
     t.string   "last_name"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20111209133341) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "authors_books", :id => false, :force => true do |t|
+    t.integer "author_id", :null => false
+    t.integer "book_id",   :null => false
+  end
+
+  add_index "authors_books", ["author_id"], :name => "fk_authors_books_authors"
+  add_index "authors_books", ["book_id"], :name => "fk_authors_books_books"
 
   create_table "authors_publications", :id => false, :force => true do |t|
     t.integer "author_id",      :null => false

@@ -1,55 +1,43 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <b>Name:</b>
+  <b><%= t :name %>:</b>
   <%= @conference.name %>
 </p>
-
 <p>
-  <b>Begin date:</b>
-  <%= @conference.begin_date %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= @conference.end_date %>
-</p>
-
-<p>
-  <b>Deadline:</b>
-  <%= @conference.deadline %>
-</p>
-
-<p>
-  <b>Acceptance:</b>
-  <%= @conference.acceptance %>
-</p>
-
-<p>
-  <b>Due:</b>
-  <%= @conference.due %>
-</p>
-
-<p>
-  <b>Submission type:</b>
-  <%= @conference.submission_type %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @conference.url %>
-</p>
-
-<p>
-  <b>Location:</b>
+  <b><%= t :location %>:</b>
   <%= @conference.location %>
 </p>
-
 <p>
-  <b>Proceedings:</b>
+  <b><%= t :url %>:</b>
+  <%= link_to @conference.url, @conference.url %>
+</p>
+<p>
+  <b><%= t :begin_date %>:</b>
+  <%= @conference.begin_date %>
+</p>
+<p>
+  <b><%= t :end_date %>:</b>
+  <%= @conference.end_date %>
+</p>
+<p>
+  <b><%= t :deadline %>:</b>
+  <%= @conference.deadline %>
+</p>
+<p>
+  <b><%= t :acceptance %>:</b>
+  <%= @conference.acceptance %>
+</p>
+<p>
+  <b><%= t :due %>:</b>
+  <%= @conference.due %>
+</p>
+<p>
+  <b><%= t :submission_type %>:</b>
+  <%= @conference.submission_type %>
+</p>
+<p>
+  <b><%= t :title_proceed %>:</b>
   <%= @conference.proceedings %>
 </p>
-
-
 <%= link_to t(:edit), edit_conference_path(@conference) %> |
 <%= link_to t(:back), conferences_path %>

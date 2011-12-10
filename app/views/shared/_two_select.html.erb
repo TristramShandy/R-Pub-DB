@@ -7,5 +7,5 @@
   <%= link_to_function("<<", "mu_two_select_add('#{my_id}', '#{sub_id}')") %><br />
   <%= link_to_function("X", "mu_two_select_remove('#{my_id}', '#{sub_id}')") %>
 </div>
-<%= render :partial => "obj_select", :object => {:items => two_select[:items], :id => sub_id, :label => :all} %>
+<%= render :partial => "shared/obj_select", :object => {:items => two_select[:items], :id => sub_id, :label => :all} %>
 <div class='clearer'>&nbsp;</div>

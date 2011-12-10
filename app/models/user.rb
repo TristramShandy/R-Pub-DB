@@ -28,6 +28,38 @@ class User < ActiveRecord::Base
     true
   end
 
+  def may_edit?(item)
+    case item
+    when Book
+      true
+    when Journal
+      true
+    when Conference
+      true
+    when Publication
+      (! item.withdrawn?) && item.user_valid?(self)
+    else
+      true
+    end
+  end
+
+  def may_delete?(item)
+    case item
+    when Author
+      is_manager? || is_coordinator? || is_office? || (item.publications.empty? && item.books.empty? && item[:user_id].nil?)
+    when Book
+      is_manager? || is_coordinator? || is_office?
+    when Journal
+      is_manager? || is_coordinator? || is_office?
+    when Conference
+      is_manager? || is_coordinator? || is_office?
+    when Publication
+      item.withdrawn? && item.user_valid?(self)
+    else
+      false
+    end
+  end
+
   def valid_publications
     if is_office? || is_manager? || is_coordinator?
       Publication.all

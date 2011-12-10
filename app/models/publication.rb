@@ -87,6 +87,10 @@ class Publication < ActiveRecord::Base
         nil
       end
     end
+
+    def self.withdrawn?(val)
+      val >= Withdrawn
+    end
   end
 
   # Check if the given attribute is editable by the given user
@@ -95,11 +99,11 @@ class Publication < ActiveRecord::Base
     
     case attr_name
     when :title, :abstract
-      StatusValues.content_writeable?(status)
+      StatusValues.content_writeable?(self[:status])
     when :conference_id, :journal_id, :book_id, :call_id
-      StatusValues.content_writeable?(status)
+      StatusValues.content_writeable?(self[:status])
     when :pdf, :doi, :pages, :volume, :number, :year
-      StatusValues.content_active?(status)
+      StatusValues.content_active?(self[:status])
     when :status
       false # status changes are checked by a different logic
     when :history
@@ -139,10 +143,10 @@ class Publication < ActiveRecord::Base
     is_owner, is_manager = user_relation(the_user)
 
     if is_owner || is_manager
-      case StatusValues.norm_val(status)
+      case StatusValues.norm_val(self[:status])
       when StatusValues::Idea
         result << StatusValues.select_pair(StatusValues::IdeaAccepted) if is_manager
-        result << StatusValues.select_pair(StatusValues::Withdrawn) unless status.nil?
+        result << StatusValues.select_pair(StatusValues::Withdrawn) unless self[:status].nil?
       when StatusValues::IdeaAccepted
         result << StatusValues.select_pair(StatusValues::Idea) if is_manager
         result << StatusValues.select_pair(StatusValues::Written) if is_owner && !pdf.blank?
@@ -164,7 +168,7 @@ class Publication < ActiveRecord::Base
         result << StatusValues.select_pair(StatusValues::Submitted)
         result << StatusValues.select_pair(StatusValues::Withdrawn)
       when StatusValues::Withdrawn
-        result << StatusValues.select_pair(StatusValues.remove_withdrawn(status))
+        result << StatusValues.select_pair(StatusValues.remove_withdrawn(self[:status]))
       end
     end
 
@@ -172,16 +176,20 @@ class Publication < ActiveRecord::Base
   end
 
   def status_name
-    StatusValues.get_name(StatusValues.norm_val(status))
+    StatusValues.get_name(StatusValues.norm_val(self[:status]))
   end
 
   def pdf_name
     "pdf/publication_#{coded_id}.pdf"
   end
 
+  def withdrawn?
+    StatusValues.withdrawn?(self[:status])
+  end
+
   # savely change to new status
   def check_new_status(new_status)
-    real_status =  StatusValues.check_new_status(status, new_status)
+    real_status =  StatusValues.check_new_status(self[:status], new_status)
     if real_status
       self[:status] = real_status
       true

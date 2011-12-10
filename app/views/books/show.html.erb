@@ -1,27 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b><%= t :title %>:</b>
   <%= @book.title %>
+</p>
+<p>
+  <b><%= t :authors %>:</b>
+  <%= h(@book.authors.map {|author| author.display_name}.join(', ')) %>
 </p>
 
 <p>
-  <b>Publisher:</b>
+  <b><%= t :publisher %>:</b>
   <%= @book.publisher %>
 </p>
 
 <p>
-  <b>Editor:</b>
+  <b><%= t :editor %>:</b>
   <%= @book.editor %>
 </p>
 
 <p>
-  <b>Year:</b>
+  <b><%= t :year %>:</b>
   <%= @book.year %>
 </p>
 
 <p>
-  <b>Isbn:</b>
+  <b><%= t :isbn %>:</b>
   <%= @book.isbn %>
 </p>
 

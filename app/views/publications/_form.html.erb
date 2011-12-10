@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= t(:author, :count => 2) %><br />
-    <%= render :partial => "two_select", :object => {:items => Author.all, :selected => @publication.authors, :id=>"select_author"} %>
+    <%= render :partial => "shared/two_select", :object => {:items => Author.all, :selected => @publication.authors, :id=>"select_author"} %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -39,13 +39,13 @@
     <%= select_tag('scope', options_for_select(scope_select_options, current_scope), {:onchange => 'set_scope(this);'}) %>
   </div>
   <div class="field <%= scope_visible(current_scope, 0) %>" id="scope_conf">
-    <%= render :partial => "obj_select", :object => {:items => Conference.all, :id => "select_conf", :label => :conference} %>
+    <%= render :partial => "shared/obj_select", :object => {:items => Conference.all, :id => "select_conf", :label => :conference} %>
   </div>
   <div class="field <%= scope_visible(current_scope, 1) %>" id="scope_jour">
-    <%= render :partial => "obj_select", :object => {:items => Journal.all, :id => "select_jour", :label => :journal} %>
+    <%= render :partial => "shared/obj_select", :object => {:items => Journal.all, :id => "select_jour", :label => :journal} %>
   </div>
   <div class="field <%= scope_visible(current_scope, 2) %>" id="scope_book">
-    <%= render :partial => "obj_select", :object => {:items => Book.all, :id => "select_book", :label => :book} %>
+    <%= render :partial => "shared/obj_select", :object => {:items => Book.all, :id => "select_book", :label => :book} %>
   </div>
   <div class="field">
     <%= f.label :abstract %><br />

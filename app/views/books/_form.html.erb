@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= t(:author, :count => 2) %><br />
+    <%= render :partial => "shared/two_select", :object => {:items => Author.all, :selected => @book.authors, :id=>"select_author"} %>
+  </div>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -32,6 +35,6 @@
     <%= f.text_field :isbn %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :onclick => "mu_select_all('select_author'); return true;" %>
   </div>
 <% end %>

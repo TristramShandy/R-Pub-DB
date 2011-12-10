@@ -1,23 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= t :name %>:</b>
   <%= @journal.name %>
 </p>
 
 <p>
-  <b>Publisher:</b>
+  <b><%= t :publisher %>:</b>
   <%= @journal.publisher %>
 </p>
 
 <p>
-  <b>Issn:</b>
+  <b><%= t :issn %>:</b>
   <%= @journal.issn %>
 </p>
 
 <p>
-  <b>Url:</b>
-  <%= @journal.url %>
+  <b><%= t :url %>:</b>
+  <%= link_to @journal.url, @journal.url %>
 </p>
 
 

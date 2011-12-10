@@ -7,7 +7,7 @@
   </div>
   <div class="field">
     <%= t(:author, :count => 2) %><br />
-    <%= render :partial => "two_select", :object => {:items => Author.all, :selected => [], :id=>"select_author"} %>
+    <%= render :partial => "shared/two_select", :object => {:items => Author.all, :selected => [], :id=>"select_author"} %>
   </div>
   <div class="field">
     <%= f.label :abstract %><br />

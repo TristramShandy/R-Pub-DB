@@ -49,7 +49,9 @@ class PublicationsController < ApplicationController
     @publication = Publication.new(params[:publication])
 
     respond_to do |format|
-      @publication.authors = params[:select_author].map {|str| Author.find_by_id(str.to_i)}
+      unless params[:select_author].blank?
+        @publication.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}
+      end
       @publication.status = Publication::StatusValues::Idea
       if @publication.save
         format.html { redirect_to(@publication, :notice => 'Publication was successfully created.') }

@@ -19,6 +19,7 @@ en:
   conference: Conference
   journal: Journal
   book: Book
+  publication: Publication
   filter: Filter
   filter_clear: Clear
   filter_start: "%{char}"
@@ -55,10 +56,11 @@ en:
   show: Show
   edit: Edit
   back: Back
+  destroy: Destroy
   selected: Selected
   all: All
-  ans_yes: Yes
-  ans_no: No
+  ans_yes: "Yes"
+  ans_no: "No"
   source: In
   pages: Pages
   doi: DOI
@@ -66,6 +68,22 @@ en:
   year: Year
   number: Number
   volume: Volume
+  begin_date: Begin date
+  end_date: End date
+  deadline: Submission deadline
+  acceptance: Acceptance notice date
+  due: Final paper due
+  submission_type: Submission type
+  webpage: Homepage
+  title_proceed: Title proceedings
+  location: Location
+  first_name: First name
+  last_name: Last name
+  affiliation: Affiliation
+  publisher: Publisher
+  editor: Editor
+  isbn: ISBN
+  issn: ISSN
   enter_path: Enter path to PDF
   upload_pdf: Upload PDF
   update_pdf: Update PDF
@@ -73,6 +91,31 @@ en:
   set_status: Set Status to
   activerecord:
     attributes:
+      author:
+        first_name: First name
+        last_name: Last name
+        affiliation: Affiliation
+      book:
+        title: Title
+        publisher: Publisher
+        editor: Editor
+        year: Year
+        isbn: ISBN
+      conference:
+        begin_date: Begin date
+        end_date: End date
+        deadline: Submission deadline
+        acceptance: Acceptance notice date
+        due: Final paper due
+        submission_type: Submission type
+        url: URL
+        proceedings: Title proceedings
+        location: Location
+      journal:
+        name: Name
+        publisher: Publisher
+        issn: ISSN
+        url: URL
       publication:
         title: Title
         pages: Pages
