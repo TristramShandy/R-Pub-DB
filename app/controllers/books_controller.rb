@@ -4,6 +4,15 @@ class BooksController < ApplicationController
   def index
     # @books = Book.all
     @list = Sortable::List.new(Book, params)
+    if params[:regexp]
+      @filter_regexp = params[:regexp]
+      @filter_ignorecase = (params[:ignorecase] == '1')
+      @filter_attribute = params[:attr_select].to_sym
+    else
+      @filter_regexp = ''
+      @filter_ignorecase = true
+      @filter_attribute = @list.default_filter.attribute
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,7 +89,10 @@ class BooksController < ApplicationController
   # DELETE /books/1.xml
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
+    if @book.calls.empty? && @book.publications.empty?
+      @book.authors = []
+      @book.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(books_url) }

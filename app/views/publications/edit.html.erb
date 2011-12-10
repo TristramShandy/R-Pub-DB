@@ -1,6 +1,15 @@
 <h1><%= t :editing_publication %></h1>
-
-<%= render 'form' %>
+<div>
+  <h3><%= t(:status) %>: <%= t(@publication.status_name) %></h3>
+  <% @publication.status_changes(@user).each do |change| %>
+    <%= button_to "#{t :set_status}: #{t change[0]}", :action => 'change_status', :id => @publication.id, :target => change[1].to_s %>
+  <% end %>
+</div>
+<% if @may_edit %>
+  <%= render 'form' %>
+<% else %>
+  <%= render 'display' %>
+<% end %>
 
 <%= link_to t(:show), @publication %> |
 <%= link_to t(:back), publications_path %>

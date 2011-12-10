@@ -89,6 +89,10 @@ en:
   update_pdf: Update PDF
   download: Download
   set_status: Set Status to
+  filter_attribute: Column to filter
+  do_filter: Filter
+  status: Status
+  abstract: Abstract
   activerecord:
     attributes:
       author:
@@ -124,3 +128,5 @@ en:
         year: Year
         number: Number
         volume: Volume
+        status: Status
+        abstract: Abstract

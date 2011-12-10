@@ -1,8 +1,4 @@
 module PublicationsHelper
-  # check if the given attribute is writeable and return a hash string to that effect
-  def check_writable(attr_name)
-    @publication.editable?(attr_name, @user) ? {} : {:disabled => "disabled"}
-  end
 
   # default scope to use for the publication
   def default_scope(publ)

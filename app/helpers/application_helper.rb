@@ -5,7 +5,7 @@ module ApplicationHelper
     css_class = (header_item.attribute == @list.sort ? "current #{@list.direction}" : nil)
     direction = (header_item.attribute == @list.sort && @list.direction == :asc ? :desc : :asc)
     if header_item.is_sortable?
-      link_to title, {:sort => header_item.attribute.to_s, :direction => direction.to_s}, {:class => css_class}
+      link_to title, {:sort => header_item.attribute.to_s, :direction => direction.to_s, :regexp => @filter_regexp, :ignorecase => (@filter_ignorecase ? '1' : nil), :attr_select => @filter_attribute}, {:class => css_class}
     else
       title
     end

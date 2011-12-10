@@ -3,7 +3,15 @@ class AuthorsController < ApplicationController
   # GET /authors.xml
   def index
     @list = Sortable::List.new(Author, params)
-    # @authors = Author.all
+    if params[:regexp]
+      @filter_regexp = params[:regexp]
+      @filter_ignorecase = (params[:ignorecase] == '1')
+      @filter_attribute = params[:attr_select].to_sym
+    else
+      @filter_regexp = ''
+      @filter_ignorecase = true
+      @filter_attribute = @list.default_filter.attribute
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -74,7 +82,9 @@ class AuthorsController < ApplicationController
   # DELETE /authors/1.xml
   def destroy
     @author = Author.find(params[:id])
-    @author.destroy
+    if @author.publications.empty? && @author.books.empty? && @author.user.nil?
+      @author.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(authors_url) }

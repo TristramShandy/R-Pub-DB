@@ -127,9 +127,9 @@ class Publication < ActiveRecord::Base
   # This returns a pair [user_is_owner, user_is_admin]
   def user_relation(the_user)
     result = [false, false]
-    user_ids = users.map {|a_user| a_user.id}
-    result[0] = true if user_ids.empty?  # publication not saved yet - fully readable
-    result[0] = true if user_ids.include?(the_user.id) # The user is owner of the publication
+    author_ids = authors.map {|auth| auth.id}
+    result[0] = true if author_ids.empty?  # publication not saved yet - fully readable
+    result[0] = true if author_ids.include?(the_user[:author_id]) # The user is owner of the publication
 
     # check for special privileges
     result[1] = (the_user.is_manager? || the_user.is_coordinator?)

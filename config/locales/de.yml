@@ -89,6 +89,10 @@ de:
   update_pdf: PDF updaten
   download: Download
   set_status: "Status ändern zu"
+  filter_attribute: Filterspalte
+  do_filter: Filtern
+  status: Status
+  abstract: Abstract
   helpers:
     submit:
       create: "%{model} erzeugen"
@@ -128,6 +132,8 @@ de:
         year: Jahr
         number: Nummer
         volume: Band
+        status: Status
+        abstract: Abstract
   date:
     formats:
       default: "%Y-%m-%d"

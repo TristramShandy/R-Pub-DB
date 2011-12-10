@@ -59,7 +59,7 @@ module Sortable
 
   # main class: a collection of items with information on sortability
   class List
-    attr_reader :headers, :items, :sort, :direction, :table_name
+    attr_reader :headers, :items, :sort, :direction, :table_name, :default_filter
 
     def initialize(klass, params, items = nil)
       @table_name = klass.table_name
@@ -69,12 +69,14 @@ module Sortable
 
       @sort = params[:sort].to_s.to_sym
       found = false
+      @filter_headers = []
 
       # Iterate through headers to check if @sort is an allowable column and find default values
       @headers.each do |a_header|
         @default_sort = a_header if a_header.sortable == C_Default
         @default_filter = a_header if a_header.filterable == C_Default
         found ||= (@sort == a_header.attribute && a_header.is_sortable?)
+        @filter_headers << a_header if a_header.filterable == C_Yes || a_header.filterable == C_Default
       end
       @sort = @default_sort.attribute unless found
 
@@ -90,6 +92,19 @@ module Sortable
           @items = klass.order("#{@sort} #{@direction}")
         end
       end
+
+      unless params[:regexp].blank?
+        # keep only items that match the regexp
+        attr = (params[:attr_select].blank? ? @default_filter.attribute : params[:attr_select])
+        regexp = Regexp.new(params[:regexp], params[:ignorecase] == '1')
+        
+        @items = @items.select {|item| item[attr].to_s =~ regexp}
+      end
+    end
+
+    # list of filter attributes usable for options_for_select
+    def filter_attributes
+      @filter_headers.map {|a_header| [I18n.t(a_header.name), a_header.attribute]}
     end
   end
 end

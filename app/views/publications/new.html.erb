@@ -3,7 +3,7 @@
 <%= form_for(@publication) do |f| %>
   <div class="field">
     <%= f.label t(:title) %><br />
-    <%= f.text_field :title, check_writable(:title) %>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= t(:author, :count => 2) %><br />

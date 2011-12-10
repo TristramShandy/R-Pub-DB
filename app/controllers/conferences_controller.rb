@@ -4,6 +4,15 @@ class ConferencesController < ApplicationController
   def index
     # @conferences = Conference.all
     @list = Sortable::List.new(Conference, params)
+    if params[:regexp]
+      @filter_regexp = params[:regexp]
+      @filter_ignorecase = (params[:ignorecase] == '1')
+      @filter_attribute = params[:attr_select].to_sym
+    else
+      @filter_regexp = ''
+      @filter_ignorecase = true
+      @filter_attribute = @list.default_filter.attribute
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -74,7 +83,9 @@ class ConferencesController < ApplicationController
   # DELETE /conferences/1.xml
   def destroy
     @conference = Conference.find(params[:id])
-    @conference.destroy
+    if @conference.calls.empty? && @conference.publications.empty?
+      @conference.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(conferences_url) }

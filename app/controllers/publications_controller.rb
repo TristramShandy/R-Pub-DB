@@ -9,6 +9,15 @@ class PublicationsController < ApplicationController
       # default: display only own publications
       @list = Sortable::List.new(Publication, params, @user.valid_publications)
     end
+    if params[:regexp]
+      @filter_regexp = params[:regexp]
+      @filter_ignorecase = (params[:ignorecase] == '1')
+      @filter_attribute = params[:attr_select].to_sym
+    else
+      @filter_regexp = ''
+      @filter_ignorecase = true
+      @filter_attribute = @list.default_filter.attribute
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +50,13 @@ class PublicationsController < ApplicationController
   # GET /publications/1/edit
   def edit
     @publication = Publication.find(params[:id])
+
+    # check attribute access rights
+    is_owner, is_manager = @publication.user_relation(@user)
+    @may_edit = (@user.is_office? || is_owner) # only office and the owners may edit the content
+    unless is_owner || is_manager || user.is_office?
+      redirect_to(publications_url)
+    end
   end
 
   # POST /publications
@@ -114,6 +130,7 @@ class PublicationsController < ApplicationController
   # DELETE /publications/1.xml
   def destroy
     @publication = Publication.find(params[:id])
+    @publication.authors = []
     @publication.destroy
 
     respond_to do |format|

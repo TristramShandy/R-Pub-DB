@@ -46,13 +46,13 @@ class User < ActiveRecord::Base
   def may_delete?(item)
     case item
     when Author
-      is_manager? || is_coordinator? || is_office? || (item.publications.empty? && item.books.empty? && item[:user_id].nil?)
+      item.publications.empty? && item.books.empty? && item[:user_id].nil?
     when Book
-      is_manager? || is_coordinator? || is_office?
-    when Journal
-      is_manager? || is_coordinator? || is_office?
+      item.publications.empty? && item.calls.empty?
     when Conference
-      is_manager? || is_coordinator? || is_office?
+      item.publications.empty? && item.calls.empty?
+    when Journal
+      item.publications.empty? && item.calls.empty?
     when Publication
       item.withdrawn? && item.user_valid?(self)
     else

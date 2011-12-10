@@ -1,11 +1,5 @@
 <% current_scope = default_scope(@publication) %>
 <div>
-  <h3><%= t(:status) %>: <%= t(@publication.status_name) %></h3>
-  <% @publication.status_changes(@user).each do |change| %>
-    <%= button_to "#{t :set_status}: #{t change[0]}", :action => 'change_status', :id => @publication.id, :target => change[1].to_s %>
-  <% end %>
-</div>
-<div>
   <h3><%= t(@publication.pdf.blank? ? :upload_pdf : :update_pdf) %></h3>
   <% form_tag({:action => "upload_pdf", :id => @publication.id.to_s}, {:multipart => true}) do %>
     <%= t :enter_path %>
@@ -32,20 +26,20 @@
   </div>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title, check_writable(:title) %>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= label_tag 'scope', t(:scope) %><br />
     <%= select_tag('scope', options_for_select(scope_select_options, current_scope), {:onchange => 'set_scope(this);'}) %>
   </div>
   <div class="field <%= scope_visible(current_scope, 0) %>" id="scope_conf">
-    <%= render :partial => "shared/obj_select", :object => {:items => Conference.all, :id => "select_conf", :label => :conference} %>
+    <%= render :partial => "shared/obj_select", :object => {:items => Conference.all, :id => "select_conf", :label => :conference, :selected => @publication.conference} %>
   </div>
   <div class="field <%= scope_visible(current_scope, 1) %>" id="scope_jour">
-    <%= render :partial => "shared/obj_select", :object => {:items => Journal.all, :id => "select_jour", :label => :journal} %>
+    <%= render :partial => "shared/obj_select", :object => {:items => Journal.all, :id => "select_jour", :label => :journal, :selected => @publication.journal} %>
   </div>
   <div class="field <%= scope_visible(current_scope, 2) %>" id="scope_book">
-    <%= render :partial => "shared/obj_select", :object => {:items => Book.all, :id => "select_book", :label => :book} %>
+    <%= render :partial => "shared/obj_select", :object => {:items => Book.all, :id => "select_book", :label => :book, :selected => @publication.book} %>
   </div>
   <div class="field">
     <%= f.label :abstract %><br />
