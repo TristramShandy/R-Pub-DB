@@ -22,10 +22,13 @@ class User < ActiveRecord::Base
   end
 
   def may_see_model?(model_id)
+    # Old version: use this if you want to open users to view
     # user lists may only be seen by special roles
-    return((rolemask & (RoleCoordinator | RoleManager | RoleOffice)) > 0) if model_id == 6
-
-    true
+    # return((rolemask & (RoleCoordinator | RoleManager | RoleOffice)) > 0) if model_id == 6
+    # true
+    
+    # Users can not be seen
+    model_id != 6
   end
 
   def may_edit?(item)

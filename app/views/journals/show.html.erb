@@ -1,25 +1,18 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b><%= t :name %>:</b>
   <%= @journal.name %>
 </p>
-
 <p>
   <b><%= t :publisher %>:</b>
   <%= @journal.publisher %>
 </p>
-
 <p>
   <b><%= t :issn %>:</b>
   <%= @journal.issn %>
 </p>
-
 <p>
   <b><%= t :url %>:</b>
   <%= link_to @journal.url, @journal.url %>
 </p>
-
-
 <%= link_to t(:edit), edit_journal_path(@journal) %> |
 <%= link_to t(:back), journals_path %>

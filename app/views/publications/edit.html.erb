@@ -1,10 +1,10 @@
 <h1><%= t :editing_publication %></h1>
-<div>
-  <h3><%= t(:status) %>: <%= t(@publication.status_name) %></h3>
+<fieldset>
+  <legend><%= t(:status) %>: <%= t(@publication.status_name) %></legend>
   <% @publication.status_changes(@user).each do |change| %>
     <%= button_to "#{t :set_status}: #{t change[0]}", :action => 'change_status', :id => @publication.id, :target => change[1].to_s %>
   <% end %>
-</div>
+</fieldset>
 <% if @may_edit %>
   <%= render 'form' %>
 <% else %>

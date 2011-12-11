@@ -1,9 +1,21 @@
+/*
+ * Colors:
+ * 790b1a logo, headers
+ * 5b1d25 color_0
+ * 4f040e links:visited
+ * bc3c4d background_0
+ * bc5e6b links
+ */
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
+}
+
+h1, h2, h3, h4 {
+  color: #790b1a;
 }
 
 div#sidebar {
@@ -14,6 +26,7 @@ div#sidebar {
   /* padding-top: 1em;
   padding-left: 1em; */
   padding-bottom: 1em;
+  padding-top: 4ex;
 }
 
 div#main {
@@ -26,10 +39,24 @@ div#main {
   /* background: #ffffff; */
 }
 
+div#sidebar_lang a {
+  padding-left: 2em;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
+}
+
+div#sidebar ul {
+  list-style-type: none;
+}
+
+div#sidebar li {
+  padding: 1em;
+  background-color: #bbb;
+  border: 1px solid black;
 }
 
 *.hidden {
@@ -41,20 +68,13 @@ div.selector {
   width: 360px;
 }
 
-div.interselector {
-  float: left;
-  width: 60px;
-  padding-top: 30px;
-  text-align: center;
-}
-
 div.clearer {
   clear: both;
 }
 
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+a { color: #bc5e6b; }
+a:visited { color: #4f040e; }
+a:hover { color: #bc5e6b; background-color:#4f040e; }
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -95,6 +115,96 @@ div.field, div.actions {
   list-style: square;
 }
 
+th {
+  color: #790b1a;
+}
+
+th a { color: #4f040e; }
+th a:visited { color: #4f040e; }
+th a:hover { color: #bc5e6b; }
+
 div.selector select {
   width: 240px;
 }
+
+fieldset {
+  margin: 1em 0;
+}
+
+fieldset.filter table {
+  margin-bottom: 1em;
+}
+
+fieldset.filter td {
+  padding: 0.2em 1em;
+}
+
+legend {
+  color: #790b1a;
+  font-weight: bold;
+  font-size: larger;
+}
+
+label, span.aslabel {
+  color: #790b1a;
+  font-weight: bold;
+} 
+
+div.selector + div.selector label {
+  font-weight: normal;
+}
+
+*.sublabel {
+  color: #790b1a;
+  font-weight: normal;
+} 
+
+table#itemlist {
+  margin: 1em 0;
+  border-collapse: collapse;
+  border: 2px outset gray;
+}
+
+table#itemlist th {
+  padding: 0.1em 0.5em;
+  border: 1px inset gray;
+}
+
+table#itemlist td {
+  padding: 0.1em 0.5em;
+  border: 1px inset gray;
+}
+
+table#itemlist td.tlink {
+  border: none;
+}
+
+table#itemlist th.tlink {
+  border: none;
+}
+
+th *.current {
+  padding-right: 16px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+th *.asc { background-image: url(down.png); }
+th *.desc { background-image: url(up.png); }
+
+input[type=text] {
+  width: 720px;
+}
+
+textarea {
+  width: 720px;
+}
+
+div.selector input[type=text] {
+  width: 320px;
+}
+
+fieldset.filter input[type=text] {
+  width: 320px;
+}
+
+b { color: #790b1a; }

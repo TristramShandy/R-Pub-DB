@@ -1,40 +1,41 @@
-<%= form_tag({:action => 'index'}, {:method => 'get'}) do %>
-  <%= hidden_field_tag :sort, @list.sort.to_s %>
-  <%= hidden_field_tag :direction, @list.direction.to_s %>
-  <%= hidden_field_tag :locale, I18n.locale %>
-  <p>
-  <%= t :filter_attribute %>
-  <%= select_tag('attr_select', options_for_select(@list.filter_attributes, @filter_attribute)) %>
-  </p>
-  <p>
-  <%= t :filter_regexp %>
-  <%= text_field_tag('regexp', @filter_regexp) %>
-  </p>
-  <p>
-  <%= t :filter_ignorecase %>
-  <%= check_box_tag('ignorecase', '1', @filter_ignorecase ) %>
-  </p>
-  <p>
-  <%= submit_tag t(:do_filter) %>
-  </p>
-<% end %>
+<fieldset class='filter'>
+  <legend><%= t :filter %></legend>
+  <%= form_tag({:action => 'index'}, {:method => 'get'}) do %>
+    <%= hidden_field_tag :sort, @list.sort.to_s %>
+    <%= hidden_field_tag :direction, @list.direction.to_s %>
+    <%= hidden_field_tag :locale, I18n.locale %>
+    <table>
+      <tr>
+        <td><%= t :filter_attribute %></td>
+        <td><%= t :filter_regexp %></td>
+        <td><%= t :filter_ignorecase %></td>
+      </tr>
+      <tr>
+        <td><%= select_tag('attr_select', options_for_select(@list.filter_attributes, @filter_attribute)) %></td>
+        <td><%= text_field_tag('regexp', @filter_regexp) %></td>
+        <td><%= check_box_tag('ignorecase', '1', @filter_ignorecase ) %></td>
+      </tr>
+    </table>
+    <%= submit_tag t(:do_filter) %>
+  <% end %>
+</fieldset>
 <table id='itemlist'>
   <tr>
     <% @list.headers.each do |header_item| %>
       <th><%= sortable_header header_item %></th> 
     <% end %>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class='tlink'></th>
+    <th class='tlink'></th>
+    <th class='tlink'></th>
   </tr>
   <% @list.items.each do |item| %>
     <tr>
       <% @list.headers.each do |header_item| %>
         <td><%= header_item.show(item) %></td>
       <% end %>
-    <td><%= link_to t(:show), item %></td>
-    <td><%= @user.may_edit?(item) ? link_to(t(:edit), :id => item, :action => :edit) : ' ' %></td>
-    <td><%= @user.may_delete?(item) ? link_to(t(:destroy), item, :confirm => 'Are you sure?', :method => :delete) : ' ' %></td>
+    <td class='tlink'><%= link_to t(:show), item %></td>
+    <td class='tlink'><%= @user.may_edit?(item) ? link_to(t(:edit), :id => item, :action => :edit) : ' ' %></td>
+    <td class='tlink'><%= @user.may_delete?(item) ? link_to(t(:destroy), item, :confirm => 'Are you sure?', :method => :delete) : ' ' %></td>
   </tr>
 <% end %>
 </table>

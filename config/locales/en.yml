@@ -7,8 +7,8 @@ en:
   invalid_password: Incorrect user name and password
   logged_out: You have successfully logged out
   please_log_in: Please log in
-  name: name
-  password: password
+  name: Name
+  password: Password
   login: Log in
   logout: Log out
   not_alowed_to_see: "No permission to see %{name}"
@@ -36,23 +36,29 @@ en:
   title: Title
   scope: Scope
   new_author: New author
-  listing_authors: Listing author
+  listing_authors: Listing authors
   editing_author: Editing author
+  change_author: Change author
   new_book: New book
-  listing_books: Listing book
+  listing_books: Listing books
   editing_book: Editing book
+  change_book: Change book
   new_user: New user
-  listing_user: Listing user
+  listing_user: Listing users
   editing_users: Editing user
+  change_users: Change user
   new_journal: New journal
-  listing_journals: Listing journal
+  listing_journals: Listing journals
   editing_journal: Editing journal
+  change_journal: Change journal
   new_conference: New conference
-  listing_conferences: Listing conference
+  listing_conferences: Listing conferences
   editing_conference: Editing conference
+  change_conference: Change conference
   new_publication: New publication
   listing_publications: Listing publications
   editing_publication: Editing publication
+  change_publication: Change publication
   show: Show
   edit: Edit
   back: Back
@@ -93,6 +99,8 @@ en:
   do_filter: Filter
   status: Status
   abstract: Abstract
+  remove_selected: Remove selected item
+  add_selected: Add selected
   activerecord:
     attributes:
       author:

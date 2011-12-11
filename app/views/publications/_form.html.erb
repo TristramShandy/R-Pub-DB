@@ -1,12 +1,12 @@
 <% current_scope = default_scope(@publication) %>
-<div>
-  <h3><%= t(@publication.pdf.blank? ? :upload_pdf : :update_pdf) %></h3>
+<fieldset>
+  <legend><%= t(@publication.pdf.blank? ? :upload_pdf : :update_pdf) %></legend>
   <% form_tag({:action => "upload_pdf", :id => @publication.id.to_s}, {:multipart => true}) do %>
     <%= t :enter_path %>
     <%= file_field_tag "publication_pdf", :accept => "application/pdf" %>
     <%= submit_tag t(:upload_pdf), :class => "submit" %>
   <% end %>
-</div>
+</fieldset>
 <%= form_for(@publication) do |f| %>
   <% if @publication.errors.any? %>
     <div id="error_explanation">
@@ -21,7 +21,7 @@
   <% end %>
 
   <div class="field">
-    <%= t(:author, :count => 2) %><br />
+    <span class='aslabel'><%= t(:author, :count => 2) %></span><br />
     <%= render :partial => "shared/two_select", :object => {:items => Author.all, :selected => @publication.authors, :id=>"select_author"} %>
   </div>
   <div class="field">

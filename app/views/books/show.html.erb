@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b><%= t :title %>:</b>
   <%= @book.title %>
@@ -8,27 +6,21 @@
   <b><%= t :authors %>:</b>
   <%= h(@book.authors.map {|author| author.display_name}.join(', ')) %>
 </p>
-
 <p>
   <b><%= t :publisher %>:</b>
   <%= @book.publisher %>
 </p>
-
 <p>
   <b><%= t :editor %>:</b>
   <%= @book.editor %>
 </p>
-
 <p>
   <b><%= t :year %>:</b>
   <%= @book.year %>
 </p>
-
 <p>
   <b><%= t :isbn %>:</b>
   <%= @book.isbn %>
 </p>
-
-
 <%= link_to t(:edit), edit_book_path(@book) %> |
 <%= link_to t(:back), books_path %>

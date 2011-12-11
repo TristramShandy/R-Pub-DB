@@ -1,20 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b><%= t :last_name %>:</b>
   <%= @author.last_name %>
 </p>
-
 <p>
   <b><%= t :first_name %>:</b>
   <%= @author.first_name %>
 </p>
-
 <p>
   <b><%= t :affiliation %>:</b>
   <%= @author.affiliation %>
 </p>
-
-
 <%= link_to t(:edit), edit_author_path(@author) %> |
 <%= link_to t(:back), authors_path %>

@@ -1,35 +1,26 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Conference:</b>
   <%= @call.conference %>
 </p>
-
 <p>
   <b>Journal:</b>
   <%= @call.journal %>
 </p>
-
 <p>
   <b>Book:</b>
   <%= @call.book %>
 </p>
-
 <p>
   <b>Deadline:</b>
   <%= @call.deadline %>
 </p>
-
 <p>
   <b>Url:</b>
   <%= @call.url %>
 </p>
-
 <p>
   <b>Guest editor:</b>
   <%= @call.guest_editor %>
 </p>
-
-
 <%= link_to t(:edit), edit_call_path(@call) %> |
 <%= link_to t(:back), calls_path %>

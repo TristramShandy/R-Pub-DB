@@ -1,3 +1,4 @@
 <h1><%= t :listing_journals %></h1>
+<%= link_to t(:new_journal), new_journal_path %>
 <%= render :partial => 'shared/item_list' %>
-<%= link_to 'New Journal', new_journal_path %>
+<%= link_to t(:new_journal), new_journal_path %>

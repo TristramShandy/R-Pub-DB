@@ -2,9 +2,13 @@
 <div class='selector'>
   <%= label_tag obj_select[:id], t(obj_select[:label]) %> <br />
   <%= select_tag(obj_select[:id], options_for_select(obj_select[:items].map {|item| [item.display_name, item.id]}, selected_id), {:size => '5', :id => obj_select[:id]}) %>
+  <% if obj_select[:link] %>
+    <br />
+    <%= obj_select[:link] %>
+  <% end %> 
 </div>
 <div class='selector'>
-  <%= t(:filter) %> <br />
+  <span class='sublabel'><%= t(:filter) %></span> <br />
   <%= render :partial => 'shared/item_filter', :object => obj_select[:id] %>
 </div>
 <div class='clearer'>&nbsp;</div>

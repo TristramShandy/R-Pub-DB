@@ -37,25 +37,32 @@ de:
   new_author: Neuer Autor
   listing_authors: Liste Autoren
   editing_author: "Autor ändern"
+  change_author: "Autor ändern"
   new_user: Neuer User
   listing_users: Liste User
   editing_user: "User ändern"
+  change_user: "User ändern"
   new_journal: Neue Zeitschrift
   listing_journals: Liste Zeitschriften
   editing_journal: "Zeitschrift ändern"
+  change_journal: "Zeitschrift ändern"
   new_conference: Neue Konferenz
   listing_conferences: Liste Konferenzen
   editing_conference: "Konferenz ändern"
+  change_conference: "Konferenz ändern"
   new_book: Neues Buch
   listing_books: "Liste Bücher"
   editing_book: "Buch ändern"
+  change_book: "Buch ändern"
   new_publication: Neue Publikation
   listing_publications: Liste Publikationen
   editing_publication: "Publikation ändern"
+  change_publication: "Publikation ändern"
   show: Anzeigen
   edit: "Ändern"
   back: "Zurück"
   destroy: "Löschen"
+  selected: "Ausgewählt"
   all: Alle
   scope: Ziel
   ans_yes: Ja
@@ -93,11 +100,20 @@ de:
   do_filter: Filtern
   status: Status
   abstract: Abstract
+  remove_selected: "Ausgewählten Eintrag entfernen"
+  add_selected: "Ausgewählten Eintrag hinzufügen"
   helpers:
     submit:
       create: "%{model} erzeugen"
       update: "%{model} ändern"
   activerecord:
+    models:
+      author: Autor
+      book: Buch
+      call: Call
+      conference: Konferenz
+      journal: Zeitschrift
+      publication: Publikation
     attributes:
       author:
         first_name: Vorname

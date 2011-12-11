@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <div class="field">
-    <%= t(:author, :count => 2) %><br />
+    <span class='aslabel'><%= t(:author, :count => 2) %></span><br />
     <%= render :partial => "shared/two_select", :object => {:items => Author.all, :selected => @book.authors, :id=>"select_author"} %>
   </div>
   <div class="field">

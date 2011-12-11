@@ -15,7 +15,7 @@
 <body>
   <div id="columns">
     <div id="sidebar">
-      <div id="sidebar_links">
+      <div id="sidebar_menu">
         <% if @user %>
           <ul>
             <% ApplicationController::DisplayModels.each do |a_model| %>
@@ -29,7 +29,11 @@
             <% end %>
           </ul>
         <% end %>
-        <%= link_to(t(:logout), :controller => 'rpubdb', :action => 'logout') %>
+      </div>
+      <div id="sidebar_links">
+        <ul>
+          <li><%= link_to(t(:logout), :controller => 'rpubdb', :action => 'logout') %></li>
+        </ul>
       </div>
       <div id="sidebar_lang">
         <% ApplicationController::AcceptedLocaleInfo.each do |(a_locale, a_locale_name)| %>

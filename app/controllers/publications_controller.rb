@@ -40,6 +40,8 @@ class PublicationsController < ApplicationController
   # GET /publications/new.xml
   def new
     @publication = Publication.new
+    user_author = @user.author
+    @default_authors = (user_author.nil? ? [] : [user_author])
 
     respond_to do |format|
       format.html # new.html.erb
