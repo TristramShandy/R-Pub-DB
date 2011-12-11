@@ -6,6 +6,26 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
+div#sidebar {
+  /* width: 18%; */
+  position: absolute;
+  width:180px;
+  margin-left: 0%;
+  /* padding-top: 1em;
+  padding-left: 1em; */
+  padding-bottom: 1em;
+}
+
+div#main {
+  /* margin-left: 15em; */
+  /* float: left; */
+  /* margin-left: 18%; */
+  margin-left: 180px;
+  padding-top: 4ex;
+  padding-left: 2em;
+  /* background: #ffffff; */
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
