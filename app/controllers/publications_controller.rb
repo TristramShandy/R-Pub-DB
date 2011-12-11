@@ -72,7 +72,7 @@ class PublicationsController < ApplicationController
       end
       @publication.status = Publication::StatusValues::Idea
       if @publication.save
-        format.html { redirect_to(@publication, :notice => 'Publication was successfully created.') }
+        format.html { redirect_to(@publication) }
         format.xml  { render :xml => @publication, :status => :created, :location => @publication }
       else
         format.html { render :action => "new" }
@@ -119,7 +119,7 @@ class PublicationsController < ApplicationController
       end
 
       if @publication.update_attributes(params[:publication])
-        format.html { redirect_to(@publication, :notice => 'Publication was successfully updated.') }
+        format.html { redirect_to(@publication) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

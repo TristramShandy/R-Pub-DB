@@ -44,7 +44,7 @@ class CallsController < ApplicationController
 
     respond_to do |format|
       if @call.save
-        format.html { redirect_to(@call, :notice => 'Call was successfully created.') }
+        format.html { redirect_to(@call) }
         format.xml  { render :xml => @call, :status => :created, :location => @call }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class CallsController < ApplicationController
 
     respond_to do |format|
       if @call.update_attributes(params[:call])
-        format.html { redirect_to(@call, :notice => 'Call was successfully updated.') }
+        format.html { redirect_to(@call) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

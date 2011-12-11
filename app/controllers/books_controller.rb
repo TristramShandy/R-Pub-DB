@@ -57,7 +57,7 @@ class BooksController < ApplicationController
         @book.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}.uniq
       end
       if @book.save
-        format.html { redirect_to(@book, :notice => 'Book was successfully created.') }
+        format.html { redirect_to(@book) }
         format.xml  { render :xml => @book, :status => :created, :location => @book }
       else
         format.html { render :action => "new" }
@@ -76,7 +76,7 @@ class BooksController < ApplicationController
         @book.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}.uniq
       end
       if @book.update_attributes(params[:book])
-        format.html { redirect_to(@book, :notice => 'Book was successfully updated.') }
+        format.html { redirect_to(@book) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
