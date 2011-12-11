@@ -59,6 +59,8 @@ en:
   listing_publications: Listing publications
   editing_publication: Editing publication
   change_publication: Change publication
+  stale: "Unable to save object"
+  explain_stale: "The object has been modified by another user. Please reload and redo your changes."
   show: Show
   edit: Edit
   back: Back

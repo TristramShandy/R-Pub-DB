@@ -58,6 +58,8 @@ de:
   listing_publications: Liste Publikationen
   editing_publication: "Publikation ändern"
   change_publication: "Publikation ändern"
+  stale: "Objekt kann nicht gespeichert werden"
+  explain_stale: "Das Objekt wurde von einem anderen User in der Zwischenzeit verändert und kann daher nicht gespeichert werden. Bitte laden Sie das Objekt neu und wiederholen Sie Ihre Änderungen."
   show: Anzeigen
   edit: "Ändern"
   back: "Zurück"

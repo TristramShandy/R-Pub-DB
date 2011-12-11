@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :authorize, :except => [:login, :logout]
 
+  # handle errors from locking
+  rescue_from ActiveRecord::StaleObjectError, :with => :stale_object
+
   AcceptedLocaleInfo = [['en', 'English'], ['de', 'Deutsch']]
   AcceptedLocales = AcceptedLocaleInfo.transpose[0]
 
@@ -38,5 +41,9 @@ class ApplicationController < ActionController::Base
       flash[:notice] = :please_log_in
       redirect_to(:controller => 'rpubdb', :action => "login")
     end
+  end
+
+  def stale_object
+    redirect_to(:controller => 'rpubdb', :action => "stale")
   end
 end

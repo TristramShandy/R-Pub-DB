@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111210100843) do
+ActiveRecord::Schema.define(:version => 20111211132705) do
 
   create_table "authors", :force => true do |t|
     t.string   "last_name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20111210100843) do
     t.string   "affiliation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version", :default => 0
   end
 
   create_table "authors_books", :id => false, :force => true do |t|
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20111210100843) do
     t.string   "isbn"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version", :default => 0
   end
 
   create_table "calls", :force => true do |t|
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20111210100843) do
     t.string   "guest_editor"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version",  :default => 0
   end
 
   add_index "calls", ["book_id"], :name => "fk_calls_books"
@@ -74,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20111210100843) do
     t.string   "proceedings"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version",    :default => 0
   end
 
   create_table "journals", :force => true do |t|
@@ -83,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20111210100843) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version", :default => 0
   end
 
   create_table "publications", :force => true do |t|
@@ -102,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20111210100843) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "call_id"
+    t.integer  "lock_version",  :default => 0
   end
 
   add_index "publications", ["book_id"], :name => "fk_publications_books"
@@ -123,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20111210100843) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
+    t.integer  "lock_version", :default => 0
   end
 
   add_index "users", ["author_id"], :name => "fk_users_authors"

@@ -47,6 +47,10 @@ class RpubdbController < ApplicationController
     end
   end
 
+  # called when a stale object is encountered through locking
+  def stale
+  end
+
   private
 
   #####################################################################
