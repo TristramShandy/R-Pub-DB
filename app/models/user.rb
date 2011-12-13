@@ -85,13 +85,14 @@ class User < ActiveRecord::Base
 
   # Authentication procedure. Proper password protection not implemented yet
   def self.authenticate(name, password)
-    user = self.find_by_name(name)
+    user = nil
     name_re = Regexp.new("[/\\\\]") # used to split login name into domain and name part
 
     begin
       ldap_conn = LDAP::Conn.new(LDAP_Server, LDAP_Port)
       ldap_conn.set_option(LDAP::LDAP_OPT_PROTOCOL_VERSION, 3)
       ldap_conn.bind(name, password) do |conn|
+        user = self.find_by_name(name)
         unless user
           user = User.create({:name => name, :rolemask => 0})
         end
