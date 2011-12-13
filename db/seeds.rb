@@ -8,7 +8,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 a0 = Author.create({:first_name => "Michael", :last_name => "Ulm", :affiliation => "AIT"})
 a1 = Author.create({:first_name => "Dietmar", :last_name => "Bauer", :affiliation => "AIT"})
-a1 = Author.create({:first_name => "Norbert", :last_name => "Brändle", :affiliation => "AIT"})
+a2 = Author.create({:first_name => "Norbert", :last_name => "Brändle", :affiliation => "AIT"})
 u0 = User.create({:name => "MUlm", :rolemask => 0, :author_id => a0.id})
 u1 = User.create({:name => "DBauer", :rolemask => 0, :author_id => a1.id})
 u2 = User.create({:name => "NBraendle", :rolemask => 4, :author_id => a2.id})
