@@ -7,6 +7,9 @@ gem 'rails', '3.0.9'
 
 gem 'mysql2', '< 0.3'
 
+# For LDAP support
+gem 'ruby-ldap'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

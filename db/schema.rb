@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211132705) do
+ActiveRecord::Schema.define(:version => 20111213122936) do
 
   create_table "authors", :force => true do |t|
     t.string   "last_name"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20111211132705) do
     t.datetime "updated_at"
     t.integer  "author_id"
     t.integer  "lock_version", :default => 0
+    t.string   "email"
   end
 
   add_index "users", ["author_id"], :name => "fk_users_authors"
