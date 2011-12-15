@@ -88,58 +88,61 @@ class User < ActiveRecord::Base
     user = nil
     name_re = Regexp.new("[/\\\\]") # used to split login name into domain and name part
 
-    begin
-      ldap_conn = LDAP::Conn.new(LDAP_Server, LDAP_Port)
-      ldap_conn.set_option(LDAP::LDAP_OPT_PROTOCOL_VERSION, 3)
-      ldap_conn.bind(name, password) do |conn|
-        user = self.find_by_name(name)
-        unless user
-          user = User.create({:name => name, :rolemask => 0})
-        end
+    if RAILS_ENV != 'production' && ENV['DEBUG_RAILS'] == 'noldap'
+      # debug version
+      user = self.find_by_name(name)
+      if user
+        user = nil unless password == 'Flea'
+      end
+    else
+      begin
+        ldap_conn = LDAP::Conn.new(LDAP_Server, LDAP_Port)
+        ldap_conn.set_option(LDAP::LDAP_OPT_PROTOCOL_VERSION, 3)
+        ldap_conn.bind(name, password) do |conn|
+          user = self.find_by_name(name)
+          unless user
+            user = User.create({:name => name, :rolemask => 0})
+          end
 
-        if user
-          nr_entries = 0
-          
-          main_name = name.split(name_re).last
+          if user
+            nr_entries = 0
 
-          info_list = conn.search(LDAP_Base, LDAP::LDAP_SCOPE_SUBTREE, "(userPrincipalName=#{main_name}@#{LDAP_Domain})") do |entry|
-            nr_entries += 1
+            main_name = name.split(name_re).last
 
-            ldap_first_name = (entry.vals('givenName') || [])[0]
-            ldap_last_name = (entry.vals('sn') || [])[0]
-            ldap_email = (entry.vals('mail') || [])[0]
+            info_list = conn.search(LDAP_Base, LDAP::LDAP_SCOPE_SUBTREE, "(userPrincipalName=#{main_name}@#{LDAP_Domain})") do |entry|
+              nr_entries += 1
 
-            # check author information
-            if user.author.nil?
-              the_author = Author.new({:affiliation => DefaultAffiliation, :first_name => ldap_first_name, :last_name => ldap_last_name})
-              if the_author.save
-                user[:author_id] = the_author.id
+              ldap_first_name = (entry.vals('givenName') || [])[0]
+              ldap_last_name = (entry.vals('sn') || [])[0]
+              ldap_email = (entry.vals('mail') || [])[0]
+
+              # check author information
+              if user.author.nil?
+                the_author = Author.new({:affiliation => DefaultAffiliation, :first_name => ldap_first_name, :last_name => ldap_last_name})
+                if the_author.save
+                  user[:author_id] = the_author.id
+                  user.save
+                end
+              end
+
+              # verify user email information
+              if ldap_email && user.email != ldap_email
+                user.email = ldap_email
                 user.save
               end
             end
 
-            # verify user email information
-            if ldap_email && user.email != ldap_email
-              user.email = ldap_email
-              user.save
+            if nr_entries == 0
+              logger.warn("User #{name} does not have an LDAP entry")
+            elsif nr_entries > 1
+              logger.warn("User #{name} does have multiple LDAP entries")
             end
           end
-
-          if nr_entries == 0
-            logger.warn("User #{name} does not have an LDAP entry")
-          elsif nr_entries > 1
-            logger.warn("User #{name} does have multiple LDAP entries")
-          end
         end
+      rescue LDAP::ResultError
+        logger.warn("User.authenticate created LDAP::ResultError")
       end
-    rescue LDAP::ResultError
-      logger.warn("User.authenticate created LDAP::ResultError")
     end
-
-    # debug version
-    # if user
-    #   user = nil unless password == 'Flea'
-    # end
 
     user
   end
