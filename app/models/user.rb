@@ -6,15 +6,6 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  # Constants for Author creation from user
-  DefaultAffiliation = "AIT"
-
-  # Constants for LDAP
-  LDAP_Server = "10.100.5.200"
-  LDAP_Base = 'ou=Users,ou=Arsenal Research,dc=D01,dc=arc,dc=local'
-  LDAP_Port = 389
-  LDAP_Domain = "D01.arc.local"
-
   # Role constants - Each role corresponds to one bit of the integer
   RoleCoordinator = 1
   RoleManager = 4
@@ -96,7 +87,7 @@ class User < ActiveRecord::Base
       end
     else
       begin
-        ldap_conn = LDAP::Conn.new(LDAP_Server, LDAP_Port)
+        ldap_conn = LDAP::Conn.new(APP_CONFIG["organization"]["ldap_server"], APP_CONFIG["organization"]["ldap_port"])
         ldap_conn.set_option(LDAP::LDAP_OPT_PROTOCOL_VERSION, 3)
         ldap_conn.bind(name, password) do |conn|
           user = self.find_by_name(name)
@@ -109,16 +100,19 @@ class User < ActiveRecord::Base
 
             main_name = name.split(name_re).last
 
-            info_list = conn.search(LDAP_Base, LDAP::LDAP_SCOPE_SUBTREE, "(userPrincipalName=#{main_name}@#{LDAP_Domain})") do |entry|
+            info_list = conn.search(APP_CONFIG["organization"]["ldap_base"],
+                                    LDAP::LDAP_SCOPE_SUBTREE,
+                                    "(#{APP_CONFIG["organization"]["ldap_attribute_principal_name"]}=#{main_name}@#{APP_CONFIG["organization"]["ldap_domain"]})"
+                                   ) do |entry|
               nr_entries += 1
 
-              ldap_first_name = (entry.vals('givenName') || [])[0]
-              ldap_last_name = (entry.vals('sn') || [])[0]
-              ldap_email = (entry.vals('mail') || [])[0]
+              ldap_first_name = (entry.vals(APP_CONFIG["organization"]["ldap_attribute_first_name"]) || [])[0]
+              ldap_last_name = (entry.vals(APP_CONFIG["organization"]["ldap_attribute_last_name"]) || [])[0]
+              ldap_email = (entry.vals(APP_CONFIG["organization"]["ldap_attribute_email"]) || [])[0]
 
               # check author information
               if user.author.nil?
-                the_author = Author.new({:affiliation => DefaultAffiliation, :first_name => ldap_first_name, :last_name => ldap_last_name})
+                the_author = Author.new({:affiliation => APP_CONFIG["organization"]["affiliation"], :first_name => ldap_first_name, :last_name => ldap_last_name})
                 if the_author.save
                   user[:author_id] = the_author.id
                   user.save

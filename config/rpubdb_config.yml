@@ -1,0 +1,45 @@
+# Configuration file for the R-Pub-DB application
+defaults: &DEFAULTS
+  special_roles:
+    manager:
+      -
+        login: "D01\\KSchechtner"
+        first_name: "Katja"
+        last_name: "Schechtner"
+        email: "katja.schechtner@ait.ac.at"
+    coordinator:
+      -
+        login: "D01\\NBraendle"
+        first_name: "Norbert"
+        last_name: "Brändle"
+        email: "norbert.braendle@ait.ac.at"
+      -
+        login: "D01\\DBauer"
+        first_name: "Dietmar"
+        last_name: "Bauer"
+        email: "dietmar.bauer@ait.ac.at"
+    office:
+      -
+        login: "D01\\MHoefner"
+        first_name: "Martin"
+        last_name: "Höfner"
+        email: "martin.hoefner@ait.ac.at"
+  organization:
+    affiliation: "AIT"
+    ldap_server: "10.100.5.200"
+    ldap_base: 'ou=Users,ou=Arsenal Research,dc=D01,dc=arc,dc=local'
+    ldap_port: 389
+    ldap_domain: "D01.arc.local"
+    ldap_attribute_principal_name: "userPrincipalName"
+    ldap_attribute_first_name: "givenName"
+    ldap_attribute_last_name: "sn"
+    ldap_attribute_email: "mail"
+
+development:
+  <<: *DEFAULTS
+
+test:
+  <<: *DEFAULTS
+
+production:
+  <<: *DEFAULTS
