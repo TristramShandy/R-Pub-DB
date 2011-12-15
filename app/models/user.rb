@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
     user = nil
     name_re = Regexp.new("[/\\\\]") # used to split login name into domain and name part
 
-    if RAILS_ENV != 'production' && ENV['DEBUG_RAILS'] == 'noldap'
+    if Rails.env != 'production' && ENV['DEBUG_RAILS'] == 'noldap'
       # debug version
       user = self.find_by_name(name)
       if user
