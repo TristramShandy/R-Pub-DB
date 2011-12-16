@@ -12,11 +12,9 @@
 <% end %>
 </p>
 <p>
-<%= form_tag do %>
-  <%= t :filter_regexp %>
-  <%= text_field_tag('regexp', '', {'onKeyUp' => "#{filter_name}.set(this.value)"}) %>
-  <br />
-  <%= t :filter_ignorecase %>
-  <%= check_box_tag('ignorecase', '1', false, {'onClick' => "#{filter_name}.set_ignore_case(!this.checked)"}) %>
-<% end %>
+<%= t :filter_regexp %>
+<%= text_field_tag('regexp', '', {'onKeyUp' => "#{filter_name}.set(this.value)"}) %>
+<br />
+<%= t :filter_ignorecase %>
+<%= check_box_tag('ignorecase', '1', false, {'onClick' => "#{filter_name}.set_ignore_case(!this.checked)"}) %>
 </p>
