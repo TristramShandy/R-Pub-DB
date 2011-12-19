@@ -75,6 +75,7 @@ class PublicationsController < ApplicationController
         format.html { redirect_to(@publication) }
         format.xml  { render :xml => @publication, :status => :created, :location => @publication }
       else
+        @default_authors = (@publication.authors.empty? ? [user_author] : @publication.authors)
         format.html { render :action => "new" }
         format.xml  { render :xml => @publication.errors, :status => :unprocessable_entity }
       end
