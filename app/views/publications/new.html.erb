@@ -7,7 +7,13 @@
   </div>
   <div class="field">
     <%= t(:author, :count => 2) %><br />
+    <% if @err_no_authors %>
+      <div class='field_with_errors'>
+    <% end %>
     <%= render :partial => "shared/two_select", :object => {:items => Author.all, :selected => @default_authors, :id=>"select_author"} %>
+    <% if @err_no_authors %>
+      </div>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :abstract %><br />

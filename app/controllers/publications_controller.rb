@@ -71,11 +71,12 @@ class PublicationsController < ApplicationController
         @publication.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}
       end
       @publication.status = Publication::StatusValues::Idea
-      if @publication.save
+      if (! @publication.authors.empty?) && @publication.save
         format.html { redirect_to(@publication) }
         format.xml  { render :xml => @publication, :status => :created, :location => @publication }
       else
-        @default_authors = (@publication.authors.empty? ? [user_author] : @publication.authors)
+        @default_authors = @publication.authors
+        @err_no_authors = @publication.authors.empty?
         format.html { render :action => "new" }
         format.xml  { render :xml => @publication.errors, :status => :unprocessable_entity }
       end
