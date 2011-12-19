@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     when Conference
       true
     when Publication
-      (! item.withdrawn?) && item.user_valid?(self)
+      item.user_valid?(self)
     else
       true
     end
