@@ -30,11 +30,13 @@
           </ul>
         <% end %>
       </div>
-      <div id="sidebar_links">
-        <ul>
-          <li><%= link_to(t(:logout), :controller => 'rpubdb', :action => 'logout') %></li>
-        </ul>
-      </div>
+      <% if ! ['login', 'logout'].include?(action_name) %>
+        <div id="sidebar_links">
+          <ul>
+            <li><%= link_to(t(:logout), :controller => 'rpubdb', :action => 'logout') %></li>
+          </ul>
+        </div>
+      <% end %>
       <div id="sidebar_lang">
         <% ApplicationController::AcceptedLocaleInfo.each do |(a_locale, a_locale_name)| %>
           <% if a_locale == I18n.locale %>
