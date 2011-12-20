@@ -65,6 +65,10 @@ div#sidebar li {
   border: 1px solid black;
 }
 
+div#sidebar li.split {
+  margin-top: 0.3em;
+}
+
 *.hidden {
   display: none;
 }

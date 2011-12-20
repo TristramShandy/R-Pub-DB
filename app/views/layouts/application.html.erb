@@ -24,11 +24,7 @@
           <ul>
             <% ApplicationController::DisplayModels.each do |a_model| %>
               <% if @user.may_see_model?(a_model.model_id) %>
-                <% if session[:model_id] == a_model.model_id%>
-                  <li><span><%= t(a_model.name) %></span></li>
-                <% else %>
-                  <li><%= link_to( t(a_model.name), a_model.symbol ) %></li>
-                <% end %>
+                <li class='<%= ApplicationController::DisplayModelSplits.include?(a_model.model_id) ? "split" : "nosplit" %>' ><%= link_to( t(a_model.name), a_model.symbol ) %></li>
               <% end %>
             <% end %>
           </ul>

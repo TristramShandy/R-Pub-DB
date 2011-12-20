@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
     ModelInfo.new(:book,        5, Book,        :books),
     ModelInfo.new(:user,        6, User,        :users)]
 
+  DisplayModelSplits = [3, 6]; # where to insert splits in the model displays
+
   def set_locale
     current_locale = params[:locale]
     current_locale = 'en' unless AcceptedLocales.include?(current_locale)
