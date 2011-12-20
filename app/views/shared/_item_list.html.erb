@@ -12,7 +12,7 @@
       </tr>
       <tr>
         <td><%= select_tag('attr_select', options_for_select(@list.filter_attributes, @filter_attribute)) %></td>
-        <td><%= text_field_tag('regexp', @filter_regexp) %></td>
+        <td<%= @list.err == :regexp ? " class='field_with_errors' " : "" %>><%= text_field_tag('regexp', @filter_regexp) %></td>
         <td><%= check_box_tag('ignorecase', '1', @filter_ignorecase ) %></td>
       </tr>
     </table>

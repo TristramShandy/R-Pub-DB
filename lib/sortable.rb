@@ -59,11 +59,12 @@ module Sortable
 
   # main class: a collection of items with information on sortability
   class List
-    attr_reader :headers, :items, :sort, :direction, :table_name, :default_filter
+    attr_reader :headers, :items, :sort, :direction, :table_name, :default_filter, :err
 
     def initialize(klass, params, items = nil)
       @table_name = klass.table_name
       @headers = klass.const_get(:DisplayInfo)
+      @err = nil
 
       @direction = (['asc', 'desc'].include?(params[:direction]) ? params[:direction].to_sym : :asc)
 
@@ -96,9 +97,13 @@ module Sortable
       unless params[:regexp].blank?
         # keep only items that match the regexp
         attr = (params[:attr_select].blank? ? @default_filter.attribute : params[:attr_select])
-        regexp = Regexp.new(params[:regexp], params[:ignorecase] == '1')
+        begin
+          regexp = Regexp.new(params[:regexp], params[:ignorecase] == '1')
         
-        @items = @items.select {|item| item[attr].to_s =~ regexp}
+          @items = @items.select {|item| item[attr].to_s =~ regexp}
+        rescue RegexpError
+          @err = :regexp
+        end
       end
     end
 
