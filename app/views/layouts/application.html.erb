@@ -13,6 +13,10 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <div id="banner">
+    <h1><%= t :application_name %></h1>
+    <span><%= @user ? @user.name_and_role : ' ' %></span>
+  </div>
   <div id="columns">
     <div id="sidebar">
       <div id="sidebar_menu">

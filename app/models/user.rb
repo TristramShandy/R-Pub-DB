@@ -141,6 +141,20 @@ class User < ActiveRecord::Base
     user
   end
 
+  def name_and_role
+    str = ""
+    the_author = self.author
+    if the_author
+      str = author.display_name
+    end
+
+    str += ", #{t :office}" if is_office?
+    str += ", #{t :coordinator}" if is_coordinator?
+    str += ", #{t :manager}" if is_manager?
+
+    str
+  end
+
   def self.all_coordinators
     self.find(:all, :conditions => ['rolemask & :role', {:role => RoleCoordinator}])
   end

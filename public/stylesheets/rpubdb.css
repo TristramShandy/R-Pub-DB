@@ -18,6 +18,10 @@ h1, h2, h3, h4 {
   color: #790b1a;
 }
 
+div#banner {
+  text-align: center;
+}
+
 div#sidebar {
   /* width: 18%; */
   position: absolute;

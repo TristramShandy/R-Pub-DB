@@ -1,6 +1,10 @@
 en:
   hello: "Hello world"
   # RpubDB
+  application_name: Publication Database
+  office: Office
+  coordinator: Coordinator
+  manager: Manager
   rpubdb: "R-Pub-DB"
   enter_name: Please enter a name
   enter_password: Please enter a password
