@@ -114,6 +114,10 @@ de:
   help_affiliation: "Für AIT verwenden Sie das Format AIT-DDD-MMM, z.B. AIT-MOB-DTS"
   help_url: "z.B. http://www.ait.ac.at"
   help_submission_type: "Möglich sind z.B. 'abstract review', 'full paper review', 'two stage review'"
+  help_deadline: "Deadline für Einreichungen"
+  help_acceptance: "Datum der Benachrichtigung, ob der Beitrag akzeptiert wurde"
+  help_due: "Deadline für die Endversion des Beitrags"
+  help_issn: "Verwenden Sie wenn möglich die ISSN der online Publikation"
   helpers:
     submit:
       create: "%{model} erzeugen"

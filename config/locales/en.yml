@@ -113,6 +113,10 @@ en:
   help_affiliation: For AIT use the format AIT-DDD-MMM, e.g. AIT-MOB-DTS
   help_url: "e.g. http://www.ait.ac.at"
   help_submission_type: "Possible values are e.g. 'abstract review', 'full paper review', 'two stage review'"
+  help_deadline: "Deadline for contributions"
+  help_acceptance: "Date of decision of acceptance for the contribution"
+  help_due: "Deadline for final version of contribution"
+  help_issn: "If possible, use the ISSN of the online publication"
   activerecord:
     attributes:
       author:
