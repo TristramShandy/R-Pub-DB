@@ -3,16 +3,12 @@
   <%= @book.title %>
 </p>
 <p>
-  <b><%= t :authors %>:</b>
-  <%= h(@book.authors.map {|author| author.display_name}.join(', ')) %>
+  <b><%= t :editor %>:</b>
+  <%= @book.editor %>
 </p>
 <p>
   <b><%= t :publisher %>:</b>
   <%= @book.publisher %>
-</p>
-<p>
-  <b><%= t :editor %>:</b>
-  <%= @book.editor %>
 </p>
 <p>
   <b><%= t :year %>:</b>

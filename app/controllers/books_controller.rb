@@ -53,9 +53,6 @@ class BooksController < ApplicationController
     @book = Book.new(params[:book])
 
     respond_to do |format|
-      unless params[:select_author].blank?
-        @book.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}.uniq
-      end
       if @book.save
         format.html { redirect_to(@book) }
         format.xml  { render :xml => @book, :status => :created, :location => @book }
@@ -72,9 +69,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     respond_to do |format|
-      unless params[:select_author].blank?
-        @book.authors = params[:select_author].map {|val| Author.find_by_id(val.to_i)}.uniq
-      end
       if @book.update_attributes(params[:book])
         format.html { redirect_to(@book) }
         format.xml  { head :ok }

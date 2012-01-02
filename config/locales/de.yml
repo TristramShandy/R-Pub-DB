@@ -24,6 +24,7 @@ de:
   journal: Zeitschrift
   book: Buch
   publication: Publikation
+  other: Andere
   filter: Filter
   filter_clear: Löschen
   filter_start: "%{char}"

@@ -2,6 +2,11 @@ class Journal < ActiveRecord::Base
   has_many :calls
   has_many :publications
 
+  validates_presence_of :name
+  validates_presence_of :publisher
+  validates_presence_of :issn
+  validates_presence_of :url
+
   include Sortable
 
   DisplayInfo = [

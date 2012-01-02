@@ -10,20 +10,16 @@
     </div>
   <% end %>
   <div class="field">
-    <span class='aslabel'><%= t(:author, :count => 2) %></span><br />
-    <%= render :partial => "shared/two_select", :object => {:items => Author.all, :selected => @book.authors, :id=>"select_author"} %>
-  </div>
-  <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :publisher %><br />
-    <%= f.text_field :publisher %>
-  </div>
-  <div class="field">
     <%= f.label :editor %><br />
     <%= f.text_field :editor %>
+  </div>
+  <div class="field">
+    <%= f.label :publisher %><br />
+    <%= f.text_field :publisher %>
   </div>
   <div class="field">
     <%= f.label :year %><br />
