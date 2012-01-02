@@ -35,7 +35,7 @@
       <% end %>
     <td class='tlink'><%= link_to t(:show), item %></td>
     <td class='tlink'><%= @user.may_edit?(item) ? link_to(t(:edit), :id => item, :action => :edit) : ' ' %></td>
-    <td class='tlink'><%= @user.may_delete?(item) ? link_to(t(:destroy), item, :confirm => 'Are you sure?', :method => :delete) : ' ' %></td>
+    <td class='tlink'><%= @user.may_delete?(item) ? link_to(t(:destroy), item, :confirm => (t :are_you_sure), :method => :delete) : ' ' %></td>
   </tr>
 <% end %>
 </table>

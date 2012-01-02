@@ -109,6 +109,7 @@ de:
   remove_selected: "Ausgewählten Eintrag entfernen"
   add_selected: "Ausgewählten Eintrag hinzufügen"
   error_while_saving: "Beim Speichern sind Fehler aufgetreten:"
+  are_you_sure: Sind Sie sicher?
   helpers:
     submit:
       create: "%{model} erzeugen"
