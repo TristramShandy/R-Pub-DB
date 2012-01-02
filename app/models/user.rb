@@ -148,9 +148,9 @@ class User < ActiveRecord::Base
       str = author.display_name
     end
 
-    str += ", #{t :office}" if is_office?
-    str += ", #{t :coordinator}" if is_coordinator?
-    str += ", #{t :manager}" if is_manager?
+    str += ", #{I18n.t :office}" if is_office?
+    str += ", #{I18n.t :coordinator}" if is_coordinator?
+    str += ", #{I18n.t :manager}" if is_manager?
 
     str
   end
