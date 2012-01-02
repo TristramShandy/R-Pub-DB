@@ -56,7 +56,7 @@ class PublicationsController < ApplicationController
     # check attribute access rights
     is_owner, is_manager = @publication.user_relation(@user)
     @may_edit = (@user.is_office? || is_owner) # only office and the owners may edit the content
-    unless is_owner || is_manager || user.is_office?
+    unless is_owner || is_manager || @user.is_office?
       redirect_to(publications_url)
     end
   end
