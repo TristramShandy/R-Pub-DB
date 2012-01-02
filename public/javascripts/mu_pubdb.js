@@ -33,6 +33,7 @@ function mu_two_select_add(id_select, id_list)
   var select_obj = document.getElementById(id_select);
   var list_obj = document.getElementById(id_list);
   if (select_obj && list_obj) {
+    // add item to selection list
     for (var i = 0; i < list_obj.length; ++i) {
       if (list_obj.options[i].selected) {
         var new_option = document.createElement('option');
@@ -45,6 +46,12 @@ function mu_two_select_add(id_select, id_list)
         }
       }
     }
+    // remove item from full list
+    for (var i = list_obj.length - 1; i >= 0; --i) {
+      if (list_obj.options[i].selected) {
+        list_obj.remove(i);
+      }
+    }
   }
 
 }
@@ -52,7 +59,22 @@ function mu_two_select_add(id_select, id_list)
 // remove item from selection list
 function mu_two_select_remove(id_select, id_list) {
   var select_obj = document.getElementById(id_select);
-  if (select_obj) {
+  var list_obj = document.getElementById(id_list);
+  if (select_obj && list_obj) {
+    // add item to full list
+    for (var i = 0; i < select_obj.length; ++i) {
+      if (select_obj.options[i].selected) {
+        var new_option = document.createElement('option');
+        new_option.text = select_obj.options[i].text;
+        new_option.value = select_obj.options[i].value;
+        try {
+          list_obj.add(new_option, null); // standards compliant
+        } catch(ex) {
+          list_obj.add(new_option); // Fucking IE only
+        }
+      }
+    }
+    // remove item from selection list
     for (var i = select_obj.length - 1; i >= 0; --i) {
       if (select_obj.options[i].selected) {
         select_obj.remove(i);

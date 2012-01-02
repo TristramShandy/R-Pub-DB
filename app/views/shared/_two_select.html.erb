@@ -5,5 +5,5 @@
   <br />
   <%= link_to_function(t(:remove_selected), "mu_two_select_remove('#{my_id}', '#{sub_id}')") %>
 </div>
-<%= render :partial => "shared/obj_select", :object => {:items => two_select[:items], :id => sub_id, :label => :all, :link => link_to_function(t(:add_selected), "mu_two_select_add('#{my_id}', '#{sub_id}')")} %>
+<%= render :partial => "shared/obj_select", :object => {:items => (two_select[:items] - two_select[:selected]), :id => sub_id, :label => :all, :link => link_to_function(t(:add_selected), "mu_two_select_add('#{my_id}', '#{sub_id}')")} %>
 <div class='clearer'>&nbsp;</div>
