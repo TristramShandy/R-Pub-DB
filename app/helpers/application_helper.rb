@@ -15,4 +15,10 @@ module ApplicationHelper
   def scope_select_options
     [[t(:conference), 0], [t(:journal), 1], [t(:book), 2]]
   end
+
+  # label and help for the given attribute
+  def label_and_help(f, attr)
+    help_sym = "help_#{attr}".to_sym
+    raw "#{f.label attr} <span class='helptext'>#{I18n.t help_sym}</span><br />"
+  end
 end

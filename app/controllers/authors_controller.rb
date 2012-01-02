@@ -33,7 +33,7 @@ class AuthorsController < ApplicationController
   # GET /authors/new
   # GET /authors/new.xml
   def new
-    @author = Author.new
+    @author = Author.new(:affiliation => APP_CONFIG["organization"]["affiliation"])
 
     respond_to do |format|
       format.html # new.html.erb

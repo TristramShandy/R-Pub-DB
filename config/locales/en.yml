@@ -109,6 +109,8 @@ en:
   add_selected: Add selected
   error_while_saving: "An error occured while trying to save:"
   are_you_sure: Are you sure?
+  help_first_name: Please do not use abbreviations.
+  help_affiliation: For AIT use the format AIT-DDD-MMM, e.g. AIT-MOB-DTS
   activerecord:
     attributes:
       author:

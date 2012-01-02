@@ -59,6 +59,10 @@ div#sidebar ul {
   list-style-type: none;
 }
 
+span.helptext {
+  padding-left: 1em;
+}
+
 div#sidebar li {
   padding: 1em;
   background-color: #bbb;

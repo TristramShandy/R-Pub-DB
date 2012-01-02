@@ -110,6 +110,8 @@ de:
   add_selected: "Ausgewählten Eintrag hinzufügen"
   error_while_saving: "Beim Speichern sind Fehler aufgetreten:"
   are_you_sure: Sind Sie sicher?
+  help_first_name: "Nicht abgekürzter Vorname"
+  help_affiliation: "Für AIT verwenden Sie das Format AIT-DDD-MMM, z.B. AIT-MOB-DTS"
   helpers:
     submit:
       create: "%{model} erzeugen"
