@@ -25,7 +25,7 @@ defaults: &DEFAULTS
         last_name: "Höfner"
         email: "martin.hoefner@ait.ac.at"
   organization:
-    affiliation: "AIT"
+    affiliation: "AIT-MOB-DTS"
     ldap_server: "10.100.5.200"
     ldap_base: 'ou=Users,ou=Arsenal Research,dc=D01,dc=arc,dc=local'
     ldap_port: 389
