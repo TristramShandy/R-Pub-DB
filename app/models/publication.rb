@@ -20,7 +20,7 @@ class Publication < ActiveRecord::Base
     Sortable::HeaderInfo.new(:source,           :source,          Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:volume,           :volume,          Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:number,           :number,          Sortable::C_No,      Sortable::C_No     ),
-    Sortable::HeaderInfo.new(:year,             :year,            Sortable::C_No,      Sortable::C_No     ),
+    Sortable::HeaderInfo.new(:year,             :year,            Sortable::C_Yes,     Sortable::C_Yes    ),
     Sortable::HeaderInfo.new(:pages,            :pages,           Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:doi,              :doi,             Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:abstract,         :abstract,        Sortable::C_No,      Sortable::C_Yes    ),
