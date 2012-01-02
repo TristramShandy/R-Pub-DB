@@ -1,8 +1,7 @@
 <%= form_for(@call) do |f| %>
   <% if @call.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@call.errors.count, "error") %> prohibited this call from being saved:</h2>
-
+      <h2><%= t :error_while_saving %></h2>
       <ul>
       <% @call.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

@@ -107,6 +107,7 @@ en:
   abstract: Abstract
   remove_selected: Remove selected item
   add_selected: Add selected
+  error_while_saving: "An error occured while trying to save:"
   activerecord:
     attributes:
       author:

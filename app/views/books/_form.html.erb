@@ -1,8 +1,7 @@
 <%= form_for(@book) do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-
+      <h2><%= t :error_while_saving %></h2>
       <ul>
       <% @book.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

@@ -10,8 +10,7 @@
 <%= form_for(@publication) do |f| %>
   <% if @publication.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
-
+      <h2><%= t :error_while_saving %></h2>
       <ul>
       <% @publication.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
