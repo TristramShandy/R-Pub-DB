@@ -63,10 +63,18 @@ div#sidebar li {
   padding: 1em;
   background-color: #bbb;
   border: 1px solid black;
+  font-size: larger;
+  font-weight: bold;
 }
 
 div#sidebar li.split {
   margin-top: 0.3em;
+}
+
+div#sidebar li a {
+  display: block;
+  text-decoration: none;
+  color: #4f040e;
 }
 
 *.hidden {
@@ -82,8 +90,7 @@ div.clearer {
   clear: both;
 }
 
-a { color: #bc5e6b; }
-a:visited { color: #4f040e; }
+a { color: #4f040e; }
 a:hover { color: #bc5e6b; background-color:#4f040e; }
 
 div.field, div.actions {
