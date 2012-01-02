@@ -16,4 +16,8 @@ class Book < ActiveRecord::Base
   def display_name
     title
   end
+
+  def select_name
+    title
+  end
 end

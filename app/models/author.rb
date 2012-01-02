@@ -13,4 +13,9 @@ class Author < ActiveRecord::Base
   def display_name
     "#{last_name} #{first_name}"
   end
+
+  # name to be displayed on selection
+  def select_name
+    "#{last_name} #{first_name}, #{affiliation}"
+  end
 end

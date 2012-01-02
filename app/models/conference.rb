@@ -20,4 +20,8 @@ class Conference < ActiveRecord::Base
   def display_name
     name
   end
+
+  def select_name
+    name
+  end
 end

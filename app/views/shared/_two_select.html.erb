@@ -1,7 +1,7 @@
 <% my_id, sub_id = two_select[:id], "sub_#{two_select[:id]}" %>
 <div class="selector">
   <%= label_tag my_id, t(:selected), :class => 'sublabel' %> <br />
-  <%= select_tag(my_id, options_for_select(two_select[:selected].map {|item| [item.display_name, item.id]}), {:size => '5', :id => my_id, :multiple => true}) %>
+  <%= select_tag(my_id, options_for_select(two_select[:selected].map {|item| [item.select_name, item.id]}), {:size => '5', :id => my_id, :multiple => true}) %>
   <br />
   <%= link_to_function(t(:remove_selected), "mu_two_select_remove('#{my_id}', '#{sub_id}')") %>
 </div>
