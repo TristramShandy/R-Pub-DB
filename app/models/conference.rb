@@ -2,6 +2,17 @@ class Conference < ActiveRecord::Base
   has_many :calls
   has_many :publications
 
+  validates_presence_of :name
+  validates_presence_of :location
+  validates_presence_of :url
+  validates_presence_of :begin_date
+  validates_presence_of :end_date
+  validates_presence_of :deadline
+  validates_presence_of :acceptance
+  validates_presence_of :due
+  validates_presence_of :submission_type
+  validates_presence_of :proceedings
+
   include Sortable
 
   DisplayInfo = [
@@ -16,6 +27,12 @@ class Conference < ActiveRecord::Base
     Sortable::HeaderInfo.new(:submission_type,  :submission_type, Sortable::C_No,      Sortable::C_Yes    ),
     Sortable::HeaderInfo.new(:title_proceed,    :proceedings,     Sortable::C_Yes,     Sortable::C_Yes    )]
 
+  def validate
+    errors[:end_date] << errors.generate_message(:end_date, :conflict_begin_date) if begin_date > end_date
+    errors[:deadline] << errors.generate_message(:deadline, :conflict_begin_date) if deadline > begin_date
+    errors[:acceptance] << errors.generate_message(:acceptance, :conflict_deadline) if deadline > acceptance
+    errors[:due] << errors.generate_message(:due, :conflict_acceptance) if acceptance < due
+  end
 
   def display_name
     name

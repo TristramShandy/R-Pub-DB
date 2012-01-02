@@ -111,6 +111,8 @@ en:
   are_you_sure: Are you sure?
   help_first_name: Please do not use abbreviations.
   help_affiliation: For AIT use the format AIT-DDD-MMM, e.g. AIT-MOB-DTS
+  help_url: "e.g. http://www.ait.ac.at"
+  help_submission_type: "Possible values are e.g. 'abstract review', 'full paper review', 'two stage review'"
   activerecord:
     attributes:
       author:
@@ -148,3 +150,15 @@ en:
         volume: Volume
         status: Status
         abstract: Abstract
+    errors:
+      models:
+        conference:
+          attributes:
+            end_date:
+              conflict_begin_date: " must be after begin date"
+            deadline:
+              conflict_begin_date: " must be after end date"
+            acceptance:
+              conflict_deadline: " must be after submission deadline"
+            due:
+              conflict_acceptance: " must be after acceptance notice date"

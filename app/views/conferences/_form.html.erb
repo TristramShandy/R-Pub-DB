@@ -19,7 +19,7 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :url %><br />
+    <%= label_and_help(f, :url) %>
     <%= f.text_field :url %>
   </div>
   <div class="field">
@@ -43,7 +43,7 @@
     <%= f.date_select :due %>
   </div>
   <div class="field">
-    <%= f.label :submission_type %><br />
+    <%= label_and_help(f, :submission_type) %>
     <%= f.text_field :submission_type %>
   </div>
   <div class="field">
