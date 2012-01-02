@@ -13,7 +13,7 @@ module ApplicationHelper
 
   # options string for scope selection
   def scope_select_options
-    [[t(:conference), 0], [t(:journal), 1], [t(:book), 2]]
+    [[t(:conference), 0], [t(:journal), 1], [t(:book), 2], [t(:other), 3]]
   end
 
   # label and help for the given attribute

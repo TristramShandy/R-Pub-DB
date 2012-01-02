@@ -2,27 +2,64 @@
 //
 // Javascript functions spezific to the RPubDB program
 
+function mu_hide(obj) {obj.className = obj.className.replace('visible', 'hidden');}
+function mu_show(obj) {obj.className = obj.className.replace('hidden', 'visible');}
+
 // set scope in the publication form
 function set_scope(obj) {
   var conf_obj = document.getElementById('scope_conf');
   var jour_obj = document.getElementById('scope_jour');
   var book_obj = document.getElementById('scope_book');
+  var volume_obj = document.getElementById('f_volume');
+  var number_obj = document.getElementById('f_number');
+  var year_obj = document.getElementById('f_year');
+  var pages_obj = document.getElementById('f_pages');
+  var doi_obj = document.getElementById('f_doi');
+  var citation_obj = document.getElementById('f_citation');
 
-  if (conf_obj && jour_obj && book_obj)
+  if (conf_obj && jour_obj && book_obj && volume_obj && number_obj && year_obj && pages_obj && doi_obj && citation_obj)
   {
     var val = obj.value;
     if (val == "0") {
-      conf_obj.className = conf_obj.className.replace('hidden', 'visible');
-      jour_obj.className = jour_obj.className.replace('visible', 'hidden');
-      book_obj.className = book_obj.className.replace('visible', 'hidden');
+      mu_show(conf_obj);
+      mu_show(doi_obj);
+      mu_hide(jour_obj);
+      mu_hide(book_obj);
+      mu_hide(volume_obj);
+      mu_hide(number_obj);
+      mu_hide(year_obj);
+      mu_hide(pages_obj);
+      mu_hide(citation_obj);
     } else if (val == "1") {
-      jour_obj.className = jour_obj.className.replace('hidden', 'visible');
-      book_obj.className = book_obj.className.replace('visible', 'hidden');
-      conf_obj.className = conf_obj.className.replace('visible', 'hidden');
+      mu_show(jour_obj);
+      mu_show(volume_obj);
+      mu_show(number_obj);
+      mu_show(year_obj);
+      mu_show(pages_obj);
+      mu_show(doi_obj);
+      mu_hide(conf_obj);
+      mu_hide(book_obj);
+      mu_hide(citation_obj);
     } else if (val == "2") {
-      book_obj.className = book_obj.className.replace('hidden', 'visible');
-      conf_obj.className = conf_obj.className.replace('visible', 'hidden');
-      jour_obj.className = jour_obj.className.replace('visible', 'hidden');
+      mu_show(book_obj);
+      mu_show(year_obj);
+      mu_show(pages_obj);
+      mu_show(doi_obj);
+      mu_hide(jour_obj);
+      mu_hide(conf_obj);
+      mu_hide(volume_obj);
+      mu_hide(number_obj);
+      mu_hide(citation_obj);
+    } else if (val == "3") {
+      mu_hide(book_obj);
+      mu_hide(jour_obj);
+      mu_hide(conf_obj);
+      mu_hide(volume_obj);
+      mu_hide(number_obj);
+      mu_hide(year_obj);
+      mu_hide(pages_obj);
+      mu_hide(doi_obj);
+      mu_show(citation_obj);
     }
   }
 }

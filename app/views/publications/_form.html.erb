@@ -44,25 +44,29 @@
     <%= f.label :abstract %><br />
     <%= f.text_area :abstract %>
   </div>
-  <div class="field">
+  <div class="field <%= scope_attr(current_scope, :volume) %>" id="f_volume">
     <%= f.label :volume %><br />
     <%= f.text_field :volume %>
   </div>
-  <div class="field">
+  <div class="field <%= scope_attr(current_scope, :number) %>" id="f_number">
     <%= f.label :number %><br />
     <%= f.text_field :number %>
   </div>
-  <div class="field">
+  <div class="field <%= scope_attr(current_scope, :year) %>" id="f_year">
     <%= f.label :year %><br />
     <%= f.text_field :year %>
   </div>
-  <div class="field">
+  <div class="field <%= scope_attr(current_scope, :pages) %>" id="f_pages">
     <%= f.label :pages %><br />
     <%= f.text_field :pages %>
   </div>
-  <div class="field">
+  <div class="field <%= scope_attr(current_scope, :doi) %>" id="f_doi">
     <%= f.label :doi %><br />
     <%= f.text_field :doi %>
+  </div>
+  <div class="field <%= scope_attr(current_scope, :citation) %>" id="f_citation">
+    <%= f.label :citation %><br />
+    <%= f.text_area :citation %>
   </div>
   <div class="actions">
     <%= f.submit :onclick => "mu_select_all('select_author'); return true;" %>

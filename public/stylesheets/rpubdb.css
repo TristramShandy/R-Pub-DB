@@ -221,6 +221,10 @@ textarea {
   width: 720px;
 }
 
+div#f_citation textarea {
+  height: 5em;
+}
+
 div.selector input[type=text] {
   width: 320px;
 }

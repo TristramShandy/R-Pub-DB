@@ -167,6 +167,7 @@ de:
         volume: Band
         status: Status
         abstract: Abstract
+        citation: Literaturzitat
     errors:
       full_messages:
         format: "%{attribute} %{message}"

@@ -118,6 +118,11 @@ class PublicationsController < ApplicationController
           @publication[:journal_id] = nil
           @publication[:book_id] = scope.id
         end
+      when '3'
+        # Other
+        @publication[:conference_id] = nil
+        @publication[:journal_id] = nil
+        @publication[:book_id] = nil
       end
 
       if @publication.update_attributes(params[:publication])

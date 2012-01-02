@@ -155,6 +155,7 @@ en:
         volume: Volume
         status: Status
         abstract: Abstract
+        citation: Citation
     errors:
       models:
         conference:
