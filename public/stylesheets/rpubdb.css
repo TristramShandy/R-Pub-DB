@@ -76,6 +76,7 @@ div#sidebar li a {
   text-decoration: none;
   color: #4f040e;
 }
+div#sidebar li a:hover { color: #bc5e6b; background-color:#4f040e; }
 
 *.hidden {
   display: none;
