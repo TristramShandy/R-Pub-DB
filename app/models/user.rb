@@ -146,6 +146,8 @@ class User < ActiveRecord::Base
     the_author = self.author
     if the_author
       str = author.display_name
+    else
+      str = self.name
     end
 
     str += ", #{I18n.t :office}" if is_office?
