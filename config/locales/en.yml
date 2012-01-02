@@ -68,7 +68,7 @@ en:
   show: Show
   edit: Edit
   back: Back
-  destroy: Destroy
+  destroy: Delete
   selected: Selected
   all: All
   ans_yes: "Yes"
