@@ -138,6 +138,8 @@ de:
   filter_help_c: "Symbole in eckigen Klammern matchen einem enthaltenen Symbol. Z.B. '[ab]c' matcht 'acx' und 'ybc' aber nicht 'aby'."
   filter_help_d: "Ein Stern nach einem Symbol matcht null oder mehr vorkommnisse dieses Symbols. Z.B. 'a*b' matcht 'b', 'ab' und 'aaaab'.:"
   more_help: Mehr Hilfe
+  create_reminder: Erinnerung erzeugen
+  update_reminder: "Erinnerung ändern"
   helpers:
     submit:
       create: "%{model} erzeugen"
@@ -150,6 +152,7 @@ de:
       conference: Konferenz
       journal: Zeitschrift
       publication: Publikation
+      reminder: Erinnerung
     attributes:
       author:
         first_name: Vorname

@@ -1,6 +1,7 @@
 class Conference < ActiveRecord::Base
   has_many :calls
   has_many :publications
+  has_many :reminders
 
   validates_presence_of :name
   validates_presence_of :location
@@ -14,6 +15,9 @@ class Conference < ActiveRecord::Base
   validates_presence_of :proceedings
 
   include Sortable
+
+  DefaultReminderDeadlineOffset = 7
+  DefaultReminderDueOffset = 0
 
   DisplayInfo = [
     Sortable::HeaderInfo.new(:name,             :name,            Sortable::C_Default, Sortable::C_Yes    ),
@@ -40,5 +44,16 @@ class Conference < ActiveRecord::Base
 
   def select_name
     name
+  end
+
+  def default_reminder(attr, user)
+    case attr
+    when :deadline
+      Reminder.new(:conference_id => self[:id], :attribute_name => attr.to_s, :offset => DefaultReminderDeadlineOffset, :send_day => deadline - DefaultReminderDeadlineOffset, :email => user.email)
+    when :due
+      Reminder.new(:conference_id => self[:id], :attribute_name => attr.to_s, :offset => DefaultReminderDueOffset, :send_day => deadline - DefaultReminderDueOffset, :email => user.email)
+    else
+      nil
+    end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120102141912) do
+ActiveRecord::Schema.define(:version => 20120103131935) do
 
   create_table "authors", :force => true do |t|
     t.string   "last_name"
@@ -123,6 +123,20 @@ ActiveRecord::Schema.define(:version => 20120102141912) do
 
   add_index "publications_users", ["publication_id"], :name => "fk_publications_users_publications"
   add_index "publications_users", ["user_id"], :name => "fk_publications_users_users"
+
+  create_table "reminders", :force => true do |t|
+    t.string   "email",                         :null => false
+    t.integer  "offset",         :default => 0, :null => false
+    t.integer  "call_id"
+    t.integer  "conference_id"
+    t.string   "attribute_name"
+    t.date     "send_day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reminders", ["call_id"], :name => "fk_reminders_calls"
+  add_index "reminders", ["conference_id"], :name => "fk_reminders_conferences"
 
   create_table "users", :force => true do |t|
     t.string   "name"

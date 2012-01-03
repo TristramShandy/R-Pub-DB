@@ -19,6 +19,7 @@
 <p>
   <b><%= t :deadline %>:</b>
   <%= @call.deadline %>
+  <%= render :partial => 'shared/reminder', :object => @call.default_reminder(:deadline, @user) %>
 </p>
 <p>
   <b><%= t :url %>:</b>

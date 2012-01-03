@@ -1,0 +1,12 @@
+<% is_new = reminder.id.blank? %>
+<% form_for(reminder, :url => url_for(:controller => 'rpubdb', :action => 'set_reminder', :id => reminder.id.to_i.to_s)) do |f| %>
+  <%= f.hidden_field :call_id %>
+  <%= f.hidden_field :conference_id %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :attribute_name %>
+  <%= f.select :offset, (0..28).to_a %>
+  <%= f.submit t(is_new ? :create_reminder : :update_reminder) %>
+<% end %>
+<% unless is_new %>
+  <% button_to t(:destroy), :controller => 'rpubdb', :action => 'delete_reminder', :id => reminder.id %>
+<% end %>
