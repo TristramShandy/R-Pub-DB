@@ -20,11 +20,15 @@ en:
   no_publications: "No pending publications"
   author: Author
   authors: Authors
+  calls: Calls
+  call: Call
   conference: Conference
   journal: Journal
   book: Book
   publication: Publication
   other: Other
+  guest_editor: Guest Editor
+  call_for: For
   filter: Filter
   filter_clear: Clear
   filter_start: "%{char}"
@@ -44,6 +48,10 @@ en:
   listing_authors: Listing authors
   editing_author: Editing author
   change_author: Change author
+  new_call: New call
+  listing_calls: Listing calls
+  editing_call: Editing call
+  change_call: Change call
   new_book: New book
   listing_books: Listing books
   editing_book: Editing book
@@ -135,6 +143,10 @@ en:
         first_name: First name
         last_name: Last name
         affiliation: Affiliation
+      call:
+        url: URL
+        deadline: Deadline
+        guest_editor: Guest Editor
       book:
         title: Title
         publisher: Publisher

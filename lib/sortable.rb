@@ -20,11 +20,11 @@ module Sortable
       str = ""
       case attribute
       when :source
-        if item[:jounral_id]
+        if item[:journal_id]
           str = "[J] #{item.journal.display_name}"
         elsif item[:conference_id]
           str = "[C] #{item.conference.display_name}"
-        elsif item[:book__id]
+        elsif item[:book_id]
           str = "[B] #{item.book.display_name}"
         end
       when :authors

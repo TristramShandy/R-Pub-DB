@@ -2,7 +2,16 @@ class CallsController < ApplicationController
   # GET /calls
   # GET /calls.xml
   def index
-    @calls = Call.all
+    @list = Sortable::List.new(Call, params)
+    if params[:regexp]
+      @filter_regexp = params[:regexp]
+      @filter_ignorecase = (params[:ignorecase] == '1')
+      @filter_attribute = params[:attr_select].to_sym
+    else
+      @filter_regexp = ''
+      @filter_ignorecase = true
+      @filter_attribute = @list.default_filter.attribute
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,6 +52,8 @@ class CallsController < ApplicationController
     @call = Call.new(params[:call])
 
     respond_to do |format|
+      set_scope
+
       if @call.save
         format.html { redirect_to(@call) }
         format.xml  { render :xml => @call, :status => :created, :location => @call }
@@ -59,6 +70,8 @@ class CallsController < ApplicationController
     @call = Call.find(params[:id])
 
     respond_to do |format|
+      set_scope
+
       if @call.update_attributes(params[:call])
         format.html { redirect_to(@call) }
         format.xml  { head :ok }
@@ -80,4 +93,36 @@ class CallsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+
+  def set_scope
+    case params[:scope]
+    when '0'
+      # Conference
+      scope = Conference.find_by_id(params[:select_conf].to_i)
+      if scope
+        @call[:conference_id] = scope.id
+        @call[:journal_id] = nil
+        @call[:book_id] = nil
+      end
+    when '1'
+      # Journal
+      scope = Journal.find_by_id(params[:select_jour].to_i)
+      if scope
+        @call[:conference_id] = nil
+        @call[:journal_id] = scope.id
+        @call[:book_id] = nil
+      end
+    when '2'
+      # Book
+      scope = Book.find_by_id(params[:select_book].to_i)
+      if scope
+        @call[:conference_id] = nil
+        @call[:journal_id] = nil
+        @call[:book_id] = scope.id
+      end
+    end
+  end
+
 end

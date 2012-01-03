@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
       true
     when Publication
       item.user_valid?(self)
+    when Call
+      true
     else
       true
     end
@@ -60,6 +62,8 @@ class User < ActiveRecord::Base
       item.publications.empty? && item.calls.empty?
     when Publication
       item.withdrawn? && item.user_valid?(self)
+    when Call
+      true
     else
       false
     end

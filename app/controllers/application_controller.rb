@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   DisplayModels = [
     ModelInfo.new(:publication, 1, Publication, :publications),
     ModelInfo.new(:author,      2, Author,      :authors),
+    ModelInfo.new(:call,        7, Call,        :calls),
     ModelInfo.new(:conference,  3, Conference,  :conferences),
     ModelInfo.new(:journal,     4, Journal,     :journals),
     ModelInfo.new(:book,        5, Book,        :books),

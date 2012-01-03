@@ -1,25 +1,31 @@
+<% if @call.conference %>
+  <p>
+  <b><%= t :conference %>:</b>
+  <%= @call.conference.display_name %>
+  </p>
+<% end %>
+<% if @call.journal %>
+  <p>
+  <b><%= t :journal %>:</b>
+  <%= @call.journal.display_name %>
+  </p>
+<% end %>
+<% if @call.book %>
+  <p>
+  <b><%= t :book %>:</b>
+  <%= @call.book.display_name %>
+  </p>
+<% end %>
 <p>
-  <b>Conference:</b>
-  <%= @call.conference %>
-</p>
-<p>
-  <b>Journal:</b>
-  <%= @call.journal %>
-</p>
-<p>
-  <b>Book:</b>
-  <%= @call.book %>
-</p>
-<p>
-  <b>Deadline:</b>
+  <b><%= t :deadline %>:</b>
   <%= @call.deadline %>
 </p>
 <p>
-  <b>Url:</b>
-  <%= @call.url %>
+  <b><%= t :url %>:</b>
+  <%= link_to @call.url, @call.url %>
 </p>
 <p>
-  <b>Guest editor:</b>
+  <b><%= t :guest_editor %>:</b>
   <%= @call.guest_editor %>
 </p>
 <%= link_to t(:edit), edit_call_path(@call) %> |

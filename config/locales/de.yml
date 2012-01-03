@@ -20,11 +20,15 @@ de:
   no_publications: "Keine ausständigen Publikationen"
   author: Autor
   authors: Autoren
+  calls: Calls
+  call: Call
   conference: Konferenz
   journal: Zeitschrift
   book: Buch
   publication: Publikation
   other: Andere
+  guest_editor: Gast Editor
+  call_for: "Für"
   filter: Filter
   filter_clear: Löschen
   filter_start: "%{char}"
@@ -43,6 +47,10 @@ de:
   listing_authors: Liste Autoren
   editing_author: "Autor ändern"
   change_author: "Autor ändern"
+  new_call: Neuer Call
+  listing_calls: Liste Calls
+  editing_call: "Call ändern"
+  change_call: "Call ändern"
   new_user: Neuer User
   listing_users: Liste User
   editing_user: "User ändern"
@@ -147,6 +155,10 @@ de:
         first_name: Vorname
         last_name: Nachname
         affiliation: Organisation
+      call:
+        url: URL
+        deadline: Deadline
+        guest_editor: Gast Editor
       book:
         title: Titel
         publisher: Verlag

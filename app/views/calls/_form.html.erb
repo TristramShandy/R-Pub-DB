@@ -1,3 +1,4 @@
+<% current_scope = default_scope(@call) %>
 <%= form_for(@call) do |f| %>
   <% if @call.errors.any? %>
     <div id="error_explanation">
@@ -11,23 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :conference %><br />
-    <%= f.text_field :conference %>
+    <%= label_tag 'scope', t(:scope) %><br />
+    <%= select_tag('scope', options_for_select(scope_select_options, current_scope), {:onchange => 'set_scope(this);'}) %>
   </div>
-  <div class="field">
-    <%= f.label :journal %><br />
-    <%= f.text_field :journal %>
+  <div class="field <%= scope_visible(current_scope, 0) %>" id="scope_conf">
+    <%= render :partial => "shared/obj_select", :object => {:items => Conference.all, :id => "select_conf", :label => :conference, :selected => @call.conference} %>
   </div>
-  <div class="field">
-    <%= f.label :book %><br />
-    <%= f.text_field :book %>
+  <div class="field <%= scope_visible(current_scope, 1) %>" id="scope_jour">
+    <%= render :partial => "shared/obj_select", :object => {:items => Journal.all, :id => "select_jour", :label => :journal, :selected => @call.journal} %>
+  </div>
+  <div class="field <%= scope_visible(current_scope, 2) %>" id="scope_book">
+    <%= render :partial => "shared/obj_select", :object => {:items => Book.all, :id => "select_book", :label => :book, :selected => @call.book} %>
   </div>
   <div class="field">
     <%= f.label :deadline %><br />
     <%= f.date_select :deadline %>
   </div>
   <div class="field">
-    <%= f.label :url %><br />
+    <%= label_and_help(f, :url) %>
     <%= f.text_field :url %>
   </div>
   <div class="field">

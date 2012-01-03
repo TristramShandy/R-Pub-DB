@@ -11,6 +11,14 @@ module ApplicationHelper
     end
   end 
 
+  # default scope to use for an object
+  def default_scope(obj)
+    return 0 if obj[:conference_id]
+    return 1 if obj[:journal_id]
+    return 2 if obj[:book_id]
+    return (Publication === obj ? 3 : 0)
+  end
+
   # options string for scope selection
   def scope_select_options
     [[t(:conference), 0], [t(:journal), 1], [t(:book), 2], [t(:other), 3]]
