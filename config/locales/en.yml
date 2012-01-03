@@ -79,7 +79,7 @@ en:
   doi: DOI
   pdf_link: PDF
   year: Year
-  number: Number
+  xnumber: Number
   volume: Volume
   begin_date: Begin date
   end_date: End date
