@@ -119,6 +119,10 @@ de:
   help_acceptance: "Datum der Benachrichtigung, ob der Beitrag akzeptiert wurde"
   help_due: "Deadline für die Endversion des Beitrags"
   help_issn: "Verwenden Sie wenn möglich die ISSN der online Publikation"
+  pdf_not_found: PDF File nicht gefunden
+  pdf_uploaded: PDF hochgeladen
+  no_pdf: Noch kein PDF hochgeladen
+  has_pdf: "PDF vorhanden (%{file_size})"
   helpers:
     submit:
       create: "%{model} erzeugen"
@@ -242,6 +246,39 @@ de:
       last_word_connector: " und "
     select:
       prompt: "Bitte wählen:"
+  number:
+    # Default format for numbers
+    format:
+      separator: ','
+      delimiter: '.'
+      precision: 2
+    currency:
+      format:
+        unit: 'â‚¬'
+        format: '%n %u'
+        separator:
+        delimiter:
+        precision:
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
   errors:
     format: "%{attribute} %{message}"
     messages: &errors_messages

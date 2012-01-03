@@ -4,7 +4,8 @@
   <% form_tag({:action => "upload_pdf", :id => @publication.id.to_s}, {:multipart => true}) do %>
     <%= t :enter_path %>
     <%= file_field_tag "publication_pdf", :accept => "application/pdf" %>
-    <%= submit_tag t(:upload_pdf), :class => "submit" %>
+    <%= submit_tag t(:upload_pdf), :class => "submit" %><br />
+    <%= @publication.pdf.blank? ? t(:no_pdf) : t(:has_pdf, :file_size => number_to_human_size(File.size(@publication.pdf_name))) %>
   <% end %>
 </fieldset>
 <%= form_for(@publication) do |f| %>

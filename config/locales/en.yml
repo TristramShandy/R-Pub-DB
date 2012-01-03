@@ -118,6 +118,10 @@ en:
   help_acceptance: "Date of decision of acceptance for the contribution"
   help_due: "Deadline for final version of contribution"
   help_issn: "If possible, use the ISSN of the online publication"
+  pdf_not_found: PDF file not found
+  pdf_uploaded: PDF uploaded
+  no_pdf: "No PDF uploaded"
+  has_pdf: "PDF uploaded (%{file_size})"
   activerecord:
     attributes:
       author:

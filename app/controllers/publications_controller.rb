@@ -159,15 +159,20 @@ class PublicationsController < ApplicationController
   # Upload PDF
   def upload_pdf
     publication = Publication.find_by_id(params[:id])
-    if publication
-      File.open(publication.pdf_name, 'wb') {|f| f.write(params[:publication_pdf].read) }
-      publication.pdf = publication.pdf_name
-      publication.save
-
-      redirect_to(publication)
+    if publication && params[:publication_pdf]
+      data = params[:publication_pdf].read
+      if data.blank?
+        flash[:notice] = :pdf_not_found
+      else
+        File.open(publication.pdf_name, 'wb') {|f| f.write(data) }
+        publication.pdf = publication.pdf_name
+        publication.save
+        flash[:notice] = :pdf_uploaded
+      end
     else
-      redirect_to(:back)
+      flash[:notice] = :pdf_not_found
     end
+    redirect_to(:back)
   end
 
   # Download PDF
