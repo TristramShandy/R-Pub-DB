@@ -129,3 +129,25 @@ function mu_select_all(id_select) {
     }
   }
 }
+
+function mu_show_filter_help() {
+  show_obj = document.getElementById('show_filter_help');
+  hide_obj = document.getElementById('hide_filter_help');
+  help_obj = document.getElementById('filter_help');
+  if (show_obj && hide_obj && help_obj) {
+    mu_hide(show_obj);
+    mu_show(hide_obj);
+    mu_show(help_obj);
+  }
+}
+
+function mu_hide_filter_help() {
+  show_obj = document.getElementById('show_filter_help');
+  hide_obj = document.getElementById('hide_filter_help');
+  help_obj = document.getElementById('filter_help');
+  if (show_obj && hide_obj && help_obj) {
+    mu_show(show_obj);
+    mu_hide(hide_obj);
+    mu_hide(help_obj);
+  }
+}

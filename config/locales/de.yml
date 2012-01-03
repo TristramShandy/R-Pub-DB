@@ -123,6 +123,13 @@ de:
   pdf_uploaded: PDF hochgeladen
   no_pdf: Noch kein PDF hochgeladen
   has_pdf: "PDF vorhanden (%{file_size})"
+  show_filter_help: Hilfe anzeigen
+  hide_filter_help: Hilfe ausblenden
+  filter_help_a: "Geben Sie Buchstaben und/oder Zahlen ein um nach einem Teilstring zu filtern. Z.B. 'ab' findet 'mabo' und 'abx' aber nicht 'maxbo'."
+  filter_help_b: "Ein Punkt matcht einem beliebigen Symbol. Z.B. 'a.b' findet 'maxbo', 'aab', aber nicht 'ab' oder 'axyb'."
+  filter_help_c: "Symbole in eckigen Klammern matchen einem enthaltenen Symbol. Z.B. '[ab]c' matcht 'acx' und 'ybc' aber nicht 'aby'."
+  filter_help_d: "Ein Stern nach einem Symbol matcht null oder mehr vorkommnisse dieses Symbols. Z.B. 'a*b' matcht 'b', 'ab' und 'aaaab'.:"
+  more_help: Mehr Hilfe
   helpers:
     submit:
       create: "%{model} erzeugen"

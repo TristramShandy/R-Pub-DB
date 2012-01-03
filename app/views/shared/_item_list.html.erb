@@ -1,5 +1,20 @@
 <fieldset class='filter'>
   <legend><%= t :filter %></legend>
+  <div class='visible' id='show_filter_help'>
+    <%= link_to_function(t(:show_filter_help), "mu_show_filter_help()") %>
+  </div>
+  <div class='hidden' id='hide_filter_help'>
+    <%= link_to_function(t(:hide_filter_help), "mu_hide_filter_help()") %>
+  </div>
+  <div class='hidden' id='filter_help'>
+    <ul>
+      <li><%= t(:filter_help_a) %> </li>
+      <li><%= t(:filter_help_b) %> </li>
+      <li><%= t(:filter_help_c) %> </li>
+      <li><%= t(:filter_help_d) %> </li>
+    </ul>
+    <%= link_to t(:more_help), "http://en.wikipedia.org/wiki/Regular_expression", {:target => '_blank'} %>
+  </div>
   <%= form_tag({:action => 'index'}, {:method => 'get'}) do %>
     <%= hidden_field_tag :sort, @list.sort.to_s %>
     <%= hidden_field_tag :direction, @list.direction.to_s %>

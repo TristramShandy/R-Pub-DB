@@ -122,6 +122,13 @@ en:
   pdf_uploaded: PDF uploaded
   no_pdf: "No PDF uploaded"
   has_pdf: "PDF uploaded (%{file_size})"
+  show_filter_help: Show help
+  hide_filter_help: Hide help
+  filter_help_a: "Type some letters and/or numbers to filter for a substring; e.g. 'ab' matches 'mabo' und 'abx' but not 'maxbo'."
+  filter_help_b: "A dot matches to any symbol; e.g.. 'a.b' matches 'maxbo', 'aab', but not 'ab' or 'axyb'."
+  filter_help_c: "Symbols in square brackets match to any one inside; e.g. '[ab]c' matches 'acx' and 'ybc' but not 'aby'."
+  filter_help_d: "A star after a Symbol matches zero or more repetitions of that symbol. e.g.. 'a*b' matches 'b', 'ab' und 'aaaab'."
+  more_help: More Help
   activerecord:
     attributes:
       author:
