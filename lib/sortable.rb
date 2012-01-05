@@ -27,6 +27,8 @@ module Sortable
         elsif item[:book_id]
           str = "[B] #{item.book.display_name}"
         end
+      when :reminder_source
+        str = item.reminder_source
       when :authors
         str = item.authors.map {|author| author.display_name}.join(", ")
       when :status
@@ -110,6 +112,10 @@ module Sortable
     # list of filter attributes usable for options_for_select
     def filter_attributes
       @filter_headers.map {|a_header| [I18n.t(a_header.name), a_header.attribute]}
+    end
+
+    def empty?
+      @items.empty?
     end
   end
 end

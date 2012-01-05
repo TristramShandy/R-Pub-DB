@@ -22,6 +22,7 @@ en:
   authors: Authors
   calls: Calls
   call: Call
+  reminder: Reminder
   conference: Conference
   journal: Journal
   book: Book
@@ -48,6 +49,10 @@ en:
   listing_authors: Listing authors
   editing_author: Editing author
   change_author: Change author
+  new_reminder: New reminder
+  listing_reminders: Listing reminders
+  editing_reminder: Editing reminder
+  change_reminder: Change reminder
   new_call: New call
   listing_calls: Listing calls
   editing_call: Editing call
@@ -126,6 +131,7 @@ en:
   help_acceptance: "Date of decision of acceptance for the contribution"
   help_due: "Deadline for final version of contribution"
   help_issn: "If possible, use the ISSN of the online publication"
+  help_offset: "The email will be sent that many days before the date"
   pdf_not_found: PDF file not found
   pdf_uploaded: PDF uploaded
   no_pdf: "No PDF uploaded"
@@ -139,6 +145,15 @@ en:
   more_help: More Help
   create_reminder: Create Reminder
   update_reminder: Update Reminder
+  illegal_reminder: Malformed reminer encountered. Please contact system administrator.
+  reminder_scope: Reminder for
+  choose: Choose
+  for: For
+  reminder_source: For
+  r_day:
+    one: day
+    other: days
+  none_found: None found
   activerecord:
     attributes:
       author:

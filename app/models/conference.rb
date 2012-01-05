@@ -56,4 +56,8 @@ class Conference < ActiveRecord::Base
       nil
     end
   end
+
+  def self.in_future
+    Conference.find(:all, :conditions => "begin_date > '#{Date.today.to_s(:db)}'")
+  end
 end

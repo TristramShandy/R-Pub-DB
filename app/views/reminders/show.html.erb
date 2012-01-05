@@ -1,0 +1,14 @@
+<p>
+  <b><%= t :reminder_source %>:</b>
+  <%= @reminder.reminder_source %>
+</p>
+<p>
+  <b><%= t :send_day %>:</b>
+  <%= @reminder.send_day %>
+</p>
+<p>
+  <b><%= t :email %>:</b>
+  <%= @reminder.email %>
+</p>
+<%= link_to t(:edit), edit_reminder_path(@reminder) %> |
+<%= link_to t(:back), reminders_path %>

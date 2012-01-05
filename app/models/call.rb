@@ -25,4 +25,24 @@ class Call < ActiveRecord::Base
       nil
     end
   end
+
+  def display_name
+    if self[:conference_id]
+      "#{self.conference.display_name}, #{deadline}"
+    elsif self[:journal_id]
+      "#{self.journal.display_name}, #{deadline}"
+    elsif self[:book_id]
+      "#{self.book.display_name}, #{deadline}"
+    else
+      deadline.to_s
+    end
+  end
+
+  def select_name
+    display_name
+  end
+
+  def self.in_future
+    Call.find(:all, :conditions => "deadline > '#{Date.today.to_s(:db)}'")
+  end
 end

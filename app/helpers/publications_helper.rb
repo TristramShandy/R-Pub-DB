@@ -1,9 +1,4 @@
 module PublicationsHelper
-  # visibility class of the given scope values
-  def scope_visible(s0, s1)
-    s0 == s1 ? "visible" : "hidden"
-  end
-
   # visibility class of the attribute in the given scope value
   def scope_attr(scope, attr)
     visibility = case attr

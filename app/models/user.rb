@@ -78,6 +78,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def valid_reminders
+    Reminder.find(:all, :conditions => ['send_day >= :today and email = :email', {:today => Date.today, :email => email}])
+  end
+
   # Authentication procedure. Proper password protection not implemented yet
   def self.authenticate(name, password)
     user = nil

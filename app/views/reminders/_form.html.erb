@@ -1,0 +1,35 @@
+<% current_scope = @reminder.scope %>
+<%= form_for(@reminder) do |f| %>
+  <% if @reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t :error_while_saving %></h2>
+      <ul>
+      <% @reminder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag 'reminder_scope', t(:reminder_scope) %><br />
+    <%= select_tag('reminder_scope', options_for_select([[t(:call), 4], [t(:conference), 0]], current_scope), {:onchange => 'mu_set_reminder_scope(this);'}) %>
+  </div>
+  <div class="field <%= scope_visible(current_scope, 0) %>" id="scope_conf">
+    <%= render :partial => "shared/obj_select", :object => {:items => Conference.in_future, :id => "select_conf", :label => :conference, :selected => @reminder.conference, :options => {:size => '5', :id => 'select_conf', :on_change => 'mu_reminder_attributes(this, 0);'}} %>
+  </div>
+  <div class="field <%= scope_visible(current_scope, 4) %>" id="scope_call">
+    <%= render :partial => "shared/obj_select", :object => {:items => Call.in_future, :id => "select_call", :label => :call, :selected => @reminder.call, :options => {:size => '5', :id => 'select_call', :on_change => 'mu_reminder_attributes(this, 4);'}} %>
+  </div>
+  <div class="field" id="attr_names">
+    <%= f.label :attribute_name %><br />
+    <%= f.select :attribute_name, [], {}, {:size => '4', :id => 'remi_attr_select'} %>
+  </div>
+  <div class="field">
+    <%= f.label :offset %><br />
+    <%= f.select :offset, (0..28).to_a %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

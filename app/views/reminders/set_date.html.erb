@@ -1,0 +1,42 @@
+<h1><%= t :new_reminder %></h1>
+<h3><%= @call ? @call.display_name : @conference.display_name %></h3>
+<%= form_for(@reminder) do |f| %>
+  <% if @call %>
+    <%= f.hidden_field :attribute_name %>
+    <%= f.hidden_field :call_id %>
+    <%= @call.deadline %>
+  <% end %>
+  <% if @conference %>
+    <span class='aslabel'><%= t :for %></span>
+    <%= f.hidden_field :conference_id %>
+    <ul>
+      <li>
+        <%= f.radio_button :attribute_name, 'begin_date' %>
+        <%= @conference.begin_date %>
+        <%= t :begin_date %>
+      </li>
+      <li>
+        <%= f.radio_button :attribute_name, 'deadline' %>
+        <%= @conference.deadline %>
+        <%= t :deadline %>
+      </li>
+      <li>
+        <%= f.radio_button :attribute_name, 'acceptance' %>
+        <%= @conference.acceptance %>
+        <%= t :acceptance %>
+      </li>
+      <li>
+        <%= f.radio_button :attribute_name, 'due' %>
+        <%= @conference.due %>
+        <%= t :due %>
+      </li>
+    </ul>
+  <% end %>
+  <div class="field">
+    <%= label_and_help(f, :offset) %>
+    <%= f.select :offset, (0..28).to_a %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

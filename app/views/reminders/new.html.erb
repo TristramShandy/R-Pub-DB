@@ -1,0 +1,16 @@
+<h1><%= t :new_reminder %></h1>
+<%= form_tag :action => 'set_date' do %>
+  <%= hidden_field_tag 'for', 'conference' %>
+  <div class="field">
+    <%= render :partial => "shared/obj_select", :object => {:items => Conference.in_future, :id => "select_conf", :label => :conference, :selected => @reminder.conference} %>
+  </div>
+  <%= submit_tag t(:choose) %>
+<% end %>
+<%= form_tag :action => 'set_date' do %>
+  <%= hidden_field_tag 'for', 'call' %>
+  <div class="field">
+    <%= render :partial => "shared/obj_select", :object => {:items => Call.in_future, :id => "select_call", :label => :call, :selected => @reminder.call} %>
+  </div>
+  <%= submit_tag t(:choose) %>
+<% end %>
+<%= link_to t(:back), reminders_path %>

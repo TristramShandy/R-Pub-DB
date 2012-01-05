@@ -22,6 +22,7 @@ de:
   authors: Autoren
   calls: Calls
   call: Call
+  reminder: Erinnerung
   conference: Konferenz
   journal: Zeitschrift
   book: Buch
@@ -47,6 +48,10 @@ de:
   listing_authors: Liste Autoren
   editing_author: "Autor ändern"
   change_author: "Autor ändern"
+  new_reminder: Neue Erinnerung
+  listing_reminders: Liste Erinnerungen
+  editing_reminder: "Erinnerung ändern"
+  change_reminder: "Erinnerung ändern"
   new_call: Neuer Call
   listing_calls: Liste Calls
   editing_call: "Call ändern"
@@ -127,6 +132,7 @@ de:
   help_acceptance: "Datum der Benachrichtigung, ob der Beitrag akzeptiert wurde"
   help_due: "Deadline für die Endversion des Beitrags"
   help_issn: "Verwenden Sie wenn möglich die ISSN der online Publikation"
+  help_offset: "Die Email wird so viele Tage vor dem Termin verschickt"
   pdf_not_found: PDF File nicht gefunden
   pdf_uploaded: PDF hochgeladen
   no_pdf: Noch kein PDF hochgeladen
@@ -140,6 +146,16 @@ de:
   more_help: Mehr Hilfe
   create_reminder: Erinnerung erzeugen
   update_reminder: "Erinnerung ändern"
+  illegal_reminder: Fehlerhaftes Erinnerungsobjekt gefunden. Bitte benachrichigen Sie den Systemadministrator.
+  reminder_scope: "Erinnerung für"
+  choose: "Auswählen"
+  for: "Für"
+  reminder_source: "Für"
+  send_day: "Wird gesendet am"
+  r_day:
+    one: Tag
+    other: Tage
+  none_found: Keine gefunden
   helpers:
     submit:
       create: "%{model} erzeugen"

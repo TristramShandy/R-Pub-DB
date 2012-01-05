@@ -19,6 +19,11 @@ module ApplicationHelper
     return (Publication === obj ? 3 : 0)
   end
 
+  # visibility class of the given scope values
+  def scope_visible(s0, s1)
+    s0 == s1 ? "visible" : "hidden"
+  end
+
   # options string for scope selection
   def scope_select_options
     [[t(:conference), 0], [t(:journal), 1], [t(:book), 2], [t(:other), 3]]
