@@ -150,6 +150,7 @@ en:
   choose: Choose
   for: For
   reminder_source: For
+  send_day: "Will be sent"
   r_day:
     one: day
     other: days
@@ -198,6 +199,10 @@ en:
         citation: Citation
     errors:
       models:
+        reminder:
+          attributes:
+            offset:
+              not_past: " must be such that reminder will be send in the future"
         conference:
           attributes:
             end_date:

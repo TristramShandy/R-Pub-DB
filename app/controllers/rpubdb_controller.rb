@@ -51,6 +51,43 @@ class RpubdbController < ApplicationController
   def stale
   end
 
+  # Second stage of reminder creation
+  # This is in the rpubdb controller due to those fucking annoying RESTful routes that always get in the way...
+  def set_date
+    if session[:reminder]
+      @reminder = session[:reminder]
+      @call = @reminder.call
+      @conference = @reminder.conference
+      session[:reminder] = nil
+      logger.info("Using reminder from session")
+    else
+      @reminder = Reminder.new(:offset => params[:offset].to_i, :attribute_name => params[:attribute_name])
+      if params[:for] == 'call'
+        @call = Call.find_by_id(params[:select_call])
+        if @call
+          @reminder[:attribute_name] = 'deadline'
+          @reminder[:call_id] = @call.id
+        end
+      elsif params[:for] == 'conference'
+        @conference = Conference.find_by_id(params[:select_conf])
+        if @conference
+          @reminder[:attribute_name] = 'deadline'
+          @reminder[:conference_id] = @conference.id
+        end
+      end
+      logger.info("Using generated reminder")
+    end
+
+    respond_to do |format|
+      if @call || @conference
+        format.html # new.html.erb
+        format.xml  { render :xml => @reminder }
+      else
+        redirect_to :back
+      end
+    end
+  end
+
   private
 
   #####################################################################

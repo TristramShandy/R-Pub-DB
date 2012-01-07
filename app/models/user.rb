@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
       item.user_valid?(self)
     when Call
       true
+    when Reminder
+      false
     else
       true
     end
@@ -64,6 +66,8 @@ class User < ActiveRecord::Base
       item.withdrawn? && item.user_valid?(self)
     when Call
       true
+    when Reminder
+      item.email == email
     else
       false
     end

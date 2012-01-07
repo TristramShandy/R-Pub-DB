@@ -214,6 +214,10 @@ de:
       full_messages:
         format: "%{attribute} %{message}"
       models:
+        reminder:
+          attributes:
+            offset:
+              not_past: " muss gewählt werden so, dass das Sendedatum in der Zukunft liegt"
         conference:
           attributes:
             end_date:

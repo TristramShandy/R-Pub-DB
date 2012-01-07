@@ -13,10 +13,11 @@ module Sortable
   C_Default = 2
 
   class HeaderInfo
-    MaxStringLength = 20
+    MaxStringLength = 20 # default max size of display
 
     # What to display in the table
     def show(item)
+      max_string_length =  MaxStringLength
       str = ""
       case attribute
       when :source
@@ -29,6 +30,7 @@ module Sortable
         end
       when :reminder_source
         str = item.reminder_source
+        max_string_length = 40
       when :authors
         str = item.authors.map {|author| author.display_name}.join(", ")
       when :status
@@ -39,8 +41,8 @@ module Sortable
         str = item[attribute].to_s
       end
 
-      if str.size > MaxStringLength
-        str = str[0, MaxStringLength - 3] + "..."
+      if str.size > max_string_length
+        str = str[0, max_string_length - 3] + "..."
       end
 
       str

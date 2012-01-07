@@ -1,6 +1,16 @@
 <h1><%= t :new_reminder %></h1>
 <h3><%= @call ? @call.display_name : @conference.display_name %></h3>
 <%= form_for(@reminder) do |f| %>
+  <% if @reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t :error_while_saving %></h2>
+      <ul>
+      <% @reminder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <% if @call %>
     <%= f.hidden_field :attribute_name %>
     <%= f.hidden_field :call_id %>
