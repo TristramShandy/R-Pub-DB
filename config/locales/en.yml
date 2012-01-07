@@ -165,6 +165,9 @@ en:
         url: URL
         deadline: Deadline
         guest_editor: Guest Editor
+        book_id: Book
+        conference_id: Conference
+        journal_id: Journal
       book:
         title: Title
         publisher: Publisher
@@ -199,6 +202,14 @@ en:
         citation: Citation
     errors:
       models:
+        call:
+          attributes:
+            book_id:
+              source_missing: ", Journal or Conference must be chosen"
+            journal_id:
+              source_missing: ", Book or Conference must be chosen"
+            conference_id:
+              source_missing: ", Journal or Book must be chosen"
         reminder:
           attributes:
             offset:

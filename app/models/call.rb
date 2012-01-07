@@ -18,6 +18,12 @@ class Call < ActiveRecord::Base
     Sortable::HeaderInfo.new(:webpage,          :url,             Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:guest_editor,     :guest_editor,    Sortable::C_No,      Sortable::C_No     )]
 
+  def validate
+    if ! (book_id || conference_id || journal_id)
+      errors[:conference_id] << errors.generate_message(:conference_id, :source_missing) 
+    end
+  end
+
   def default_reminder(attr, user)
     if attr == :deadline
       Reminder.new(:call_id => self[:id], :attribute_name => 'deadline', :offset => DefaultReminderOffset, :send_day => deadline - DefaultReminderOffset, :email => user.email)

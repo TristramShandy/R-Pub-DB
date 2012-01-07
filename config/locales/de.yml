@@ -178,6 +178,9 @@ de:
         url: URL
         deadline: Deadline
         guest_editor: Gast Editor
+        book_id: Buch
+        conference_id: Konferenz
+        journal_id: Journal
       book:
         title: Titel
         publisher: Verlag
@@ -214,6 +217,14 @@ de:
       full_messages:
         format: "%{attribute} %{message}"
       models:
+        call:
+          attributes:
+            book_id:
+              source_missing: ", Journal oder Konferenz muss ausgewählt werden"
+            journal_id:
+              source_missing: ", Buch oder Konferenz muss ausgewählt werden"
+            conference_id:
+              source_missing: ", Journal oder Buch muss ausgewählt werden"
         reminder:
           attributes:
             offset:
