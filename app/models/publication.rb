@@ -199,6 +199,10 @@ class Publication < ActiveRecord::Base
     end
   end
 
+  def author_names
+    authors.map {|a_author| a_author.display_name}.join(', ')
+  end
+
   private
 
   def coded_id

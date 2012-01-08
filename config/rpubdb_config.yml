@@ -34,12 +34,22 @@ defaults: &DEFAULTS
     ldap_attribute_first_name: "givenName"
     ldap_attribute_last_name: "sn"
     ldap_attribute_email: "mail"
+  mailer:
+    name: RPubDB
+    pw: RP11Mail
+    email: rpubdb@ait.ac.at
 
 development:
   <<: *DEFAULTS
+  system:
+    prefix: "http://localhost:3000"
 
 test:
   <<: *DEFAULTS
+  system:
+    prefix: "http://localhost:3000"
 
 production:
   <<: *DEFAULTS
+  system:
+    prefix: "http://rpubdb.ait.ac.at"

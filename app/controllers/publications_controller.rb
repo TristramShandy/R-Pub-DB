@@ -72,6 +72,9 @@ class PublicationsController < ApplicationController
       end
       @publication.status = Publication::StatusValues::Idea
       if (! @publication.authors.empty?) && @publication.save
+        APP_CONFIG["special_roles"]["coordinator"].each do |a_coordinator|
+          AutoMailer.new_idea(@publication, a_coordinator).deliver
+        end
         format.html { redirect_to(@publication) }
         format.xml  { render :xml => @publication, :status => :created, :location => @publication }
       else

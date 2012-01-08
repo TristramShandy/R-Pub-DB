@@ -1,0 +1,3 @@
+A new publication idea by <%= @publication.author_names %>: <%= @publication.title %>.
+
+To review it, log into the RPubDB system and follow the link: <%= "#{APP_CONFIG["system"]["prefix"]}/publications/#{@publication.id}" %>

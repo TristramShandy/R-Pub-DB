@@ -153,14 +153,14 @@ class User < ActiveRecord::Base
     user
   end
 
-  def name_and_role
-    str = ""
+  # returns the real name if it exists, otherwise the login name
+  def real_name
     the_author = self.author
-    if the_author
-      str = author.display_name
-    else
-      str = self.name
-    end
+    the_author ? the_author.display_name : self.name
+  end
+
+  def name_and_role
+    str = real_name
 
     str += ", #{I18n.t :office}" if is_office?
     str += ", #{I18n.t :coordinator}" if is_coordinator?
