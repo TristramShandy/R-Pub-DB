@@ -5,7 +5,14 @@ module ApplicationHelper
     css_class = (header_item.attribute == @list.sort ? "current #{@list.direction}" : nil)
     direction = (header_item.attribute == @list.sort && @list.direction == :asc ? :desc : :asc)
     if header_item.is_sortable?
-      link_to title, {:sort => header_item.attribute.to_s, :direction => direction.to_s, :regexp => @filter_regexp, :ignorecase => (@filter_ignorecase ? '1' : nil), :attr_select => @filter_attribute}, {:class => css_class}
+      param_hash = {:sort => header_item.attribute.to_s, :direction => direction.to_s}
+      @filter_info.each do |info|
+        i = info.index
+        param_hash["regexp_#{i}".to_sym] = info.regexp
+        param_hash["ignorecase_#{i}".to_sym] = (info.ignorecase ? '1' : nil)
+        param_hash["attr_select_#{i}".to_sym] = info.attribute
+      end
+      link_to title, param_hash, {:class => css_class}
     else
       title
     end

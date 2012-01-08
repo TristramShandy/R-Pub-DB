@@ -19,21 +19,21 @@
       <%= link_to t(:more_help), "http://en.wikipedia.org/wiki/Regular_expression", {:target => '_blank'} %>
     </div>
     <%= form_tag({:action => 'index'}, {:method => 'get'}) do %>
-      <%= hidden_field_tag :sort, @list.sort.to_s %>
-      <%= hidden_field_tag :direction, @list.direction.to_s %>
       <%= hidden_field_tag :locale, I18n.locale %>
+      <%= hidden_field_tag :nr_filters, @nr_filters.to_s %>
       <table>
         <tr>
           <td><%= t :filter_attribute %></td>
           <td><%= t :filter_regexp %></td>
           <td><%= t :filter_ignorecase %></td>
         </tr>
-        <tr>
-          <td><%= select_tag('attr_select', options_for_select(@list.filter_attributes, @filter_attribute)) %></td>
-          <td<%= @list.err == :regexp ? " class='field_with_errors' " : "" %>><%= text_field_tag('regexp', @filter_regexp) %></td>
-          <td><%= check_box_tag('ignorecase', '1', @filter_ignorecase ) %></td>
-        </tr>
+        <% @filter_info.each do |info| %>
+          <%= render :partial => 'shared/index_filter', :object => info %>
+        <% end %>
       </table>
+      <%= hidden_field_tag :sort, @list.sort.to_s %>
+      <%= hidden_field_tag :direction, @list.direction.to_s %>
+      <%= hidden_field_tag :locale, I18n.locale %>
       <%= submit_tag t(:do_filter) %>
     <% end %>
   </fieldset>

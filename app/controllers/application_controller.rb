@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   AcceptedLocales = AcceptedLocaleInfo.transpose[0]
 
   ModelInfo = Struct.new(:name, :model_id, :klass, :symbol)
+  FilterInfo = Struct.new(:regexp, :ignorecase, :attribute, :index)
 
   DisplayModels = [
     ModelInfo.new(:publication, 1, Publication, :publications),
@@ -49,5 +50,18 @@ class ApplicationController < ActionController::Base
 
   def stale_object
     redirect_to(:controller => 'rpubdb', :action => "stale")
+  end
+
+  # for index methods: set up the needed regexp variables
+  def setup_regexp
+    @filter_info = []
+    @nr_filters = [APP_CONFIG['setup']['nr_filters'], 1].max
+    @nr_filters.times do |i|
+      if params["regexp_#{i}"]
+        @filter_info << FilterInfo.new(params["regexp_#{i}"], (params["ignorecase_#{i}"] == '1'), params["attr_select_#{i}"].to_sym, i)
+      else
+        @filter_info << FilterInfo.new('', true, @list.default_filter.attribute, i)
+      end
+    end
   end
 end

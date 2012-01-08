@@ -1,0 +1,7 @@
+<% i = index_filter.index %>
+<tr>
+  <td><%= select_tag("attr_select_#{i}", options_for_select(@list.filter_attributes, index_filter.attribute)) %></td>
+  <td<%= @list.err == :regexp ? " class='field_with_errors' " : "" %>><%= text_field_tag("regexp_#{i}", index_filter.regexp) %></td>
+  <td><%= check_box_tag("ignorecase_#{i}", '1', index_filter.ignorecase ) %></td>
+</tr>
+

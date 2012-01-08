@@ -87,8 +87,8 @@ module Sortable
 
       if @sort == :scope
         # special treatment for scope necessary, as it is a combination of different attributes
-        # TODO: implement sorting
         @items = items ? items : klass.find(:all)
+        @items = @items.sort_by {|item| item.scope_string}
       else
         if items
           @items = items.sort_by {|item| item[@sort]}
@@ -98,15 +98,17 @@ module Sortable
         end
       end
 
-      unless params[:regexp].blank?
-        # keep only items that match the regexp
-        attr = (params[:attr_select].blank? ? @default_filter.attribute : params[:attr_select])
-        begin
-          regexp = Regexp.new(params[:regexp], params[:ignorecase] == '1')
-        
-          @items = @items.select {|item| item[attr].to_s =~ regexp}
-        rescue RegexpError
-          @err = :regexp
+      params[:nr_filters].to_i.times do |i|
+        unless params["regexp_#{i}"].blank?
+          # keep only items that match the regexp
+          attr = (params["attr_select_#{i}"].blank? ? @default_filter.attribute : params["attr_select_#{i}"])
+          begin
+            regexp = Regexp.new(params["regexp_#{i}"], params["ignorecase_#{i}"] == '1')
+          
+            @items = @items.select {|item| item[attr].to_s =~ regexp}
+          rescue RegexpError
+            @err = :regexp
+          end
         end
       end
     end

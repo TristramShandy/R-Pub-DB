@@ -49,6 +49,18 @@ class Call < ActiveRecord::Base
     display_name
   end
 
+  def scope_string
+    if self[:book_id]
+      book.display_name
+    elsif self[:journal_id]
+      journal.display_name
+    elsif self[:conference_id]
+      conference.display_name
+    else
+      ""
+    end
+  end
+
   def self.in_future
     Call.find(:all, :conditions => "deadline > '#{Date.today.to_s(:db)}'")
   end

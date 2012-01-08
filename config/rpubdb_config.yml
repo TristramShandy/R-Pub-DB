@@ -38,6 +38,8 @@ defaults: &DEFAULTS
     name: RPubDB
     pw: RP11Mail
     email: rpubdb@ait.ac.at
+  setup:
+    nr_filters: 3
 
 development:
   <<: *DEFAULTS

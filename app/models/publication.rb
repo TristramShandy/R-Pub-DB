@@ -203,6 +203,18 @@ class Publication < ActiveRecord::Base
     authors.map {|a_author| a_author.display_name}.join(', ')
   end
 
+  def scope_string
+    if self[:book_id]
+      book.display_name
+    elsif self[:journal_id]
+      journal.display_name
+    elsif self[:conference_id]
+      conference.display_name
+    else
+      ""
+    end
+  end
+
   private
 
   def coded_id

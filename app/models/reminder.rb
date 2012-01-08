@@ -14,7 +14,7 @@ class Reminder < ActiveRecord::Base
     Sortable::HeaderInfo.new(:send_day,         :send_day,           Sortable::C_Default, Sortable::C_Yes    )]
 
   def display_name
-    remincer_source
+    reminder_source
   end
 
   def validate

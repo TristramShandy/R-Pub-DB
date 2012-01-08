@@ -4,15 +4,7 @@ class BooksController < ApplicationController
   def index
     # @books = Book.all
     @list = Sortable::List.new(Book, params)
-    if params[:regexp]
-      @filter_regexp = params[:regexp]
-      @filter_ignorecase = (params[:ignorecase] == '1')
-      @filter_attribute = params[:attr_select].to_sym
-    else
-      @filter_regexp = ''
-      @filter_ignorecase = true
-      @filter_attribute = @list.default_filter.attribute
-    end
+    setup_regexp
 
     respond_to do |format|
       format.html # index.html.erb
