@@ -6,8 +6,6 @@ class AddCitation < ActiveRecord::Migration
   end
 
   def self.down
-    change_table :publications do |t|
-      t.remove_column :citation
-    end
+    remove_column :publications, :citation
   end
 end

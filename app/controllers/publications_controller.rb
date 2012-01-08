@@ -145,8 +145,11 @@ class PublicationsController < ApplicationController
 
   def change_status
     publication = Publication.find_by_id(params[:id].to_i)
-    if publication && publication.check_new_status(params[:target].to_i)
+    old_status = publication.status
+    new_status = params[:target].to_i
+    if publication && publication.check_new_status(new_status)
       publication.save
+      publication.status_change_actions(old_status)
     end
     redirect_to(:back)
   end

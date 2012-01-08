@@ -38,11 +38,12 @@ function set_scope(obj) {
   var volume_obj = document.getElementById('f_volume');
   var number_obj = document.getElementById('f_number');
   var year_obj = document.getElementById('f_year');
-  var pages_obj = document.getElementById('f_pages');
+  var page_begin_obj = document.getElementById('f_page_begin');
+  var page_end_obj = document.getElementById('f_page_end');
   var doi_obj = document.getElementById('f_doi');
   var citation_obj = document.getElementById('f_citation');
 
-  if (volume_obj && number_obj && year_obj && pages_obj && doi_obj && citation_obj)
+  if (volume_obj && number_obj && year_obj && page_end_obj && page_begin_obj && doi_obj && citation_obj)
   {
     var val = obj.value;
     if (val == "0") {
@@ -50,18 +51,21 @@ function set_scope(obj) {
       mu_hide(volume_obj);
       mu_hide(number_obj);
       mu_hide(year_obj);
-      mu_hide(pages_obj);
+      mu_hide(page_begin_obj);
+      mu_hide(page_end_obj);
       mu_hide(citation_obj);
     } else if (val == "1") {
       mu_show(volume_obj);
       mu_show(number_obj);
       mu_show(year_obj);
-      mu_show(pages_obj);
+      mu_show(page_begin_obj);
+      mu_show(page_end_obj);
       mu_show(doi_obj);
       mu_hide(citation_obj);
     } else if (val == "2") {
       mu_show(year_obj);
-      mu_show(pages_obj);
+      mu_show(page_begin_obj);
+      mu_show(page_end_obj);
       mu_show(doi_obj);
       mu_hide(volume_obj);
       mu_hide(number_obj);
@@ -70,7 +74,8 @@ function set_scope(obj) {
       mu_hide(volume_obj);
       mu_hide(number_obj);
       mu_hide(year_obj);
-      mu_hide(pages_obj);
+      mu_hide(page_begin_obj);
+      mu_hide(page_end_obj);
       mu_hide(doi_obj);
       mu_show(citation_obj);
     }

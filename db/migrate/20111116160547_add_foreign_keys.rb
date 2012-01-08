@@ -46,8 +46,6 @@ class AddForeignKeys < ActiveRecord::Migration
     drop_table :publications_users
     drop_table :authors_publications
 
-    change_table :publications do |t|
-      t.remove_column :call_id 
-    end
+    remove_column :publications, :call_id 
   end
 end

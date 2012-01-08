@@ -8,7 +8,9 @@ module PublicationsHelper
                    scope == 1
                  when :year
                    scope == 1 || scope == 2
-                 when :pages
+                 when :page_begin
+                   scope == 1 || scope == 2
+                 when :page_end
                    scope == 1 || scope == 2
                  when :doi
                    scope != 3

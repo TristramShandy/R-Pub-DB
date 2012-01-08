@@ -10,8 +10,6 @@ class AddAuthorUserRelation < ActiveRecord::Migration
   def self.down
     execute "alter table users drop foreign key fk_users_authors"
 
-    change_table :users do |t|
-      t.remove_column :author_id 
-    end
+    remove_column :users, :author_id 
   end
 end

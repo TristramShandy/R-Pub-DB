@@ -88,7 +88,8 @@ de:
   ans_yes: Ja
   ans_no: Nein
   source: In
-  pages: Seiten
+  page_begin: Seite von
+  page_end: Seite bis
   doi: DOI
   pdf_link: PDF
   year: Jahr
@@ -108,7 +109,9 @@ de:
   last_name: Nachname
   affiliation: Organisation
   publisher: Verlag
-  editor: Editor
+  editor: Herausgeber
+  editor_location: Herausgeber Ort
+  publisher_location: Verlag Ort
   isbn: ISBN
   issn: ISSN
   enter_path: "Geben Sie den Pfad zu dem PDF ein"
@@ -184,7 +187,9 @@ de:
       book:
         title: Titel
         publisher: Verlag
-        editor: Editor
+        editor: Herausgeber
+        editor_location: Herausgeber Ort
+        publisher_location: Verlag Ort
         year: Jahr
         isbn: ISBN
       conference:
@@ -204,7 +209,8 @@ de:
         url: URL
       publication:
         title: Titel
-        pages: Seiten
+        page_begin: Seite von
+        page_end: Seite bis
         doi: DOI
         pdf: PDF
         year: Jahr

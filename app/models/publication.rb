@@ -21,7 +21,8 @@ class Publication < ActiveRecord::Base
     Sortable::HeaderInfo.new(:volume,           :volume,          Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:xnumber,          :number,          Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:year,             :year,            Sortable::C_Yes,     Sortable::C_Yes    ),
-    Sortable::HeaderInfo.new(:pages,            :pages,           Sortable::C_No,      Sortable::C_No     ),
+    Sortable::HeaderInfo.new(:page_begin,       :page_begin,      Sortable::C_No,      Sortable::C_No     ),
+    Sortable::HeaderInfo.new(:page_end,         :page_end,        Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:doi,              :doi,             Sortable::C_No,      Sortable::C_No     ),
     Sortable::HeaderInfo.new(:abstract,         :abstract,        Sortable::C_No,      Sortable::C_Yes    ),
     Sortable::HeaderInfo.new(:pdf_link,         :pdf,             Sortable::C_No,      Sortable::C_No     )
@@ -103,7 +104,7 @@ class Publication < ActiveRecord::Base
       StatusValues.content_writeable?(self[:status])
     when :conference_id, :journal_id, :book_id, :call_id
       StatusValues.content_writeable?(self[:status])
-    when :pdf, :doi, :pages, :volume, :number, :year
+    when :pdf, :doi, :page_begin, :page_end, :volume, :number, :year
       StatusValues.content_active?(self[:status])
     when :status
       false # status changes are checked by a different logic
@@ -199,8 +200,12 @@ class Publication < ActiveRecord::Base
     end
   end
 
-  def author_names
-    authors.map {|a_author| a_author.display_name}.join(', ')
+  def author_names(with_affiliation = false)
+    if with_affiliation
+      authors.map {|a_author| a_author.select_name}.join('; ')
+    else
+      authors.map {|a_author| a_author.display_name}.join(', ')
+    end
   end
 
   def scope_string
@@ -212,6 +217,14 @@ class Publication < ActiveRecord::Base
       conference.display_name
     else
       ""
+    end
+  end
+
+  def status_change_actions(old_status)
+    if old_status == StatusValues::Accepted && status == StatusValues::Published
+      APP_CONFIG["special_roles"]["office"].each do |office|
+        AutoMailer.published(self, office).deliver
+      end
     end
   end
 

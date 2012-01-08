@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103131935) do
+ActiveRecord::Schema.define(:version => 20120108164440) do
 
   create_table "authors", :force => true do |t|
     t.string   "last_name"
@@ -45,7 +45,9 @@ ActiveRecord::Schema.define(:version => 20120103131935) do
     t.string   "isbn"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version", :default => 0
+    t.integer  "lock_version",       :default => 0
+    t.string   "editor_location"
+    t.string   "publisher_location"
   end
 
   create_table "calls", :force => true do |t|
@@ -99,7 +101,6 @@ ActiveRecord::Schema.define(:version => 20120103131935) do
     t.string   "pdf"
     t.text     "abstract"
     t.string   "doi"
-    t.integer  "pages"
     t.integer  "volume"
     t.integer  "number"
     t.string   "title"
@@ -109,6 +110,8 @@ ActiveRecord::Schema.define(:version => 20120103131935) do
     t.integer  "call_id"
     t.integer  "lock_version",  :default => 0
     t.text     "citation"
+    t.integer  "page_begin"
+    t.integer  "page_end"
   end
 
   add_index "publications", ["book_id"], :name => "fk_publications_books"

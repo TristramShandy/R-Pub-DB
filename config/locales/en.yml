@@ -88,7 +88,8 @@ en:
   ans_yes: "Yes"
   ans_no: "No"
   source: In
-  pages: Pages
+  page_begin: Page from
+  page_end: Page to
   doi: DOI
   pdf_link: PDF
   year: Year
@@ -108,6 +109,8 @@ en:
   affiliation: Affiliation
   publisher: Publisher
   editor: Editor
+  editor_location: Editor location
+  publisher_location: Publisher location
   isbn: ISBN
   issn: ISSN
   enter_path: Enter path to PDF
@@ -172,6 +175,8 @@ en:
         title: Title
         publisher: Publisher
         editor: Editor
+        editor_location: Editor location
+        publisher_location: Publisher location
         year: Year
         isbn: ISBN
       conference:
@@ -191,7 +196,8 @@ en:
         url: URL
       publication:
         title: Title
-        pages: Pages
+        page_begin: Page from
+        page_end: Page to
         doi: DOI
         pdf: PDF
         year: Year

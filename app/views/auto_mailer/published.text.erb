@@ -1,0 +1,53 @@
+Neue Publikation:
+
+<% if @publication.journal -%>
+Zeitschriftenpublikation
+
+Titel:        <%= @publication.title %>
+Autoren:      <%= @publication.author_names(true) %>
+Zeitschrift:  <%= @publication.journal.display_name %>
+Band:         <%= @publication.volume %>
+Jahr:         <%= @publication.year %>
+Nummer:       <%= @publication.number %>
+Seite von:    <%= @publication.page_begin %>
+Seite bis:    <%= @publication.page_end %>
+DOI           <%= @publication.doi %>
+Abstract:     <%= @publication.abstract %>
+
+<% elsif @publication.book -%>
+Buchpublikation
+
+Titel:            <%= @publication.title %>
+Autoren:          <%= @publication.author_names(true) %>
+Herausgeber:      <%= @publication.book.editor %>
+Buchtitel:        <%= @publication.book.title %>
+Herausgeber Ort:  <%= @publication.book.editor_location %>
+Verlag:           <%= @publication.book.publisher %>
+Verlag Ort:       <%= @publication.book.publisher_location %>
+Buch Jahr:        <%= @publication.book.year %>
+Buch ISBN:        <%= @publication.book.isbn %>
+Seite von:        <%= @publication.page_begin %>
+Seite bis:        <%= @publication.page_end %>
+DOI               <%= @publication.doi %>
+Abstract:         <%= @publication.abstract %>
+
+<% elsif @publication.conference -%>
+Konferenzpublikation
+
+Type:       <%= @publication.conference.submission_type %>
+Titel:      <%= @publication.title %>
+Autoren:    <%= @publication.author_names(true) %>
+Konferenz:  <%= @publication.conference.display_name %>
+Ort:        <%= @publication.conference.location %>
+Datum von:  <%= @publication.conference.begin_date %>
+Datum bis:  <%= @publication.conference.end_date %>
+DOI         <%= @publication.doi %>
+Abstract:   <%= @publication.abstract %>
+
+<% else %>
+Sonstige Publikation (Kein Buch, Zeitschrift oder Konferenz)
+
+Autoren: <%= @publication.author_names(true) %>
+
+<%= @publication.citation %>
+<% end %>

@@ -57,9 +57,13 @@
     <%= f.label :year %><br />
     <%= f.text_field :year %>
   </div>
-  <div class="field <%= scope_attr(current_scope, :pages) %>" id="f_pages">
-    <%= f.label :pages %><br />
-    <%= f.text_field :pages %>
+  <div class="field <%= scope_attr(current_scope, :page_begin) %>" id="f_page_begin">
+    <%= f.label :page_begin %><br />
+    <%= f.text_field :page_begin %>
+  </div>
+  <div class="field <%= scope_attr(current_scope, :page_end) %>" id="f_page_end">
+    <%= f.label :page_end %><br />
+    <%= f.text_field :page_end %>
   </div>
   <div class="field <%= scope_attr(current_scope, :doi) %>" id="f_doi">
     <%= f.label :doi %><br />
