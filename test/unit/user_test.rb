@@ -72,11 +72,11 @@ class UserTest < ActiveSupport::TestCase
       end
     end
 
-    assert(u[0].may_see_model?(6))
+    assert(! u[0].may_see_model?(6))
     assert(! u[1].may_see_model?(6))
-    assert(u[2].may_see_model?(6))
-    assert(u[3].may_see_model?(6))
-    assert(u[4].may_see_model?(6))
+    assert(! u[2].may_see_model?(6))
+    assert(! u[3].may_see_model?(6))
+    assert(! u[4].may_see_model?(6))
   end
 
   test "function all_coordinators" do
