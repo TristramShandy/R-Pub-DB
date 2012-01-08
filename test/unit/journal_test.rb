@@ -26,6 +26,19 @@ class JournalTest < ActiveSupport::TestCase
     j0 = Journal.new(base_hash)
     assert j0.save, "Not saved: #{j0.errors.full_messages.join(', ')}"
 
+    # technically incorrect, but still acceptable
+    base_hash[:issn] = "00-28-0836"
+    j0 = Journal.new(base_hash)
+    assert j0.save
+
+    base_hash[:issn] = "00280836"
+    j0 = Journal.new(base_hash)
+    assert j0.save
+
+    base_hash[:issn] = "0028 0836"
+    j0 = Journal.new(base_hash)
+    assert j0.save
+
     # wrong ISSN
     base_hash[:issn] = "1000-037X"
     j0 = Journal.new(base_hash)
@@ -36,18 +49,6 @@ class JournalTest < ActiveSupport::TestCase
     assert ! j0.save
 
     # badly formatted ISSN
-    base_hash[:issn] = "00-28-0836"
-    j0 = Journal.new(base_hash)
-    assert ! j0.save
-
-    base_hash[:issn] = "00280836"
-    j0 = Journal.new(base_hash)
-    assert ! j0.save
-
-    base_hash[:issn] = "0028 0836"
-    j0 = Journal.new(base_hash)
-    assert ! j0.save
-
     base_hash[:issn] = "0028-086"
     j0 = Journal.new(base_hash)
     assert ! j0.save
