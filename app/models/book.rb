@@ -9,6 +9,13 @@ class Book < ActiveRecord::Base
   validates_presence_of :year
   validates_presence_of :isbn
 
+  # isbn checksum validation
+  validates_each :isbn do |model, attr, value|
+    cisbn = Isxn::CIsxn.new(value)
+    model.errors[attr] << model.errors.generate_message(attr, :invalid) unless cisbn.valid?
+  end
+
+
   include Sortable
 
   DisplayInfo = [
