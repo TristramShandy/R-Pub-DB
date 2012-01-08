@@ -7,6 +7,7 @@ class Call < ActiveRecord::Base
 
   validates_presence_of :deadline
   validates_presence_of :url
+  validates_format_of :url, :with => URI::regexp(%w{http https})
 
   DefaultReminderOffset = 7
 

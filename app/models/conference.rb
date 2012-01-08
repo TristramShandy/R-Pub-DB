@@ -13,6 +13,7 @@ class Conference < ActiveRecord::Base
   validates_presence_of :due
   validates_presence_of :submission_type
   validates_presence_of :proceedings
+  validates_format_of :url, :with => URI::regexp(%w{http https})
 
   include Sortable
 
@@ -35,7 +36,7 @@ class Conference < ActiveRecord::Base
     errors[:end_date] << errors.generate_message(:end_date, :conflict_begin_date) if begin_date > end_date
     errors[:deadline] << errors.generate_message(:deadline, :conflict_begin_date) if deadline > begin_date
     errors[:acceptance] << errors.generate_message(:acceptance, :conflict_deadline) if deadline > acceptance
-    errors[:due] << errors.generate_message(:due, :conflict_acceptance) if acceptance < due
+    errors[:due] << errors.generate_message(:due, :conflict_acceptance) if acceptance > due
   end
 
   def display_name

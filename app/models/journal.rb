@@ -11,6 +11,7 @@ class Journal < ActiveRecord::Base
   validates_presence_of :publisher
   validates_presence_of :issn
   validates_presence_of :url
+  validates_format_of :url, :with => URI::regexp(%w{http https})
 
   # issn checksum validation
   validates_each :issn do |model, attr, value|
