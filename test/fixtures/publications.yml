@@ -1,31 +1,40 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  conference: 
-  journal: 
-  book: 
-  status: 1
-  history: MyString
-  pdf: MyString
-  abstract: MyText
-  doi: MyString
-  pages: 1
-  volume: 1
-  number: 1
-  title: MyString
-  year: 1
+conf_one:
+  id: 1
+  status: 7
+  abstract: "This is some text\nwith a line break."
+  doi: "1234"
+  title: Thaumic resonance in urban public transport
+  conference_id: 1
 
-two:
-  conference: 
-  journal: 
-  book: 
-  status: 1
-  history: MyString
-  pdf: MyString
-  abstract: MyText
-  doi: MyString
-  pages: 1
-  volume: 1
-  number: 1
-  title: MyString
-  year: 1
+book_one:
+  id: 2
+  status: 7
+  abstract: "This is some text\nwith a line break."
+  doi: "1234"
+  title: Thaumic resonance in urban public transport
+  book_id: 1
+  page_begin: 1211
+  page_end: 1288
+
+journal_one:
+  id: 3
+  status: 7
+  abstract: "This is some text\nwith a line break."
+  doi: "1234"
+  title: Thaumic resonance in urban public transport
+  journal_id: 1
+  year: 2022
+  number: 9
+  volume: 28
+  page_begin: 11
+  page_end: 88
+
+other_one:
+  id: 4
+  status: 7
+  abstract: "This is some text\nwith a line break."
+  citation: "A multiline citation\nbla bla bla"
+  doi: "1234"
+  title: Thaumic resonance in urban public transport

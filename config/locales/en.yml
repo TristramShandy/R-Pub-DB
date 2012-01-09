@@ -154,6 +154,15 @@ en:
   for: For
   reminder_source: For
   send_day: "Will be sent"
+  status_help:
+    status_idea: The publication idea must be accepted by a coordinator.
+    status_idea_accepted: Idea is accepted. The publication can be written now. When finished, upload a pdf.
+    status_written: The publication is written up. Submission must be cleared by a coordinator.
+    status_pending_submission: The publication is written, Submission needs clearance by a coordinator.
+    status_submitted: The publication is submitted, but not yet accepted.
+    status_accepted: The publication is accepted but not yet published.
+    status_published: The publication is published. Mission accomplished.
+    status_withdrawn: This publication has been withdrawn and can be deleted, or it can be newly activated.
   r_day:
     one: day
     other: days

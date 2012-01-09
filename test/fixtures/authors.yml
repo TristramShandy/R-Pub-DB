@@ -1,11 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  last_name: MyString
-  first_name: MyString
-  affiliation: MyString
+  id: 1
+  last_name: Vimes
+  first_name: Samuel
+  affiliation: AM Watch
 
 two:
-  last_name: MyString
-  first_name: MyString
-  affiliation: MyString
+  id: 2
+  last_name: Ulm
+  first_name: Michael
+  affiliation: "AIT-MOB-DTS"

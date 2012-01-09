@@ -1,25 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  begin_date: 2011-11-06
-  end_date: 2011-11-06
-  deadline: 2011-11-06
-  acceptance: 2011-11-06
-  due: 2011-11-06
-  submission_type: MyString
-  url: MyString
-  location: MyString
-  proceedings: MyString
+  id: 1
+  name: Applied Magic
+  begin_date: 2022-06-06
+  end_date: 2022-06-08
+  deadline: 2022-02-04
+  acceptance: 2022-03-04
+  due: 2022-04-04
+  submission_type: Poster
+  url: "http://www.applied_magic.org/"
+  location: Ankh Morpork
 
-two:
-  name: MyString
-  begin_date: 2011-11-06
-  end_date: 2011-11-06
-  deadline: 2011-11-06
-  acceptance: 2011-11-06
-  due: 2011-11-06
-  submission_type: MyString
-  url: MyString
-  location: MyString
-  proceedings: MyString

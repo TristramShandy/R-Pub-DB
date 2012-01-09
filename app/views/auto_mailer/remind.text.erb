@@ -1,0 +1,1 @@
+Reminder: <% if @reminder.call %><%= @reminder.call.scope_string %><% else %><%= @reminder.reminder_source(:short) %><% end %>, <%= t @reminder.attribute_name.to_sym %> <%= @reminder.send_day + @reminder.offset %>.

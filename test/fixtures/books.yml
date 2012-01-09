@@ -1,15 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  publisher: MyString
-  editor: MyString
-  year: 1
-  isbn: MyString
-
-two:
-  title: MyString
-  publisher: MyString
-  editor: MyString
-  year: 1
-  isbn: MyString
+  id: 1
+  title: Ankh Morpork Public Transport
+  publisher: UU Press
+  publisher_location: Llamedos
+  editor: Havelock Vetinari
+  editor_location: Ankh Morpork
+  year: 2022
+  isbn: "0-201-89683-4"

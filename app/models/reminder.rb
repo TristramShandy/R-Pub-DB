@@ -21,7 +21,7 @@ class Reminder < ActiveRecord::Base
     errors[:offset] << errors.generate_message(:offset, :not_past) if send_day <= Date.today
   end
 
-  def reminder_source
+  def reminder_source(option = :long)
     str = ""
     if self.conference
       str = conference.display_name
@@ -31,10 +31,12 @@ class Reminder < ActiveRecord::Base
       return I18n.t(:illegal_reminder)
     end
 
-    str += ", #{I18n.t(attribute_name.to_sym)}"
+    if option == :long
+      str += ", #{I18n.t(attribute_name.to_sym)}"
 
-    if offset > 0
-      str += " -#{offset} #{I18n.t(:r_day, :count => offset)}"
+      if offset > 0
+        str += " -#{offset} #{I18n.t(:r_day, :count => offset)}"
+      end
     end
 
     str

@@ -7,7 +7,12 @@ class AutoMailer < ActionMailer::Base
   end
 
   def published(a_publication, office)
-    @publication = publication
-    mail(:to => a_coordinator["email"], :subject => "Neue Publikation", :from => APP_CONFIG["mailer"]["email"])
+    @publication = a_publication
+    mail(:to => office["email"], :subject => "Publikation", :from => APP_CONFIG["mailer"]["email"])
+  end
+
+  def remind(reminder)
+    @reminder = reminder
+    mail(:to => reminder.email, :subject => "Reminder from RPubDB", :from => APP_CONFIG["mailer"]["email"])
   end
 end

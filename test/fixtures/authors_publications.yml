@@ -1,0 +1,32 @@
+
+a1:
+  author_id: 1
+  publication_id: 1
+
+a2:
+  author_id: 2
+  publication_id: 1
+
+b1:
+  author_id: 1
+  publication_id: 2
+
+b2:
+  author_id: 2
+  publication_id: 2
+
+c1:
+  author_id: 1
+  publication_id: 3
+
+c2:
+  author_id: 2
+  publication_id: 3
+
+d1:
+  author_id: 1
+  publication_id: 4
+
+d2:
+  author_id: 2
+  publication_id: 4

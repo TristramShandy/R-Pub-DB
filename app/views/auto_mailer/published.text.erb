@@ -11,8 +11,10 @@ Jahr:         <%= @publication.year %>
 Nummer:       <%= @publication.number %>
 Seite von:    <%= @publication.page_begin %>
 Seite bis:    <%= @publication.page_end %>
-DOI           <%= @publication.doi %>
-Abstract:     <%= @publication.abstract %>
+DOI:          <%= @publication.doi %>
+
+Abstract:
+<%= @publication.abstract %>
 
 <% elsif @publication.book -%>
 Buchpublikation
@@ -28,8 +30,10 @@ Buch Jahr:        <%= @publication.book.year %>
 Buch ISBN:        <%= @publication.book.isbn %>
 Seite von:        <%= @publication.page_begin %>
 Seite bis:        <%= @publication.page_end %>
-DOI               <%= @publication.doi %>
-Abstract:         <%= @publication.abstract %>
+DOI:              <%= @publication.doi %>
+
+Abstract:
+<%= @publication.abstract %>
 
 <% elsif @publication.conference -%>
 Konferenzpublikation
@@ -41,13 +45,19 @@ Konferenz:  <%= @publication.conference.display_name %>
 Ort:        <%= @publication.conference.location %>
 Datum von:  <%= @publication.conference.begin_date %>
 Datum bis:  <%= @publication.conference.end_date %>
-DOI         <%= @publication.doi %>
-Abstract:   <%= @publication.abstract %>
+DOI:        <%= @publication.doi %>
 
-<% else %>
+Abstract:
+<%= @publication.abstract %>
+
+<% else -%>
 Sonstige Publikation (Kein Buch, Zeitschrift oder Konferenz)
 
 Autoren: <%= @publication.author_names(true) %>
 
 <%= @publication.citation %>
-<% end %>
+
+Abstract:
+<%= @publication.abstract %>
+
+<% end -%>

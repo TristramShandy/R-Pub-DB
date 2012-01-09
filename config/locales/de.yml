@@ -155,6 +155,15 @@ de:
   for: "Für"
   reminder_source: "Für"
   send_day: "Wird gesendet am"
+  status_help:
+    status_idea: Muss noch vom Koordinator genehmigt werden.
+    status_idea_accepted: Idee akzeptiert - die Publikation kann jetzt geschrieben werden. Dann PDF uploaden.
+    status_written: Publikation ist geschrieben. Einreichung braucht eine Genehmigung von einem Koordinator.
+    status_pending_submission: Publikation ist geschrieben und kann jetzt eingereicht werden.
+    status_submitted: Publikation ist eingereicht aber noch nicht akzeptiert.
+    status_accepted: Publikation ist akzeptiert aber noch nicht publiziert.
+    status_published: "Publikation ist publiziert - Mission erfüllt."
+    status_withdrawn: "Publikation ist zurückgezogen und kann gelöscht oder neu aufgerollt werden."
   r_day:
     one: Tag
     other: Tage

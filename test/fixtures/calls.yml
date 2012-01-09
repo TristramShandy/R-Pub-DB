@@ -1,17 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  conference: 
-  journal: 
-  book: 
-  deadline: 2011-11-06
-  url: MyString
-  guest_editor: MyString
-
-two:
-  conference: 
-  journal: 
-  book: 
-  deadline: 2011-11-06
-  url: MyString
-  guest_editor: MyString
+  id: 1
+  conference_id: 1
+  deadline: 2022-02-04
+  url: http://am_watch.com
+  guest_editor: Havelock Vetinary

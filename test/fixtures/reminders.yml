@@ -1,0 +1,16 @@
+
+one:
+  id: 1
+  email: vimes@am_watch.com
+  offset: 2
+  call_id: 1
+  attribute_name: deadline
+  send_day: 2022-02-02
+
+two:
+  id: 2
+  email: vimes@am_watch.com
+  offset: 0
+  conference_id: 1
+  attribute_name: due
+  send_day: 2022-04-04

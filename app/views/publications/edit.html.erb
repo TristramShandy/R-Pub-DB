@@ -1,6 +1,9 @@
 <h1><%= t :editing_publication %></h1>
 <fieldset>
   <legend><%= t(:status) %>: <%= t(@publication.status_name) %></legend>
+  <p>
+  <%= t Publication::StatusValues.get_name(@publication.status), :scope => 'status_help' %>
+  </p>
   <% @publication.status_changes(@user).each do |change| %>
     <%= button_to "#{t :set_status}: #{t change[0]}", :action => 'change_status', :id => @publication.id, :target => change[1].to_s %>
   <% end %>
